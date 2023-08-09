@@ -1,6 +1,6 @@
 export type Book = {
   name: string;
-  image: string;
+  image: string | undefined;
   author: string;
   rating: number;
   favorite: boolean;
