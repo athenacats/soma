@@ -1,4 +1,5 @@
 import { Container, Nav, Navbar, NavbarBrand } from "react-bootstrap";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
@@ -19,7 +20,9 @@ function App() {
         </Navbar>
       </header>
       <main>
-        <Container className="mt-3"></Container>
+        <Container className="mt-3">
+          <Outlet />
+        </Container>
       </main>
       <footer>
         <div className="text-center">All Rights Reserved</div>
