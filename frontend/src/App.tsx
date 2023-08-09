@@ -18,7 +18,9 @@ function App() {
           </Nav>
         </Navbar>
       </header>
-      <main></main>
+      <main>
+        <Container className="mt-3"></Container>
+      </main>
       <footer>
         <div className="text-center">All Rights Reserved</div>
       </footer>
