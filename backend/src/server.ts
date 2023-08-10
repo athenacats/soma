@@ -1,6 +1,7 @@
 import express from "express";
 import loadPageBooks from "./routers/loadingPageBooks.router";
 import cors from "cors";
+import bookDetails from "./routers/bookDetails.router";
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(
 );
 
 app.use("/api", loadPageBooks);
+app.use("/api", bookDetails);
 
 const PORT = 4000;
 app.listen(PORT, () => {
