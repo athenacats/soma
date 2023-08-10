@@ -3,6 +3,7 @@ import { Book } from "../types/Book";
 import axios from "axios";
 import { getError } from "../utils";
 import { ApiError } from "../types/ApiError";
+import { Col, Row } from "react-bootstrap";
 
 type State = {
   books: Book[];
@@ -58,21 +59,20 @@ export default function HomePage() {
     <h4>why</h4>
   ) : (
     <div className="body-container">
-      <h4 className="text-center ">
-        Welcome to the <span className="bigger">AudioBook Library!</span>
-      </h4>
-      <ul className="list-group">
+      <h4 className="text-center ">Life is dull without books...</h4>
+      <Row>
         {books.map((book, index) => (
-          <li key={index}>
+          <Col key={index} sm={6} md={4} lg={3}>
             <img
               className="img-thumbnail "
               src={book.image}
               alt={book.name}
             ></img>
             <h4>{book.name}</h4>
-          </li>
+            <h4>by {book.author}</h4>
+          </Col>
         ))}
-      </ul>
+      </Row>
     </div>
   );
 }
