@@ -21,7 +21,7 @@ export default function HomePage() {
         <Helmet>
           <title>Soma</title>
         </Helmet>
-        {books!.map((book, index) => (
+        {books!.slice(0, 8).map((book, index) => (
           <Col key={index} sm={6} md={4} lg={3}>
             <BookItem book={book} />
           </Col>
