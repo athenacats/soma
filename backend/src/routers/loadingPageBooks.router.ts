@@ -37,10 +37,12 @@ router.get(
           .text()
           .trim();
         const image = titleElement.find("img.full-shadow").attr("src");
+        const slug = name.replace(/\s+/g, "-");
         book.push({
           name,
           author,
           image,
+          slug,
           rating: 0,
           favorite: false,
           isbn: 0,
