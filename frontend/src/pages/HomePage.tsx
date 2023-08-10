@@ -7,6 +7,7 @@ import { Col, Row } from "react-bootstrap";
 import LoadingMessage from "../components/LoadingMessage";
 import MessageBox from "../components/MessageBox";
 import BookItem from "../components/BookItem";
+import { Helmet } from "react-helmet-async";
 
 type State = {
   books: Book[];
@@ -64,6 +65,9 @@ export default function HomePage() {
     <div className="body-container">
       <h4 className="text-center ">Life is dull without books...</h4>
       <Row>
+        <Helmet>
+          <title>Soma</title>
+        </Helmet>
         {books.map((book, index) => (
           <Col key={index} sm={6} md={4} lg={3}>
             <BookItem book={book} />
