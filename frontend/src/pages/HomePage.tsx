@@ -1,4 +1,8 @@
+import React, { useEffect, useReducer } from "react";
 import { Book } from "../types/Book";
+import axios from "axios";
+import { getError } from "../utils";
+import { ApiError } from "../types/ApiError";
 
 type State = {
   books: Book[];
@@ -20,16 +24,40 @@ const initialState: State = {
 const reducer = (state: State, action: Action) => {
   switch (action.type) {
     case "FETCH_REQUEST":
-      return { ...state, loading: true };
+      return { ...state, loadingBooks: true };
     case "FETCH_SUCCESS":
-      return { ...state, loading: false, books: action.payload };
+      return { ...state, loadingBooks: false, books: action.payload };
     case "FETCH_FAIL":
-      return { ...state, loading: false, error: action.payload };
+      return { ...state, loadingBooks: false, error: action.payload };
     default:
       return state;
   }
 };
 
 export default function HomePage() {
-  return <></>;
+  const [{ loadingBooks, error, books }, dispatch] = useReducer<
+    React.Reducer<State, Action>
+  >(reducer, initialState);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      dispatch({ type: "FETCH_REQUEST" });
+      try {
+        const result = await axios.get("/api/");
+        dispatch({ type: "FETCH_SUCCESS", payload: result.data });
+      } catch (error) {
+        dispatch({ type: "FETCH_FAIL", payload: getError(error as ApiError) });
+      }
+    };
+    fetchData();
+  }, []);
+
+  return;
+  loadingBooks ? (
+    <LoadingImg />
+  ) : error ? (
+    <MessagePopUp variant="danger" />
+  ) : (
+    <></>
+  );
 }
