@@ -44,6 +44,7 @@ router.get(
           image,
           slug,
           rating: 0,
+          yourRating: 0,
           favorite: false,
           isbn: 0,
           price: 0,

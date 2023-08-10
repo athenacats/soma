@@ -6,6 +6,7 @@ import { ApiError } from "../types/ApiError";
 import { Col, Row } from "react-bootstrap";
 import LoadingMessage from "../components/LoadingMessage";
 import MessageBox from "../components/MessageBox";
+import BookItem from "../components/BookItem";
 
 type State = {
   books: Book[];
@@ -65,13 +66,7 @@ export default function HomePage() {
       <Row>
         {books.map((book, index) => (
           <Col key={index} sm={6} md={4} lg={3}>
-            <img
-              className="img-thumbnail "
-              src={book.image}
-              alt={book.name}
-            ></img>
-            <h4>{book.name}</h4>
-            <h4>by {book.author}</h4>
+            <BookItem book={book} />
           </Col>
         ))}
       </Row>
