@@ -4,6 +4,8 @@ import axios from "axios";
 import { getError } from "../utils";
 import { ApiError } from "../types/ApiError";
 import { Col, Row } from "react-bootstrap";
+import LoadingMessage from "../components/LoadingMessage";
+import MessageBox from "../components/MessageBox";
 
 type State = {
   books: Book[];
@@ -54,9 +56,9 @@ export default function HomePage() {
   }, []);
 
   return loadingBooks ? (
-    <h4>why</h4>
+    <LoadingMessage />
   ) : error ? (
-    <h4>why</h4>
+    <MessageBox variant="danger">{error}</MessageBox>
   ) : (
     <div className="body-container">
       <h4 className="text-center ">Life is dull without books...</h4>
