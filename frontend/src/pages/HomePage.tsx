@@ -52,12 +52,27 @@ export default function HomePage() {
     fetchData();
   }, []);
 
-  return;
-  loadingBooks ? (
-    <LoadingImg />
+  return loadingBooks ? (
+    <h4>why</h4>
   ) : error ? (
-    <MessagePopUp variant="danger" />
+    <h4>why</h4>
   ) : (
-    <></>
+    <div className="body-container">
+      <h4 className="text-center ">
+        Welcome to the <span className="bigger">AudioBook Library!</span>
+      </h4>
+      <ul className="list-group">
+        {books.map((book, index) => (
+          <li key={index}>
+            <img
+              className="img-thumbnail "
+              src={book.image}
+              alt={book.name}
+            ></img>
+            <h4>{book.name}</h4>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
