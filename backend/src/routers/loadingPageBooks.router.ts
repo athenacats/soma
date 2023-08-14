@@ -58,4 +58,13 @@ router.get(
     }
   })
 );
+
+router.get(
+  "/book/:slug",
+  asyncHandler(async (req, res) => {
+    const { slug } = req.params;
+    console.log(slug);
+    res.json({ message: "Slug recorded successfully." });
+  })
+);
 export default router;
