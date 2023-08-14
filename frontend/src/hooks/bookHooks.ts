@@ -8,8 +8,19 @@ export const useGetBooksQuery = () =>
     queryFn: async () => (await apiClient.get<Book[]>(`api/`)).data,
   });
 
-export const useGetBookDetailsBySlugQuery = (slug: string) =>
+export const useGetBookDetailsBySlugQuery = (
+  slug: string,
+  name: string,
+  author: string
+) =>
   useQuery({
     queryKey: ["books", slug],
-    queryFn: async () => (await apiClient.get<Book>(`api/book/${slug}`)).data,
+    queryFn: async () =>
+      (
+        await apiClient.get<Book>(
+          `api/book/${slug}?name=${encodeURIComponent(
+            name
+          )}&author=${encodeURIComponent(author)}`
+        )
+      ).data,
   });
