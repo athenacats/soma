@@ -13,7 +13,7 @@ app.use(
 );
 
 app.use("/api", loadPageBooks);
-app.use("/api", bookDetails);
+app.use("/api/book", bookDetails);
 
 const PORT = 4000;
 app.listen(PORT, () => {

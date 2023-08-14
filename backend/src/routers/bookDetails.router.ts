@@ -7,10 +7,11 @@ import asyncHandler from "express-async-handler";
 const router = Router();
 
 router.get(
-  "/book/:name",
-  asyncHandler(async (req) => {
-    const { name } = req.body;
-    console.log(name);
+  "/slug",
+  asyncHandler(async (req, res) => {
+    const { slug } = req.body;
+    console.log(slug);
+    res.json({ message: "Slug recorded successfully." });
     /*const url = `http://audiobookbay.is/?s=${searchTerm}&cat=undefined%2Cundefined`;
     try {
       const response = await limiter.schedule(() => axios.get(url));
