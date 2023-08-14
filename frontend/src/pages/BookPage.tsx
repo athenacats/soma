@@ -8,8 +8,12 @@ import { ApiError } from "../types/ApiError";
 
 export default function BookPage() {
   const params = useParams();
-  const { slug } = params;
-  const { data: book, isLoading, error } = useGetBookDetailsBySlugQuery(slug!);
+  const { slugName, slugAuthor } = params;
+  const {
+    data: book,
+    isLoading,
+    error,
+  } = useGetBookDetailsBySlugQuery(slugName!, slugAuthor!);
   return isLoading ? (
     <LoadingMessage />
   ) : error ? (

@@ -9,5 +9,6 @@ export type Book = {
   price: number;
   pages: number;
   description?: string;
-  slug: string;
+  slugName: string;
+  slugAuthor: string;
 };

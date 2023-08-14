@@ -7,27 +7,16 @@ export default function BookItem({ book }: { book: Book }) {
   {
     console.log(`${encodeURIComponent(book.author!)}`);
   }
+  const url = `/book/${book.slugName}/${book.slugAuthor}`;
+
+  console.log("Request URL:", url);
   return (
     <Card style={{ cursor: "pointer" }}>
-      <Link
-        to={{
-          pathname: `/book/${book.slug}`,
-          search: `?name=${encodeURIComponent(
-            book.name
-          )}&author=${encodeURIComponent(book.author)}`,
-        }}
-      >
+      <Link to={`/book/${book.slugName}/${book.slugAuthor}`}>
         <img src={book.image} className="card-img-top" alt={book.name} />
       </Link>
       <Card.Body>
-        <Link
-          to={{
-            pathname: `/book/${book.slug}`,
-            search: `?name=${encodeURIComponent(
-              book.name
-            )}&author=${encodeURIComponent(book.author)}`,
-          }}
-        >
+        <Link to={`/book/${book.slugName}/${book.slugAuthor}`}>
           <Card.Title>{book.name}</Card.Title>
 
           <Card.Subtitle>by {book.author}</Card.Subtitle>

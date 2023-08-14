@@ -37,7 +37,11 @@ router.get(
           .text()
           .trim();
         const image = titleElement.find("img.full-shadow").attr("src");
-        const slug = name
+        const slugName = name
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, "")
+          .replace(/\s+/g, "-");
+        const slugAuthor = author
           .toLowerCase()
           .replace(/[^\w\s-]/g, "")
           .replace(/\s+/g, "-");
@@ -45,7 +49,8 @@ router.get(
           name,
           author,
           image,
-          slug,
+          slugName,
+          slugAuthor,
           rating: 0,
           yourRating: 0,
           favorite: false,
@@ -63,18 +68,14 @@ router.get(
 );
 
 router.get(
-  "/book/:slug",
+  "/book/:slugName/:slugAuthor",
   asyncHandler(async (req, res) => {
-    const { slug } = req.params;
-    const name = req.query.name as string;
-    const author = req.query.author as string;
-    const decodedName = decodeURIComponent(name);
-    const decodedAuthor = decodeURIComponent(author);
-    console.log(req.query);
+    const { slugName, slugAuthor } = req.params;
+    console.log(req);
 
-    console.log("Slug:", slug);
-    console.log("Name:", decodedName);
-    console.log("Author:", decodedAuthor);
+    console.log("Name:", slugName);
+    console.log("Author:", slugAuthor);
+
     res.json({ message: "Slug recorded successfully." });
   })
 );
