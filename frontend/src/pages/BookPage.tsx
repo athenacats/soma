@@ -5,7 +5,7 @@ import LoadingMessage from "../components/LoadingMessage";
 import MessageBox from "../components/MessageBox";
 import { getError } from "../utils";
 import { ApiError } from "../types/ApiError";
-import { Col, Row } from "react-bootstrap";
+import { Button, Col, Row } from "react-bootstrap";
 import BookItem from "../components/BookItem";
 import { Book } from "../types/Book";
 
@@ -51,6 +51,10 @@ export default function BookPage() {
           </Col>
         ))}
       </Row>
+      <Button>Download AudioBook From Mobilism</Button>
+      <Button>Download AudioBook From AudioBookBay</Button>
+      <Button>Download Ebook From Mobilism</Button>
+      <Button>Download Ebook From EBookBay</Button>
     </div>
   );
 }
