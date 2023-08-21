@@ -54,7 +54,7 @@ router.get(
           rating: 0,
           yourRating: 0,
           favorite: false,
-          isbn: 0,
+          isbn: "",
           price: 0,
           pages: 0,
         });
@@ -75,35 +75,43 @@ router.get(
 
     console.log("Name:", slugName);
     console.log("Author:", slugAuthor);
-
-    res.json({ message: "Slug recorded successfully." });
     const url = `https://openlibrary.org/search.json?title=${slugName}&author=${slugAuthor}`;
     try {
       const response = await axios.get(url);
       const bookDetails = response.data.docs;
 
-      const books: Book[] = bookDetails.map(
-        (bookData: {
-          title: string;
-          author_name: string;
-          isbn: string;
-          number_of_pages_median: number;
-        }) => {
-          const book: Book = {
-            name: bookData.title,
-            author: bookData.author_name[0],
-            isbn: bookData.isbn[0],
-            pages: bookData.number_of_pages_median,
-            slugName: slugName,
-            slugAuthor: slugAuthor,
-            rating: 0,
-            yourRating: 0,
-            favorite: false,
-            price: 0,
-            image: `https://covers.openlibrary.org/b/isbn/${isbn}-S.jpg`,
-          };
-          return book;
-        }
+      const books: Book[] = await Promise.all(
+        bookDetails.map(
+          (bookData: {
+            title: string;
+            author_name: string;
+            isbn: string;
+            number_of_pages_median: number;
+          }) => {
+            const book: Book = {
+              name: bookData.title,
+              author: bookData.author_name[0],
+              isbn: bookData.isbn[0],
+              pages: bookData.number_of_pages_median,
+              slugName: slugName,
+              slugAuthor: slugAuthor,
+              rating: 0,
+              yourRating: 0,
+              favorite: false,
+              price: 0,
+              image: undefined,
+            };
+            try {
+              const coverUrl = `https://covers.openlibrary.org/b/isbn/${bookData.isbn[0]}-L.jpg`;
+
+              book.image = coverUrl;
+            } catch (error) {
+              console.log("No image found");
+              book.image = undefined;
+            }
+            return book;
+          }
+        )
       );
 
       res.json(books);
