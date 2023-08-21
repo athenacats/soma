@@ -87,6 +87,7 @@ router.get(
             author_name: string;
             isbn: string;
             number_of_pages_median: number;
+            cover_i: number;
           }) => {
             const book: Book = {
               name: bookData.title,
@@ -102,7 +103,7 @@ router.get(
               image: undefined,
             };
             try {
-              const coverUrl = `https://covers.openlibrary.org/b/isbn/${bookData.isbn[0]}-L.jpg`;
+              const coverUrl = `https://covers.openlibrary.org/b/id/${bookData.cover_i}-L.jpg`;
 
               book.image = coverUrl;
             } catch (error) {
