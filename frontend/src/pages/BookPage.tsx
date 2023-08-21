@@ -7,6 +7,7 @@ import { getError } from "../utils";
 import { ApiError } from "../types/ApiError";
 import { Col, Row } from "react-bootstrap";
 import BookItem from "../components/BookItem";
+import { Book } from "../types/Book";
 
 export default function BookPage() {
   const params = useParams();
@@ -16,6 +17,20 @@ export default function BookPage() {
     isLoading,
     error,
   } = useGetBookDetailsBySlugQuery(slugName!, slugAuthor!);
+
+  let uniqueBooks: Book[] = [];
+
+  if (books) {
+    const titleSet = new Set();
+    uniqueBooks = books.filter((book) => {
+      if (!titleSet.has(book.name)) {
+        titleSet.add(book.name);
+        return true;
+      }
+      return false;
+    });
+  }
+
   return isLoading ? (
     <LoadingMessage />
   ) : error ? (
@@ -28,7 +43,7 @@ export default function BookPage() {
         <Helmet>
           <title>Soma</title>
         </Helmet>
-        {books!.slice(0, 8).map((book, index) => (
+        {uniqueBooks.slice(0, 8).map((book, index) => (
           <Col key={index} sm={6} md={4} lg={3}>
             <BookItem book={book} />
           </Col>
