@@ -75,27 +75,39 @@ router.get(
 
     console.log("Name:", slugName);
     console.log("Author:", slugAuthor);
-    const book: Book[] = [];
 
     res.json({ message: "Slug recorded successfully." });
     const url = `https://openlibrary.org/search.json?title=${slugName}&author=${slugAuthor}`;
     try {
-      const response = await limiter.schedule(() => axios.get(url));
-      const html = response.data;
+      const response = await axios.get(url);
+      const bookDetails = response.data.docs;
 
-      const $ = load(html);
-      console.log($);
+      const books: Book[] = bookDetails.map(
+        (bookData: {
+          title: string;
+          author_name: string;
+          isbn: string;
+          number_of_pages_median: number;
+        }) => {
+          const book: Book = {
+            name: bookData.title,
+            author: bookData.author_name[0],
+            isbn: bookData.isbn[0],
+            pages: bookData.number_of_pages_median,
+            slugName: slugName,
+            slugAuthor: slugAuthor,
+            rating: 0,
+            yourRating: 0,
+            favorite: false,
+            price: 0,
+            image: `https://covers.openlibrary.org/b/isbn/${isbn}-S.jpg`,
+          };
+          return book;
+        }
+      );
 
-      $("div.post").each((index, element) => {
-        const titleElement = $(element);
-        const title = titleElement.find("div.postTitle h2").text().trim();
-        let link = url + titleElement.find("a").attr("href");
-        const img = titleElement.find("img").attr("src");
-        const id = uuid();
-        link = link.replace(/^.*?\/abss\//, "https://audiobookbay.is/abss/");
-        book.push({ title, link, img, id });
-      });
-      res.json(audiobooks);
+      res.json(books);
+      console.log(url);
     } catch (error) {
       console.log("Error:", error);
       res.status(500).json({ error: "Internal Server Error" });

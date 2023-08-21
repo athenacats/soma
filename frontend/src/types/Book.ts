@@ -4,7 +4,7 @@ export type Book = {
   author: string;
   rating: number;
   favorite: boolean;
-  isbn: number;
+  isbn: string;
   yourRating: number;
   price: number;
   pages: number;
