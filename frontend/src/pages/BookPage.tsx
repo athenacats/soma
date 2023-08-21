@@ -41,7 +41,9 @@ export default function BookPage() {
     <div>
       <Row>
         <Helmet>
-          <title>Soma</title>
+          <title>
+            {uniqueBooks[0]?.name} by {uniqueBooks[0]?.author}
+          </title>
         </Helmet>
         {uniqueBooks.slice(0, 8).map((book, index) => (
           <Col key={index} sm={6} md={4} lg={3}>
