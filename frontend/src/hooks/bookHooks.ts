@@ -15,5 +15,5 @@ export const useGetBookDetailsBySlugQuery = (
   useQuery({
     queryKey: ["books", slugName, slugAuthor],
     queryFn: async () =>
-      (await apiClient.get<Book>(`api/book/${slugName}/${slugAuthor}`)).data,
+      (await apiClient.get<Book[]>(`api/book/${slugName}/${slugAuthor}`)).data,
   });
