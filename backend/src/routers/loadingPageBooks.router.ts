@@ -40,11 +40,11 @@ router.get(
         const slugName = name
           .toLowerCase()
           .replace(/[^\w\s-]/g, "")
-          .replace(/\s+/g, "-");
+          .replace(/\s+/g, "+");
         const slugAuthor = author
           .toLowerCase()
           .replace(/[^\w\s-]/g, "")
-          .replace(/\s+/g, "-");
+          .replace(/\s+/g, "+");
         book.push({
           name,
           author,
@@ -75,8 +75,31 @@ router.get(
 
     console.log("Name:", slugName);
     console.log("Author:", slugAuthor);
+    const book: Book[] = [];
 
     res.json({ message: "Slug recorded successfully." });
+    const url = `https://openlibrary.org/search.json?title=${slugName}&author=${slugAuthor}`;
+    try {
+      const response = await limiter.schedule(() => axios.get(url));
+      const html = response.data;
+
+      const $ = load(html);
+      console.log($);
+
+      $("div.post").each((index, element) => {
+        const titleElement = $(element);
+        const title = titleElement.find("div.postTitle h2").text().trim();
+        let link = url + titleElement.find("a").attr("href");
+        const img = titleElement.find("img").attr("src");
+        const id = uuid();
+        link = link.replace(/^.*?\/abss\//, "https://audiobookbay.is/abss/");
+        book.push({ title, link, img, id });
+      });
+      res.json(audiobooks);
+    } catch (error) {
+      console.log("Error:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
   })
 );
 export default router;
