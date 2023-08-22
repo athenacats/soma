@@ -37,6 +37,19 @@ export default function BookPage() {
     );
   }
 
+  function audioBookAudioBookBay(clickedBook: Book) {
+    window.open(
+      `https://audiobookbay.is/?s=${clickedBook.slugName}+${clickedBook.slugAuthor}&cat=undefined%2Cundefined`
+    );
+  }
+  function ebookZLibrary(clickedBook: Book) {
+    const formattedSlugName = clickedBook.slugName.replace(/\+/g, "%20");
+    const formattedSlugAuthor = clickedBook.slugAuthor.replace(/\+/g, "%20");
+    window.open(
+      `https://zlibrary-asia.se/s/${formattedSlugName}%20${formattedSlugAuthor}`
+    );
+  }
+
   return isLoading ? (
     <LoadingMessage />
   ) : error ? (
@@ -61,7 +74,10 @@ export default function BookPage() {
               >
                 <i className="fas fa-headphones"></i> From Mobilism
               </Button>
-              <Button className="mt-2 btn btn-primary btn-sm">
+              <Button
+                className="mt-2 btn btn-primary btn-sm"
+                onClick={() => audioBookAudioBookBay(book)}
+              >
                 <i className="fas fa-headphones"></i> From AudioBookBay
               </Button>
               <Button
@@ -70,8 +86,11 @@ export default function BookPage() {
               >
                 <i className="fas fa-book-open"></i> From Mobilism
               </Button>
-              <Button className="mt-2 btn btn-primary btn-sm">
-                <i className="fas fa-book-open"></i> From EBookBay
+              <Button
+                className="mt-2 btn btn-primary btn-sm"
+                onClick={() => ebookZLibrary(book)}
+              >
+                <i className="fas fa-book-open"></i> From Z-Library
               </Button>
             </Container>
           </Col>
