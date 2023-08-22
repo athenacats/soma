@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="d-flex flex-column vh-100">
       <header>
-        <Navbar bg="dark" variant="dark" expand="lg">
+        <Navbar variant={mode} expand="lg">
           <Container>
             <LinkContainer to="/">
               <NavbarBrand>Soma</NavbarBrand>
