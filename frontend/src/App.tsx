@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { Button, Container, Nav, Navbar, NavbarBrand } from "react-bootstrap";
 import { Outlet } from "react-router-dom";
 import { Store } from "./Store";
+import { LinkContainer } from "react-router-bootstrap";
 
 function App() {
   const {
@@ -21,7 +22,9 @@ function App() {
       <header>
         <Navbar bg="dark" variant="dark" expand="lg">
           <Container>
-            <NavbarBrand>Soma</NavbarBrand>
+            <LinkContainer to="/">
+              <NavbarBrand>Soma</NavbarBrand>
+            </LinkContainer>
           </Container>
           <Nav>
             <Button variant={mode} onClick={switchModeHandler}>
