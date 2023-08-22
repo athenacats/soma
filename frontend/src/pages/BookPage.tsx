@@ -31,6 +31,12 @@ export default function BookPage() {
     });
   }
 
+  function audioBookMobilism(clickedBook: Book) {
+    window.open(
+      `https://forum.mobilism.org/search.php?keywords=${clickedBook.slugName}+${clickedBook.slugAuthor}&sr=topics&sf=titleonly`
+    );
+  }
+
   return isLoading ? (
     <LoadingMessage />
   ) : error ? (
@@ -49,13 +55,19 @@ export default function BookPage() {
           <Col key={index} sm={6} md={4} lg={3}>
             <BookItem book={book} />
             <Container className="d-flex justify-content-evenly flex-wrap">
-              <Button className="mt-2 btn btn-primary btn-sm">
+              <Button
+                className="mt-2 btn btn-primary btn-sm"
+                onClick={() => audioBookMobilism(book)}
+              >
                 <i className="fas fa-headphones"></i> From Mobilism
               </Button>
               <Button className="mt-2 btn btn-primary btn-sm">
                 <i className="fas fa-headphones"></i> From AudioBookBay
               </Button>
-              <Button className="mt-2 btn btn-primary btn-sm">
+              <Button
+                className="mt-2 btn btn-primary btn-sm"
+                onClick={() => audioBookMobilism(book)}
+              >
                 <i className="fas fa-book-open"></i> From Mobilism
               </Button>
               <Button className="mt-2 btn btn-primary btn-sm">
