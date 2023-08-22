@@ -5,7 +5,7 @@ import LoadingMessage from "../components/LoadingMessage";
 import MessageBox from "../components/MessageBox";
 import { getError } from "../utils";
 import { ApiError } from "../types/ApiError";
-import { Button, Col, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import BookItem from "../components/BookItem";
 import { Book } from "../types/Book";
 
@@ -48,13 +48,23 @@ export default function BookPage() {
         {uniqueBooks.slice(0, 8).map((book, index) => (
           <Col key={index} sm={6} md={4} lg={3}>
             <BookItem book={book} />
+            <Container className="d-flex justify-content-evenly flex-wrap">
+              <Button className="mt-2 btn btn-primary btn-sm">
+                <i className="fas fa-headphones"></i> From Mobilism
+              </Button>
+              <Button className="mt-2 btn btn-primary btn-sm">
+                <i className="fas fa-headphones"></i> From AudioBookBay
+              </Button>
+              <Button className="mt-2 btn btn-primary btn-sm">
+                <i className="fas fa-book-open"></i> From Mobilism
+              </Button>
+              <Button className="mt-2 btn btn-primary btn-sm">
+                <i className="fas fa-book-open"></i> From EBookBay
+              </Button>
+            </Container>
           </Col>
         ))}
       </Row>
-      <Button>Download AudioBook From Mobilism</Button>
-      <Button>Download AudioBook From AudioBookBay</Button>
-      <Button>Download Ebook From Mobilism</Button>
-      <Button>Download Ebook From EBookBay</Button>
     </div>
   );
 }
