@@ -26,13 +26,13 @@ function App() {
   return (
     <div className="d-flex flex-column vh-100">
       <header>
-        <Navbar variant={mode} expand="lg" className="d-flex  p-3 ">
-          <Container>
+        <Navbar variant={mode} expand="lg" className="d-flex  p-3">
+          <Container className="flex-grow-1">
             <LinkContainer to="/">
               <NavbarBrand>Soma</NavbarBrand>
             </LinkContainer>
           </Container>
-          <Nav>
+          <Nav className="d-flex flex-grow-1 flex-row justify-content-between ">
             <Link
               to="#"
               className="nav-link header-link"
