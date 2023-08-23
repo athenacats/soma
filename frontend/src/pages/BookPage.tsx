@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useGetBookDetailsBySlugQuery } from "../hooks/bookHooks";
 import LoadingMessage from "../components/LoadingMessage";
 import MessageBox from "../components/MessageBox";
@@ -61,40 +61,54 @@ export default function BookPage() {
       <Row>
         <Helmet>
           <title>
-            {uniqueBooks[0]?.name} by {uniqueBooks[0]?.author}
+            {uniqueBooks.length > 0
+              ? `${uniqueBooks[0]?.name} by ${uniqueBooks[0]?.author}`
+              : "Book Not Yet On Database"}
           </title>
         </Helmet>
-        {uniqueBooks.slice(0, 8).map((book, index) => (
-          <Col key={index} sm={6} md={4} lg={3}>
-            <BookItem book={book} />
-            <Container className="d-flex justify-content-evenly flex-wrap">
-              <Button
-                className="mt-2 btn btn-primary btn-sm"
-                onClick={() => audioBookMobilism(book)}
-              >
-                <i className="fas fa-headphones"></i> From Mobilism
-              </Button>
-              <Button
-                className="mt-2 btn btn-primary btn-sm"
-                onClick={() => audioBookAudioBookBay(book)}
-              >
-                <i className="fas fa-headphones"></i> From AudioBookBay
-              </Button>
-              <Button
-                className="mt-2 btn btn-primary btn-sm"
-                onClick={() => audioBookMobilism(book)}
-              >
-                <i className="fas fa-book-open"></i> From Mobilism
-              </Button>
-              <Button
-                className="mt-2 btn btn-primary btn-sm"
-                onClick={() => ebookZLibrary(book)}
-              >
-                <i className="fas fa-book-open"></i> From Z-Library
-              </Button>
-            </Container>
-          </Col>
-        ))}
+        {uniqueBooks.length > 0 ? (
+          uniqueBooks.slice(0, 8).map((book, index) => (
+            <Col key={index} sm={6} md={4} lg={3}>
+              <BookItem book={book} />
+              <Container className="d-flex justify-content-evenly flex-wrap">
+                <Button
+                  className="mt-2 btn btn-primary btn-sm"
+                  onClick={() => audioBookMobilism(book)}
+                >
+                  <i className="fas fa-headphones"></i> From Mobilism
+                </Button>
+                <Button
+                  className="mt-2 btn btn-primary btn-sm"
+                  onClick={() => audioBookAudioBookBay(book)}
+                >
+                  <i className="fas fa-headphones"></i> From AudioBookBay
+                </Button>
+                <Button
+                  className="mt-2 btn btn-primary btn-sm"
+                  onClick={() => audioBookMobilism(book)}
+                >
+                  <i className="fas fa-book-open"></i> From Mobilism
+                </Button>
+                <Button
+                  className="mt-2 btn btn-primary btn-sm"
+                  onClick={() => ebookZLibrary(book)}
+                >
+                  <i className="fas fa-book-open"></i> From Z-Library
+                </Button>
+              </Container>
+            </Col>
+          ))
+        ) : (
+          <>
+            <h4 className="text-center">Book Not Yet On Our Database</h4>
+            <Button
+              className="mt-5 btn btn-primary btn-sm w-50 m-auto "
+              onClick={useNavigate}
+            >
+              <i className="fas fa-home"></i> Discover Your Next Five Star Read!
+            </Button>
+          </>
+        )}
       </Row>
     </div>
   );
