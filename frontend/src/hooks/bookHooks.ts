@@ -42,3 +42,10 @@ export const useGetScienceTechBooksQuery = () =>
     queryKey: ["books"],
     queryFn: async () => (await apiClient.get<Book[]>(`api/science&tech`)).data,
   });
+
+export const useGetScifiFantasyBooksQuery = () =>
+  useQuery({
+    queryKey: ["books"],
+    queryFn: async () =>
+      (await apiClient.get<Book[]>(`api/scifi&fantasy`)).data,
+  });
