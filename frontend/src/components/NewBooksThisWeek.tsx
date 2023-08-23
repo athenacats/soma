@@ -16,7 +16,7 @@ export default function NewBooksThisWeek() {
   ) : (
     <div className="body-container">
       <div>
-        <h4 className="text-center ">New Books This Week</h4>
+        <h4 className="text-center mb-4">New Books This Week</h4>
         <Row>
           {books!.slice(0, 8).map((book, index) => (
             <Col key={index} sm={6} md={4} lg={3}>
