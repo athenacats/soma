@@ -15,14 +15,12 @@ const limiter = new Bottleneck({
 router.get(
   "/",
   asyncHandler(async (req, res) => {
-    console.log("test");
     const url = "https://www.barnesandnoble.com/b/books/_/N-1pZ29Z8q8";
     const book: Book[] = [];
     try {
       const response = await limiter.schedule(() => axios.get(url));
       const html = response.data;
       const $ = load(html);
-      console.log("seeme", $);
 
       $(
         "div.product-shelf-tile.product-shelf-tile-book.bnBadgeHere.columns-4"
@@ -77,7 +75,6 @@ router.get(
       const response = await limiter.schedule(() => axios.get(url));
       const html = response.data;
       const $ = load(html);
-      console.log("seeme", $);
 
       $(
         "div.product-shelf-tile.product-shelf-tile-book.bnBadgeHere.columns-4"
@@ -132,7 +129,60 @@ router.get(
       const response = await limiter.schedule(() => axios.get(url));
       const html = response.data;
       const $ = load(html);
-      console.log("seeme", $);
+
+      $(
+        "div.product-shelf-tile.product-shelf-tile-book.bnBadgeHere.columns-4"
+      ).each((index, element) => {
+        const titleElement = $(element);
+        const name = titleElement
+          .find("div.product-shelf-title.product-info-title.pt-xs ")
+          .text()
+          .trim();
+        const author = titleElement
+          .find("div.product-shelf-author.pt-0.mt-1 a")
+          .text()
+          .trim();
+        const image = titleElement.find("img.full-shadow").attr("src");
+        const slugName = name
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, "")
+          .replace(/\s+/g, "+");
+        const slugAuthor = author
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, "")
+          .replace(/\s+/g, "+");
+        book.push({
+          name,
+          author,
+          image,
+          slugName,
+          slugAuthor,
+          rating: 0,
+          yourRating: 0,
+          favorite: false,
+          isbn: "",
+          price: 0,
+          pages: 0,
+        });
+      });
+      res.json(book);
+    } catch (error) {
+      console.log("Error:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  })
+);
+
+router.get(
+  "/romance",
+  asyncHandler(async (req, res) => {
+    const url =
+      "https://www.barnesandnoble.com/b/books/romance/_/N-1sZ29Z8q8Z17y3";
+    const book: Book[] = [];
+    try {
+      const response = await limiter.schedule(() => axios.get(url));
+      const html = response.data;
+      const $ = load(html);
 
       $(
         "div.product-shelf-tile.product-shelf-tile-book.bnBadgeHere.columns-4"

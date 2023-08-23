@@ -30,3 +30,9 @@ export const useGetMysteryCrimeBooksQuery = () =>
     queryFn: async () =>
       (await apiClient.get<Book[]>(`api/mystery&crime`)).data,
   });
+
+export const useGetRomanceBooksQuery = () =>
+  useQuery({
+    queryKey: ["books"],
+    queryFn: async () => (await apiClient.get<Book[]>(`api/romance`)).data,
+  });
