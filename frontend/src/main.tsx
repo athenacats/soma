@@ -19,6 +19,7 @@ import { StoreProvider } from "./Store.tsx";
 import FictionPage from "./pages/FictionPage.tsx";
 import MysteryCrimePage from "./pages/MysteryCrimePage.tsx";
 import RomancePage from "./pages/RomancePage.tsx";
+import ScienceTechPage from "./pages/ScienceTechPage.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,6 +29,7 @@ const router = createBrowserRouter(
       <Route path="fiction" element={<FictionPage />}></Route>
       <Route path="mystery&crime" element={<MysteryCrimePage />}></Route>
       <Route path="romance" element={<RomancePage />}></Route>
+      <Route path="science&tech" element={<ScienceTechPage />}></Route>
       {/*<Route path="dashboard" element={<Dashboard />} />*/}
       {/* ... etc. */}
     </Route>

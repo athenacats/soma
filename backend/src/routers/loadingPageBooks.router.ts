@@ -120,6 +120,60 @@ router.get(
 );
 
 router.get(
+  "/science&tech",
+  asyncHandler(async (req, res) => {
+    const url =
+      "https://www.barnesandnoble.com/b/books/science-technology/_/N-1sZ29Z8q8Z184l";
+    const book: Book[] = [];
+    try {
+      const response = await limiter.schedule(() => axios.get(url));
+      const html = response.data;
+      const $ = load(html);
+
+      $(
+        "div.product-shelf-tile.product-shelf-tile-book.bnBadgeHere.columns-4"
+      ).each((index, element) => {
+        const titleElement = $(element);
+        const name = titleElement
+          .find("div.product-shelf-title.product-info-title.pt-xs ")
+          .text()
+          .trim();
+        const author = titleElement
+          .find("div.product-shelf-author.pt-0.mt-1 a")
+          .text()
+          .trim();
+        const image = titleElement.find("img.full-shadow").attr("src");
+        const slugName = name
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, "")
+          .replace(/\s+/g, "+");
+        const slugAuthor = author
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, "")
+          .replace(/\s+/g, "+");
+        book.push({
+          name,
+          author,
+          image,
+          slugName,
+          slugAuthor,
+          rating: 0,
+          yourRating: 0,
+          favorite: false,
+          isbn: "",
+          price: 0,
+          pages: 0,
+        });
+      });
+      res.json(book);
+    } catch (error) {
+      console.log("Error:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  })
+);
+
+router.get(
   "/mystery&crime",
   asyncHandler(async (req, res) => {
     const url =
