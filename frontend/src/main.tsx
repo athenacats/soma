@@ -17,6 +17,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { StoreProvider } from "./Store.tsx";
 import FictionPage from "./pages/FictionPage.tsx";
+import MysteryCrimePage from "./pages/MysteryCrimePage.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,6 +25,7 @@ const router = createBrowserRouter(
       <Route index={true} element={<HomePage />}></Route>
       <Route path="book/:slugName/:slugAuthor" element={<BookPage />}></Route>
       <Route path="fiction" element={<FictionPage />}></Route>
+      <Route path="mystery&crime" element={<MysteryCrimePage />}></Route>
       {/*<Route path="dashboard" element={<Dashboard />} />*/}
       {/* ... etc. */}
     </Route>
