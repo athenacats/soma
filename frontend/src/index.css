@@ -176,6 +176,10 @@ div .dropdown-menu {
   min-height: 2rem;
 }
 
+.btn.btn-outline-primary {
+  height: 2rem;
+}
+
 .first-letter {
   font-size: 4rem;
 }
