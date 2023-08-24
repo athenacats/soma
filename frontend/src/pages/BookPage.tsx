@@ -50,6 +50,13 @@ export default function BookPage() {
     );
   }
 
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    // Navigate to the homepage
+    navigate("/");
+  };
+
   return isLoading ? (
     <LoadingMessage />
   ) : error ? (
@@ -103,7 +110,7 @@ export default function BookPage() {
             <h4 className="text-center">Book Not Yet On Our Database</h4>
             <Button
               className=" mt-5 btn btn-primary btn-sm w-50 m-auto "
-              onClick={useNavigate}
+              onClick={handleButtonClick}
             >
               <i className="fas fa-home"></i> Discover Your Next Five Star Read!
             </Button>
