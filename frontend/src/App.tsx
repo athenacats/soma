@@ -9,6 +9,7 @@ import {
 import { Link, Outlet } from "react-router-dom";
 import { Store } from "./Store";
 import { LinkContainer } from "react-router-bootstrap";
+import Search from "./components/Search";
 
 function App() {
   const {
@@ -69,6 +70,7 @@ function App() {
       </header>
       <main>
         <Container className="mt-3">
+          <Search />
           <Outlet />
         </Container>
       </main>
