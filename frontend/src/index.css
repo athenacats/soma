@@ -30,3 +30,21 @@ div .dropdown-menu {
   top: 100%; /* Position the dropdown below the navbar */
   left: 0; /* Align the left side of the dropdown with the left side of the navbar */
 }
+
+.landingPage.dark {
+  background-image: url(./assets/idea-lightbulb-soma-background.jpg);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+  width: 100%;
+}
+
+.landingPage.light {
+  background-image: url(./assets/glowing-glass-light-bulb-background_488220-26013.png);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+  width: 100%;
+}

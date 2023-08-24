@@ -27,52 +27,63 @@ function App() {
 
   return (
     <div className="d-flex flex-column min-vh-100">
-      <header>
-        <Navbar variant={mode} expand="lg" className="d-flex  p-3 ">
-          <Container className="d-flex justify-content-between align-items-center ">
-            <div>
-              <LinkContainer to="/">
-                <NavbarBrand>Soma</NavbarBrand>
-              </LinkContainer>
-            </div>
-            <Nav className="d-flex align-items-center flex-row justify-content-between gap-2">
-              <Link
-                to="#"
-                className="nav-link header-link"
-                onClick={switchModeHandler}
-              >
-                <i
-                  className={mode === "light" ? "fa fa-sun" : "fa fa-moon"}
-                ></i>
-              </Link>
+      <div className={`landingPage ${mode === "light" ? "light" : "dark"}`}>
+        <header>
+          <Navbar variant={mode} expand="lg" className="d-flex  p-3 ">
+            <Container className="d-flex justify-content-between align-items-center ">
+              <div>
+                <LinkContainer to="/">
+                  <NavbarBrand>Soma</NavbarBrand>
+                </LinkContainer>
+              </div>
+              <Nav className="d-flex align-items-center flex-row justify-content-between gap-2">
+                <Link
+                  to="#"
+                  className="nav-link header-link"
+                  onClick={switchModeHandler}
+                >
+                  <i
+                    className={mode === "light" ? "fa fa-sun" : "fa fa-moon"}
+                  ></i>
+                </Link>
 
-              <a href="/signin" className="nav-link">
-                <i className="far fa-user"></i>
-              </a>
-              <NavDropdown className="header-link dropdown" title="Categories">
-                <LinkContainer to="/fiction">
-                  <NavDropdown.Item>Fiction</NavDropdown.Item>
-                </LinkContainer>
-                <LinkContainer to="/mystery&crime">
-                  <NavDropdown.Item>Mystery & Crime</NavDropdown.Item>
-                </LinkContainer>
-                <LinkContainer to="/romance">
-                  <NavDropdown.Item>Romance</NavDropdown.Item>
-                </LinkContainer>
-                <LinkContainer to="/science&tech">
-                  <NavDropdown.Item>Science & Technology</NavDropdown.Item>
-                </LinkContainer>
-                <LinkContainer to="/scifi&fantasy">
-                  <NavDropdown.Item>Science Fiction & Fantasy</NavDropdown.Item>
-                </LinkContainer>
-                <LinkContainer to="/teens&ya">
-                  <NavDropdown.Item>Teens & YA</NavDropdown.Item>
-                </LinkContainer>
-              </NavDropdown>
-            </Nav>
-          </Container>
-        </Navbar>
-      </header>
+                <a href="/signin" className="nav-link">
+                  <i className="far fa-user"></i>
+                </a>
+                <NavDropdown
+                  className="header-link dropdown"
+                  title="Categories"
+                >
+                  <LinkContainer to="/fiction">
+                    <NavDropdown.Item>Fiction</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/mystery&crime">
+                    <NavDropdown.Item>Mystery & Crime</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/romance">
+                    <NavDropdown.Item>Romance</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/science&tech">
+                    <NavDropdown.Item>Science & Technology</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/scifi&fantasy">
+                    <NavDropdown.Item>
+                      Science Fiction & Fantasy
+                    </NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/teens&ya">
+                    <NavDropdown.Item>Teens & YA</NavDropdown.Item>
+                  </LinkContainer>
+                </NavDropdown>
+              </Nav>
+            </Container>
+          </Navbar>
+        </header>
+        <div className="w-70 container">
+          <Search />
+        </div>
+      </div>
+
       <main>
         <Container className="mt-3 mb-5">
           <Search />

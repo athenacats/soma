@@ -41,8 +41,8 @@ export default function Search() {
   };
 
   return (
-    <Form className="mb-3" onSubmit={submitHandler}>
-      <InputGroup className="flex-grow-1 d-flex me-auto gap-2">
+    <Form className="w-70 mb-3 " onSubmit={submitHandler}>
+      <InputGroup className="flex-grow-1 d-flex me-auto gap-2 w-70">
         <FormControl
           type="text"
           name="qn"
