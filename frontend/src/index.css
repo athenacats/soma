@@ -14,3 +14,19 @@
 .rating span {
   color: #ffc000;
 }
+
+.navbar-expand-lg .navbar-nav .dropdown-menu {
+  position: relative;
+}
+
+div .dropdown-menu {
+  position: relative; /* Ensure it's a positioned container */
+  z-index: 4;
+  --bs-dropdown-padding-y: 0;
+}
+
+.dropdown-menu.show {
+  position: absolute;
+  top: 100%; /* Position the dropdown below the navbar */
+  left: 0; /* Align the left side of the dropdown with the left side of the navbar */
+}

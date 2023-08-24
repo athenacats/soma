@@ -24,6 +24,7 @@ function App() {
   const switchModeHandler = () => {
     dispatch({ type: "SWITCH_MODE" });
   };
+
   return (
     <div className="d-flex flex-column min-vh-100">
       <header>
@@ -48,7 +49,7 @@ function App() {
               <a href="/signin" className="nav-link">
                 <i className="far fa-user"></i>
               </a>
-              <NavDropdown className="header-link" title="Categories">
+              <NavDropdown className="header-link dropdown" title="Categories">
                 <LinkContainer to="/fiction">
                   <NavDropdown.Item>Fiction</NavDropdown.Item>
                 </LinkContainer>
