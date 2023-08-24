@@ -25,57 +25,61 @@ function App() {
     dispatch({ type: "SWITCH_MODE" });
   };
   return (
-    <div className="d-flex flex-column vh-100">
+    <div className="d-flex flex-column min-vh-100">
       <header>
-        <Navbar variant={mode} expand="lg" className="d-flex  p-3">
-          <Container className="flex-grow-1">
-            <LinkContainer to="/">
-              <NavbarBrand>Soma</NavbarBrand>
-            </LinkContainer>
-          </Container>
-          <Nav className="d-flex flex-grow-1 flex-row justify-content-between ">
-            <Link
-              to="#"
-              className="nav-link header-link"
-              onClick={switchModeHandler}
-            >
-              <i className={mode === "light" ? "fa fa-sun" : "fa fa-moon"}></i>
-            </Link>
+        <Navbar variant={mode} expand="lg" className="d-flex  p-3 ">
+          <Container className="d-flex justify-content-between align-items-center ">
+            <div>
+              <LinkContainer to="/">
+                <NavbarBrand>Soma</NavbarBrand>
+              </LinkContainer>
+            </div>
+            <Nav className="d-flex align-items-center flex-row justify-content-between gap-2">
+              <Link
+                to="#"
+                className="nav-link header-link"
+                onClick={switchModeHandler}
+              >
+                <i
+                  className={mode === "light" ? "fa fa-sun" : "fa fa-moon"}
+                ></i>
+              </Link>
 
-            <a href="/signin" className="nav-link">
-              <i className="far fa-user"></i>
-            </a>
-            <NavDropdown className="header-link" title="Categories">
-              <LinkContainer to="/fiction">
-                <NavDropdown.Item>Fiction</NavDropdown.Item>
-              </LinkContainer>
-              <LinkContainer to="/mystery&crime">
-                <NavDropdown.Item>Mystery & Crime</NavDropdown.Item>
-              </LinkContainer>
-              <LinkContainer to="/romance">
-                <NavDropdown.Item>Romance</NavDropdown.Item>
-              </LinkContainer>
-              <LinkContainer to="/science&tech">
-                <NavDropdown.Item>Science & Technology</NavDropdown.Item>
-              </LinkContainer>
-              <LinkContainer to="/scifi&fantasy">
-                <NavDropdown.Item>Science Fiction & Fantasy</NavDropdown.Item>
-              </LinkContainer>
-              <LinkContainer to="/teens&ya">
-                <NavDropdown.Item>Teens & YA</NavDropdown.Item>
-              </LinkContainer>
-            </NavDropdown>
-          </Nav>
+              <a href="/signin" className="nav-link">
+                <i className="far fa-user"></i>
+              </a>
+              <NavDropdown className="header-link" title="Categories">
+                <LinkContainer to="/fiction">
+                  <NavDropdown.Item>Fiction</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to="/mystery&crime">
+                  <NavDropdown.Item>Mystery & Crime</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to="/romance">
+                  <NavDropdown.Item>Romance</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to="/science&tech">
+                  <NavDropdown.Item>Science & Technology</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to="/scifi&fantasy">
+                  <NavDropdown.Item>Science Fiction & Fantasy</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to="/teens&ya">
+                  <NavDropdown.Item>Teens & YA</NavDropdown.Item>
+                </LinkContainer>
+              </NavDropdown>
+            </Nav>
+          </Container>
         </Navbar>
       </header>
       <main>
-        <Container className="mt-3">
+        <Container className="mt-3 mb-5">
           <Search />
           <Outlet />
         </Container>
       </main>
-      <footer>
-        <div className="text-center">All Rights Reserved</div>
+      <footer className=" p-1 page-footer font-small  ">
+        <div className="   text-center">All Rights Reserved</div>
       </footer>
     </div>
   );
