@@ -18,6 +18,17 @@ export const useGetBookDetailsBySlugQuery = (
       (await apiClient.get<Book[]>(`api/book/${slugName}/${slugAuthor}`)).data,
   });
 
+export const useGetBookDetailsBySearchQuery = (
+  slugName: string,
+  slugAuthor: string
+) =>
+  useQuery({
+    queryKey: ["books", slugName, slugAuthor],
+    queryFn: async () =>
+      (await apiClient.get<Book[]>(`api/search/${slugName}/${slugAuthor}`))
+        .data,
+  });
+
 export const useGetFictionBooksQuery = () =>
   useQuery({
     queryKey: ["books"],

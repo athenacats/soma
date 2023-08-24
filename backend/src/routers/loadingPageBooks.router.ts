@@ -445,4 +445,61 @@ router.get(
     }
   })
 );
+
+router.get(
+  "/search/:slugName/:slugAuthor",
+  asyncHandler(async (req, res) => {
+    const { slugName, slugAuthor } = req.params;
+    console.log(req);
+
+    console.log("Name:", slugName);
+    console.log("Author:", slugAuthor);
+    const url = `https://openlibrary.org/search.json?title=${slugName}&author=${slugAuthor}`;
+    try {
+      const response = await axios.get(url);
+      const bookDetails = response.data.docs;
+
+      const books: Book[] = await Promise.all(
+        bookDetails.map(
+          (bookData: {
+            title: string;
+            author_name: string;
+            isbn: string;
+            number_of_pages_median: number;
+            cover_i: number;
+          }) => {
+            const book: Book = {
+              name: bookData.title,
+              author: bookData.author_name[0],
+              isbn: bookData.isbn,
+              pages: bookData.number_of_pages_median,
+              slugName: slugName,
+              slugAuthor: slugAuthor,
+              rating: 0,
+              yourRating: 0,
+              favorite: false,
+              price: 0,
+              image: undefined,
+            };
+            try {
+              const coverUrl = `https://covers.openlibrary.org/b/id/${bookData.cover_i}-L.jpg`;
+
+              book.image = coverUrl;
+            } catch (error) {
+              console.log("No image found");
+              book.image = undefined;
+            }
+            return book;
+          }
+        )
+      );
+
+      res.json(books);
+      console.log(url);
+    } catch (error) {
+      console.log("Error:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  })
+);
 export default router;

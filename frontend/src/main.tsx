@@ -22,12 +22,17 @@ import RomancePage from "./pages/RomancePage.tsx";
 import ScienceTechPage from "./pages/ScienceTechPage.tsx";
 import ScifiFantasyPage from "./pages/ScifiFantasyPage.tsx";
 import TeensYAPage from "./pages/TeensYAPage.tsx";
+import SeachResultsPage from "./pages/SearchResultsPage.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index={true} element={<HomePage />}></Route>
       <Route path="book/:slugName/:slugAuthor" element={<BookPage />}></Route>
+      <Route
+        path="search/:slugName/:slugAuthor"
+        element={<SeachResultsPage />}
+      ></Route>
       <Route path="fiction" element={<FictionPage />}></Route>
       <Route path="mystery&crime" element={<MysteryCrimePage />}></Route>
       <Route path="romance" element={<RomancePage />}></Route>
