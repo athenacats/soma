@@ -57,8 +57,8 @@
   --bs-link-color-rgb: 110, 168, 254;
   --bs-link-hover-color-rgb: 139, 185, 254;
   --bs-code-color: #e685b5;
-  --bs-border-color: #495057;
-  --bs-border-color-translucent: rgba(255, 255, 255, 0.15);
+  --bs-border-color: rgb(245, 173, 67);
+  --bs-border-color-translucent: rgba(245, 173, 67, 0.15);
   --bs-form-valid-color: #75b798;
   --bs-form-valid-border-color: #75b798;
   --bs-form-invalid-color: #ea868f;
@@ -77,6 +77,23 @@
     data:image/svg + xml,
     %3csvgxmlns="http://www.w3.org/2000/svg"viewBox="0 0 30 30"%3e%3cpathstroke="rgba%28255, 255, 255, 0.55%29"stroke-linecap="round"stroke-miterlimit="10"stroke-width="2"d="M4 7h22M4 15h22M4 23h22"/%3e%3c/svg%3e
   );
+}
+
+.btn-outline-primary {
+  --bs-btn-color: #f5ad43;
+  --bs-btn-border-color: #f5ad43;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #f5ad43;
+  --bs-btn-hover-border-color: #f5ad43;
+  --bs-btn-focus-shadow-rgb: 13, 110, 253;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #f5ad43;
+  --bs-btn-active-border-color: #f5ad43;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #f5ad43;
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: #f5ad43;
+  --bs-gradient: none;
 }
 
 .rating span {
@@ -115,4 +132,19 @@ div .dropdown-menu {
   background-size: cover;
   height: 500px;
   width: 100%;
+}
+
+.form-control {
+  width: 70%;
+  background-color: var(--bs-body-bg);
+  background-clip: padding-box;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  color: var(--bs-emphasis-color);
+  border-radius: 2rem;
+  height: 2rem;
+  font-size: 0.8rem;
+}
+
+.btn {
+  height: 2rem;
 }
