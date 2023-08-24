@@ -13,8 +13,8 @@
 
 [data-bs-theme="dark"] {
   color-scheme: dark;
-  --bs-body-color: #dee2e6;
-  --bs-body-color-rgb: 222, 226, 230;
+  --bs-body-color: rgb(255, 255, 255);
+  --bs-body-color-rgb: 255, 255, 255;
   --bs-body-bg: rgb(20, 6, 13);
   --bs-body-bg-rgb: 20, 6, 13;
   --bs-emphasis-color: #fff;
@@ -112,7 +112,12 @@
 div .dropdown-menu {
   position: relative;
   z-index: 4;
-  --bs-dropdown-padding-y: 0;
+
+  --bs-dropdown-link-hover-bg: var(--bs-heading-color);
+
+  --bs-dropdown-link-active-bg: var(--bs-heading-color);
+
+  --bs-dropdown-header-color: var(--bs-heading-color);
 }
 
 .dropdown-menu.show {
