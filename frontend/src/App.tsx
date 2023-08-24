@@ -30,13 +30,13 @@ function App() {
       <div className={`landingPage ${mode === "light" ? "light" : "dark"}`}>
         <header>
           <Navbar variant={mode} expand="lg" className="d-flex  p-3 ">
-            <Container className="d-flex justify-content-between align-items-center ">
+            <Container className="d-flex justify-content-between align-items-end ">
               <div>
                 <LinkContainer to="/">
-                  <NavbarBrand>Soma</NavbarBrand>
+                  <NavbarBrand className="fs-1">Soma</NavbarBrand>
                 </LinkContainer>
               </div>
-              <Nav className="d-flex align-items-center flex-row justify-content-between gap-2">
+              <Nav className=" d-flex align-items-end flex-row justify-content-between gap-2">
                 <Link
                   to="#"
                   className="nav-link header-link"
