@@ -15,8 +15,8 @@
   color-scheme: dark;
   --bs-body-color: #dee2e6;
   --bs-body-color-rgb: 222, 226, 230;
-  --bs-body-bg: #14060d;
-  --bs-body-bg-rgb: 33, 37, 41;
+  --bs-body-bg: rgb(20, 6, 13);
+  --bs-body-bg-rgb: 20, 6, 13;
   --bs-emphasis-color: #fff;
   --bs-emphasis-color-rgb: 255, 255, 255;
   --bs-secondary-color: rgba(222, 226, 230, 0.75);
@@ -52,10 +52,10 @@
   --bs-light-border-subtle: #495057;
   --bs-dark-border-subtle: #343a40;
   --bs-heading-color: rgb(245, 173, 67);
-  --bs-link-color: #6ea8fe;
-  --bs-link-hover-color: #8bb9fe;
-  --bs-link-color-rgb: 110, 168, 254;
-  --bs-link-hover-color-rgb: 139, 185, 254;
+  --bs-link-color: rgb(255, 255, 255);
+  --bs-link-hover-color: rgb(248, 238, 162);
+  --bs-link-color-rgb: 255, 255, 255;
+  --bs-link-hover-color-rgb: 248, 238, 162;
   --bs-code-color: #e685b5;
   --bs-border-color: rgb(245, 173, 67);
   --bs-border-color-translucent: rgba(245, 173, 67, 0.15);
@@ -101,20 +101,24 @@
   color: #f5ad43;
 }
 
+.rating:hover span {
+  color: rgb(248, 238, 162);
+}
+
 .navbar-expand-lg .navbar-nav .dropdown-menu {
   position: relative;
 }
 
 div .dropdown-menu {
-  position: relative; /* Ensure it's a positioned container */
+  position: relative;
   z-index: 4;
   --bs-dropdown-padding-y: 0;
 }
 
 .dropdown-menu.show {
   position: absolute;
-  top: 100%; /* Position the dropdown below the navbar */
-  left: 0; /* Align the left side of the dropdown with the left side of the navbar */
+  top: 100%;
+  left: 0;
 }
 
 .landingPage.dark {
@@ -161,4 +165,9 @@ h1 {
 .card {
   align-items: center;
   justify-content: center;
+}
+
+footer {
+  background-color: var(--bs-border-color);
+  color: var(--bs-body-bg);
 }
