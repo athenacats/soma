@@ -58,6 +58,7 @@ export default function SeachResultsPage() {
     <MessageBox variant="danger">Book Not Found</MessageBox>
   ) : (
     <div>
+      <h4 className="text-center mb-4">Search Results</h4>
       <Row>
         <Helmet>
           <title>
