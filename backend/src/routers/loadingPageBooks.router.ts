@@ -473,8 +473,16 @@ router.get(
               author: bookData.author_name[0],
               isbn: bookData.isbn,
               pages: bookData.number_of_pages_median,
-              slugName: slugName,
-              slugAuthor: slugAuthor,
+              slugName: bookData.title
+                .trim()
+                .toLowerCase()
+                .replace(/[^\w\s-]/g, "")
+                .replace(/\s+/g, "+"),
+              slugAuthor: bookData.author_name[0]
+                .trim()
+                .toLowerCase()
+                .replace(/[^\w\s-]/g, "")
+                .replace(/\s+/g, "+"),
               rating: 0,
               yourRating: 0,
               favorite: false,

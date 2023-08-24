@@ -6,8 +6,8 @@ import MessageBox from "../components/MessageBox";
 import { getError } from "../utils";
 import { ApiError } from "../types/ApiError";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import BookItem from "../components/BookItem";
 import { Book } from "../types/Book";
+import BookItemSearchResults from "../components/BookItemSearchResults";
 
 export default function SeachResultsPage() {
   const params = useParams();
@@ -69,7 +69,7 @@ export default function SeachResultsPage() {
         {uniqueBooks.length > 0 ? (
           uniqueBooks.slice(0, 8).map((book, index) => (
             <Col key={index} sm={6} md={4} lg={3}>
-              <BookItem book={book} />
+              <BookItemSearchResults book={book} />
               <Container className="d-flex justify-content-evenly flex-wrap">
                 <Button
                   className="mt-2 btn btn-primary btn-sm"
