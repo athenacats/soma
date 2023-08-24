@@ -102,7 +102,7 @@ export default function BookPage() {
           <>
             <h4 className="text-center">Book Not Yet On Our Database</h4>
             <Button
-              className="mt-5 btn btn-primary btn-sm w-50 m-auto "
+              className=" mt-5 btn btn-primary btn-sm w-50 m-auto "
               onClick={useNavigate}
             >
               <i className="fas fa-home"></i> Discover Your Next Five Star Read!
