@@ -16,9 +16,9 @@ export default function MysteryCrimeBooks() {
   ) : (
     <div className="body-container">
       <div>
-        <h4 className="text-center mb-4">
+        <h1 className="text-center mb-4">
           Best Selling Mystery and Crime Books
-        </h4>
+        </h1>
         <Row>
           {books!.slice(0, 8).map((book, index) => (
             <Col key={index} sm={6} md={4} lg={3}>

@@ -51,7 +51,7 @@
   --bs-danger-border-subtle: #842029;
   --bs-light-border-subtle: #495057;
   --bs-dark-border-subtle: #343a40;
-  --bs-heading-color: inherit;
+  --bs-heading-color: rgb(245, 173, 67);
   --bs-link-color: #6ea8fe;
   --bs-link-hover-color: #8bb9fe;
   --bs-link-color-rgb: 110, 168, 254;
@@ -62,6 +62,7 @@
   --bs-form-valid-color: #75b798;
   --bs-form-valid-border-color: #75b798;
   --bs-form-invalid-color: #ea868f;
+  --etched: rgb(92, 62, 17);
 }
 
 .navbar-dark,
@@ -97,7 +98,7 @@
 }
 
 .rating span {
-  color: #ffc000;
+  color: #f5ad43;
 }
 
 .navbar-expand-lg .navbar-nav .dropdown-menu {
@@ -147,4 +148,12 @@ div .dropdown-menu {
 
 .btn {
   height: 2rem;
+}
+
+.first-letter {
+  font-size: 4rem;
+}
+
+h1 {
+  text-shadow: 3px 3px 2px var(--etched);
 }

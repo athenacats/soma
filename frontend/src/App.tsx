@@ -86,7 +86,6 @@ function App() {
 
       <main>
         <Container className="mt-3 mb-5">
-          <Search />
           <Outlet />
         </Container>
       </main>

@@ -16,7 +16,12 @@ export default function NewBooksThisWeek() {
   ) : (
     <div className="body-container">
       <div>
-        <h4 className="text-center mb-4">New Books This Week</h4>
+        <h1 className="text-center mb-4">
+          <span className="first-letter">N</span>ew{" "}
+          <span className="first-letter">B</span>ooks{" "}
+          <span className="first-letter">T</span>his{" "}
+          <span className="first-letter">W</span>eek
+        </h1>
         <Row>
           {books!.slice(0, 8).map((book, index) => (
             <Col key={index} sm={6} md={4} lg={3}>

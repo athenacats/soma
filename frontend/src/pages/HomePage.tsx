@@ -7,6 +7,7 @@ export default function HomePage() {
       <Helmet>
         <title>Soma</title>
       </Helmet>
+
       <NewBooksThisWeek></NewBooksThisWeek>
     </div>
   );

@@ -16,7 +16,7 @@ export default function TeensYABooks() {
   ) : (
     <div className="body-container">
       <div>
-        <h4 className="text-center mb-4">Best Selling Teens & YA Books</h4>
+        <h1 className="text-center mb-4">Best Selling Teens & YA Books</h1>
         <Row>
           {books!.slice(0, 8).map((book, index) => (
             <Col key={index} sm={6} md={4} lg={3}>
