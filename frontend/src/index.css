@@ -157,3 +157,8 @@ div .dropdown-menu {
 h1 {
   text-shadow: 3px 3px 2px var(--etched);
 }
+
+.card {
+  align-items: center;
+  justify-content: center;
+}

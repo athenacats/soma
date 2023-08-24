@@ -11,7 +11,7 @@ export default function BookItem({ book }: { book: Book }) {
 
   console.log("Request URL:", url);
   return (
-    <Card style={{ cursor: "pointer" }}>
+    <Card className="mb-3" style={{ cursor: "pointer" }}>
       <Link to={`/book/${book.slugName}/${book.slugAuthor}`}>
         <img src={book.image} className="card-img-top" alt={book.name} />
       </Link>
