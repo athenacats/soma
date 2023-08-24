@@ -6,7 +6,7 @@ import {
   Navbar,
   NavbarBrand,
 } from "react-bootstrap";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { Store } from "./Store";
 import { LinkContainer } from "react-router-bootstrap";
 import Search from "./components/Search";
@@ -25,9 +25,20 @@ function App() {
     dispatch({ type: "SWITCH_MODE" });
   };
 
+  const location = useLocation();
+  const isHomepageActive = location.pathname === "/";
+
   return (
     <div className="d-flex flex-column min-vh-100">
-      <div className={`landingPage ${mode === "light" ? "light" : "dark"}`}>
+      <div
+        className={`landingPage ${
+          mode === "light" && isHomepageActive
+            ? "light"
+            : mode === "dark" && isHomepageActive
+            ? "dark"
+            : ""
+        }`}
+      >
         <header>
           <Navbar variant={mode} expand="lg" className="d-flex  p-3 ">
             <Container className="d-flex justify-content-between align-items-end ">
