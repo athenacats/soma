@@ -1,5 +1,6 @@
 node_modules
 /build
+src/.env
 
 .DS_Store
 Thumbs.db
