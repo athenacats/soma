@@ -10,6 +10,7 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 import { Store } from "./Store";
 import { LinkContainer } from "react-router-bootstrap";
 import Search from "./components/Search";
+import { GreetingMessage } from "./components/GreetingMessage";
 
 function App() {
   const {
@@ -92,6 +93,7 @@ function App() {
         </header>
         <div className="w-70 container">
           <Search />
+          <GreetingMessage />
         </div>
       </div>
 

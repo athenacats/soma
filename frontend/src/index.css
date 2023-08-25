@@ -66,6 +66,7 @@
   --bs-form-invalid-color: #ea868f;
   --etched: rgb(92, 62, 17);
   --btn-theme-color: #f5ad43;
+  --home-message: rgb(20, 6, 13, 0.6);
 }
 
 .navbar-dark,
@@ -257,6 +258,8 @@
   --bs-form-valid-border-color: #198754;
   --bs-form-invalid-color: #dc3545;
   --bs-form-invalid-border-color: #dc3545;
+  --box-shadow: #946115;
+  --home-message: rgb(211, 230, 212, 0.6);
 }
 
 .rating span {
@@ -356,4 +359,15 @@ main {
 }
 body {
   min-height: 100vh;
+}
+
+.redirecting-buttons {
+  box-shadow: 5px 5px 5px -2px var(--box-shadow);
+  text-shadow: 1px 1px 2px var(--etched);
+}
+
+.home-message {
+  background-color: var(--home-message);
+  padding: 1rem;
+  border-radius: 1rem;
 }
