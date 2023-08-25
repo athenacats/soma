@@ -371,3 +371,11 @@ body {
   padding: 1rem;
   border-radius: 1rem;
 }
+
+.fa.fa-sun {
+  color: #fff;
+}
+
+.fa.fa-moon {
+  color: var(--bs-heading-color);
+}

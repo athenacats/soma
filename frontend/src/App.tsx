@@ -55,7 +55,7 @@ function App() {
                   onClick={switchModeHandler}
                 >
                   <i
-                    className={mode === "light" ? "fa fa-sun" : "fa fa-moon"}
+                    className={mode === "light" ? "fa fa-moon" : "fa fa-sun"}
                   ></i>
                 </Link>
 
