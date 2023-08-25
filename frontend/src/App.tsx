@@ -29,7 +29,7 @@ function App() {
   const isHomepageActive = location.pathname === "/";
 
   return (
-    <div className="d-flex flex-column min-vh-100">
+    <div className="entire-body d-flex flex-column">
       <div
         className={`landingPage ${
           mode === "light" && isHomepageActive
