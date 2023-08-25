@@ -5,7 +5,7 @@ export class User {
   public _id?: string;
   @prop({ required: true })
   public name!: string;
-  @prop({ required: true })
+  @prop({ required: true, unique: true })
   public email!: string;
   @prop({ required: true })
   public password!: string;
