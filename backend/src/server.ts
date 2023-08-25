@@ -1,6 +1,12 @@
 import express from "express";
 import loadPageBooks from "./routers/loadingPageBooks.router";
 import cors from "cors";
+import dotenv from "dotenv";
+import { dbConnect } from "./configs/database.configs";
+
+dotenv.config();
+
+dbConnect();
 
 const app = express();
 
