@@ -29,7 +29,12 @@ function App() {
   const location = useLocation();
   const isHomepageActive = location.pathname === "/";
   const isSignIn = location.pathname === "/signin";
-  const isSignUp = location.pathname === "/signup" || "signup?redirect=/";
+  const isSignUp = location.pathname === "/signup";
+  const isProfile = location.pathname === "/profile";
+
+  {
+    console.log(isSignIn);
+  }
 
   const signoutHandler = () => {
     dispatch({ type: "USER_SIGNOUT" });
@@ -118,7 +123,7 @@ function App() {
           </Navbar>
         </header>
         <div className="w-70 container">
-          {!isSignIn && !isSignUp ? <Search /> : null}
+          {isSignIn ? null : isProfile ? null : isSignUp ? null : <Search />}
           {isHomepageActive ? <GreetingMessage /> : null}
         </div>
       </div>
