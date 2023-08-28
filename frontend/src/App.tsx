@@ -30,6 +30,12 @@ function App() {
   const isHomepageActive = location.pathname === "/";
   const isSignIn = location.pathname === "/signin";
 
+  const signoutHandler = () => {
+    dispatch({ type: "USER_SIGNOUT" });
+    localStorage.removeItem("userInfo");
+    window.location.href = "/signin";
+  };
+
   return (
     <div className="entire-body d-flex flex-column">
       <div
@@ -60,9 +66,21 @@ function App() {
                   ></i>
                 </Link>
                 {userInfo ? (
-                  <a href="/profile" className="nav-link">
-                    <i className="fas fa-user"></i>
-                  </a>
+                  <NavDropdown
+                    title={<i className="fas fa-user"></i>}
+                    id="basic-nav-dropdown"
+                  >
+                    <Link className="dropdown-item" to="/profile">
+                      Profile
+                    </Link>
+                    <Link
+                      className="dropdown-item"
+                      to="#signout"
+                      onClick={signoutHandler}
+                    >
+                      Sign Out
+                    </Link>
+                  </NavDropdown>
                 ) : (
                   <a href="/signin" className="nav-link">
                     <i className="far fa-user"></i>

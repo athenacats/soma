@@ -21,7 +21,8 @@ const initialState: AppState = {
 
 type Action =
   | { type: "SWITCH_MODE" }
-  | { type: "USER_SIGNIN"; payload: UserInfo };
+  | { type: "USER_SIGNIN"; payload: UserInfo }
+  | { type: "USER_SIGNOUT" };
 
 function reducer(state: AppState, action: Action): AppState {
   switch (action.type) {
@@ -30,6 +31,15 @@ function reducer(state: AppState, action: Action): AppState {
 
     case "USER_SIGNIN":
       return { ...state, userInfo: { ...action.payload } };
+
+    case "USER_SIGNOUT":
+      return {
+        mode:
+          window.matchMedia &&
+          window.matchMedia("prefers-color-scheme: dark").matches
+            ? "dark"
+            : "light",
+      };
     default:
       return state;
   }
