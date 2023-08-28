@@ -71,16 +71,16 @@ function App() {
                     title={<i className="fas fa-user"></i>}
                     id="basic-nav-dropdown"
                   >
-                    <Link className="dropdown-item" to="/profile">
-                      Profile
-                    </Link>
-                    <Link
+                    <LinkContainer className="dropdown-item" to="/profile">
+                      <NavDropdown.Item>Profile</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer
                       className="dropdown-item"
-                      to="#signout"
+                      to={{ hash: "#signout" }}
                       onClick={signoutHandler}
                     >
-                      Sign Out
-                    </Link>
+                      <NavDropdown.Item>Sign Out</NavDropdown.Item>
+                    </LinkContainer>
                   </NavDropdown>
                 ) : (
                   <a href="/signin" className="nav-link">

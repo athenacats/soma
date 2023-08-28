@@ -25,6 +25,7 @@ import TeensYAPage from "./pages/TeensYAPage.tsx";
 import SeachResultsPage from "./pages/SearchResultsPage.tsx";
 import { SignInPage } from "./pages/SignInPage.tsx";
 import { SignUpPage } from "./pages/SignUpPage.tsx";
+import { ProfilePage } from "./pages/ProfilePage.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -43,6 +44,7 @@ const router = createBrowserRouter(
       <Route path="teens&ya" element={<TeensYAPage />}></Route>
       <Route path="signin" element={<SignInPage />}></Route>
       <Route path="signup" element={<SignUpPage />} />
+      <Route path="profile" element={<ProfilePage />}></Route>
     </Route>
   )
 );
