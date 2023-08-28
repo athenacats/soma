@@ -25,9 +25,12 @@ type Action =
   | { type: "USER_SIGNOUT" };
 
 function reducer(state: AppState, action: Action): AppState {
+  let newMode;
   switch (action.type) {
     case "SWITCH_MODE":
-      return { mode: state.mode === "dark" ? "light" : "dark" };
+      newMode = state.mode === "dark" ? "light" : "dark";
+      localStorage.setItem("mode", newMode);
+      return { ...state, mode: newMode };
 
     case "USER_SIGNIN":
       return { ...state, userInfo: { ...action.payload } };
