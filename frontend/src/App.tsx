@@ -28,6 +28,7 @@ function App() {
 
   const location = useLocation();
   const isHomepageActive = location.pathname === "/";
+  const isSignIn = location.pathname === "/signin";
 
   return (
     <div className="entire-body d-flex flex-column">
@@ -92,8 +93,8 @@ function App() {
           </Navbar>
         </header>
         <div className="w-70 container">
-          <Search />
-          <GreetingMessage />
+          {!isSignIn ? <Search /> : null}
+          {isHomepageActive ? <GreetingMessage /> : null}
         </div>
       </div>
 

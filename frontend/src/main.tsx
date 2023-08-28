@@ -23,6 +23,7 @@ import ScienceTechPage from "./pages/ScienceTechPage.tsx";
 import ScifiFantasyPage from "./pages/ScifiFantasyPage.tsx";
 import TeensYAPage from "./pages/TeensYAPage.tsx";
 import SeachResultsPage from "./pages/SearchResultsPage.tsx";
+import { SignInPage } from "./pages/SignInPage.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -39,6 +40,7 @@ const router = createBrowserRouter(
       <Route path="science&tech" element={<ScienceTechPage />}></Route>
       <Route path="scifi&fantasy" element={<ScifiFantasyPage />}></Route>
       <Route path="teens&ya" element={<TeensYAPage />}></Route>
+      <Route path="signin" element={<SignInPage />}></Route>
     </Route>
   )
 );

@@ -17,7 +17,7 @@ export const GreetingMessage = () => {
       <h1 className="text-center home-message">
         Discover Books From Your Favorite Website and Get Them Here
       </h1>
-      <div className="d-flex w-100 gap-5">
+      <div className="d-flex w-100 gap-5 justify-content-center">
         <Button
           className="redirecting-buttons"
           onClick={handleReleasedBooksClick}
