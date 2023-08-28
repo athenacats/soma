@@ -3,6 +3,7 @@ import loadPageBooks from "./routers/loadingPageBooks.router";
 import cors from "cors";
 import dotenv from "dotenv";
 import seedRouter from "./routers/seedRouter";
+import userRouter from "./routers/userRouter";
 import { dbConnect } from "./configs/database.configs";
 
 dotenv.config();
@@ -23,6 +24,7 @@ app.use(
 
 app.use("/api", loadPageBooks);
 app.use("/api", seedRouter);
+app.use("/api", userRouter);
 
 const PORT = 4000;
 app.listen(PORT, () => {

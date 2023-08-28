@@ -25,3 +25,5 @@ router.post(
     res.status(401).json({ message: "Invalid email or password" });
   })
 );
+
+export default router;
