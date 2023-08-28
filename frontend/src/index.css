@@ -379,3 +379,7 @@ body {
 .fa.fa-moon {
   color: var(--bs-heading-color);
 }
+
+.small-container {
+  max-width: 600px;
+}
