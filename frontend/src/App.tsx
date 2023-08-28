@@ -14,7 +14,7 @@ import { GreetingMessage } from "./components/GreetingMessage";
 
 function App() {
   const {
-    state: { mode },
+    state: { mode, userInfo },
     dispatch,
   } = useContext(Store);
 
@@ -59,10 +59,16 @@ function App() {
                     className={mode === "light" ? "fa fa-moon" : "fa fa-sun"}
                   ></i>
                 </Link>
+                {userInfo ? (
+                  <a href="/profile" className="nav-link">
+                    <i className="fas fa-user"></i>
+                  </a>
+                ) : (
+                  <a href="/signin" className="nav-link">
+                    <i className="far fa-user"></i>
+                  </a>
+                )}
 
-                <a href="/signin" className="nav-link">
-                  <i className="far fa-user"></i>
-                </a>
                 <NavDropdown
                   className="header-link dropdown"
                   title="Categories"
