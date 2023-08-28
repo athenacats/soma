@@ -1,63 +1,34 @@
-function Rating(props: { rating: number; caption?: string }) {
-  const { rating, caption } = props;
+import { useRateBookMutation } from "../hooks/bookHooks";
+import React from "react";
 
+function Rating(props: { rating: number; caption?: string; bookId: string }) {
+  const { rating: initialRating, caption, bookId } = props;
+  const [rating, setRating] = React.useState(initialRating);
+  const rateBookMutation = useRateBookMutation();
+
+  const handleStarClick = (newRating: number) => {
+    setRating(newRating);
+
+    rateBookMutation.mutate({
+      bookId,
+      rating: newRating,
+    });
+  };
   return (
     <div className="rating">
-      <span>
-        <i
-          className={
-            rating >= 1
-              ? "fas fa-star"
-              : rating >= 0.5
-              ? "fas fa-star-half-alt"
-              : "far fa-star"
-          }
-        />
-      </span>
-      <span>
-        <i
-          className={
-            rating >= 2
-              ? "fas fa-star"
-              : rating >= 1.5
-              ? "fas fa-star-half-alt"
-              : "far fa-star"
-          }
-        />
-      </span>
-      <span>
-        <i
-          className={
-            rating >= 3
-              ? "fas fa-star"
-              : rating >= 2.5
-              ? "fas fa-star-half-alt"
-              : "far fa-star"
-          }
-        />
-      </span>
-      <span>
-        <i
-          className={
-            rating >= 4
-              ? "fas fa-star"
-              : rating >= 3.5
-              ? "fas fa-star-half-alt"
-              : "far fa-star"
-          }
-        />
-      </span>
-      <span>
-        <i
-          className={
-            rating >= 5
-              ? "fas fa-star"
-              : rating >= 4.5
-              ? "fas fa-star-half-alt"
-              : "far fa-star"
-          }
-        />
-      </span>
+      {[1, 2, 3, 4, 5].map((starNumber) => (
+        <span key={starNumber} onClick={() => handleStarClick(starNumber)}>
+          <i
+            className={
+              rating >= starNumber
+                ? "fas fa-star"
+                : rating >= starNumber - 0.5
+                ? "fas fa-star-half-alt"
+                : "far fa-star"
+            }
+          />
+        </span>
+      ))}
       {caption ? <span>{caption}</span> : ""}
     </div>
   );
