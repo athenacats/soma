@@ -2,6 +2,7 @@ import express from "express";
 import loadPageBooks from "./routers/loadingPageBooks.router";
 import cors from "cors";
 import dotenv from "dotenv";
+import seedRouter from "./routers/seedRouter";
 import { dbConnect } from "./configs/database.configs";
 
 dotenv.config();
@@ -21,6 +22,7 @@ app.use(
 );
 
 app.use("/api", loadPageBooks);
+app.use("/api", seedRouter);
 
 const PORT = 4000;
 app.listen(PORT, () => {
