@@ -29,6 +29,7 @@ router.get(
         const name = titleElement
           .find("div.product-shelf-title.product-info-title.pt-xs ")
           .text()
+          .split("(")[0]
           .trim();
         const author = titleElement
           .find("div.product-shelf-author.pt-0.mt-1 a")
