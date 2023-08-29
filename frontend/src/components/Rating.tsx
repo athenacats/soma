@@ -1,18 +1,24 @@
+import { toast } from "react-toastify";
 import { useRateBookMutation } from "../hooks/bookHooks";
 import React from "react";
+import { ApiError } from "../types/ApiError";
+import { getError } from "../utils";
 
 function Rating(props: { rating: number; caption?: string; bookId: string }) {
   const { rating: initialRating, caption, bookId } = props;
   const [rating, setRating] = React.useState(initialRating);
   const rateBookMutation = useRateBookMutation();
 
-  const handleStarClick = (newRating: number) => {
+  const handleStarClick = async (newRating: number) => {
     setRating(newRating);
-
-    rateBookMutation.mutate({
-      bookId,
-      rating: newRating,
-    });
+    try {
+      rateBookMutation.mutate({
+        bookId,
+        rating: newRating,
+      });
+    } catch (err) {
+      toast.error(getError(err as ApiError));
+    }
   };
   return (
     <div className="rating">
