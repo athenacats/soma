@@ -3,7 +3,7 @@ import apiClient from "../apiClient";
 import { Book } from "../types/Book";
 
 export const useRateBookMutation = () => {
-  return useMutation(async (book: Book & { rating: number }) => {
+  return useMutation(async (book: Book & { yourRating: number }) => {
     const response = await apiClient.post(`/api/books/rate`, {
       book,
     });

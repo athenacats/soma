@@ -6,7 +6,6 @@ export type Book = {
   favorite: boolean;
   isbn?: string;
   yourRating: number;
-  price: number;
   pages?: number;
   description?: string;
   slugName: string;

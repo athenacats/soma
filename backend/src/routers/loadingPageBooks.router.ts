@@ -54,7 +54,7 @@ router.get(
           yourRating: 0,
           favorite: false,
           isbn: "",
-          price: 0,
+
           pages: 0,
         });
       });
@@ -108,7 +108,7 @@ router.get(
           yourRating: 0,
           favorite: false,
           isbn: "",
-          price: 0,
+
           pages: 0,
         });
       });
@@ -162,7 +162,7 @@ router.get(
           yourRating: 0,
           favorite: false,
           isbn: "",
-          price: 0,
+
           pages: 0,
         });
       });
@@ -216,7 +216,7 @@ router.get(
           yourRating: 0,
           favorite: false,
           isbn: "",
-          price: 0,
+
           pages: 0,
         });
       });
@@ -270,7 +270,7 @@ router.get(
           yourRating: 0,
           favorite: false,
           isbn: "",
-          price: 0,
+
           pages: 0,
         });
       });
@@ -324,7 +324,7 @@ router.get(
           yourRating: 0,
           favorite: false,
           isbn: "",
-          price: 0,
+
           pages: 0,
         });
       });
@@ -378,7 +378,7 @@ router.get(
           yourRating: 0,
           favorite: false,
           isbn: "",
-          price: 0,
+
           pages: 0,
         });
       });
@@ -422,7 +422,7 @@ router.get(
               rating: 0,
               yourRating: 0,
               favorite: false,
-              price: 0,
+
               image: undefined,
             };
             try {
@@ -487,7 +487,7 @@ router.get(
               rating: 0,
               yourRating: 0,
               favorite: false,
-              price: 0,
+
               image: undefined,
             };
             try {

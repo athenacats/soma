@@ -5,8 +5,8 @@ import { ApiError } from "../types/ApiError";
 import { getError } from "../utils";
 import { Book } from "../types/Book";
 
-function Rating(props: { rating: number; caption?: string; book: Book }) {
-  const { rating: initialRating, caption, book } = props;
+function Rating(props: { yourRating: number; caption?: string; book: Book }) {
+  const { yourRating: initialRating, caption, book } = props;
   const [rating, setRating] = React.useState(initialRating);
   const rateBookMutation = useRateBookMutation();
 
@@ -15,7 +15,7 @@ function Rating(props: { rating: number; caption?: string; book: Book }) {
     try {
       rateBookMutation.mutate({
         ...book,
-        rating: newRating,
+        yourRating: newRating,
       });
     } catch (err) {
       toast.error(getError(err as ApiError));
