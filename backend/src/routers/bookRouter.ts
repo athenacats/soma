@@ -1,7 +1,6 @@
 import { Router } from "express";
 import asyncHandler from "express-async-handler";
 import { BookModel } from "../models/bookModel";
-import { v4 as uuid } from "uuid";
 
 const router = Router();
 
@@ -36,7 +35,6 @@ router.post(
         description,
         slugName,
         slugAuthor,
-        _id: uuid(),
       });
 
       res.json(book);

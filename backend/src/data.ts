@@ -17,9 +17,8 @@ export const sampleUsers: User[] = [
   },
 ];
 
-export const sampleBook: Book[] = [
+export const sampleBooks: Book[] = [
   {
-    _id: "0002",
     name: "Harry Potter and the Philosopher's Stone",
     image: `https://covers.openlibrary.org/b/id/10521270-L.jpg`,
     author: "J. K. Rowling",
@@ -33,7 +32,6 @@ export const sampleBook: Book[] = [
     slugAuthor: "j-k-rowling",
   },
   {
-    _id: "0002",
     name: "Harry Potter and the Deathly Hallows",
     image: `https://covers.openlibrary.org/b/id/10110415-L.jpg`,
     author: "J. K. Rowling",
