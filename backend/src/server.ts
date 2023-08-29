@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import seedRouter from "./routers/seedRouter";
 import userRouter from "./routers/userRouter";
 import { dbConnect } from "./configs/database.configs";
+import bookRouter from "./routers/bookRouter";
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ app.use(
 app.use("/api", loadPageBooks);
 app.use("/api", seedRouter);
 app.use("/api", userRouter);
+app.use("/api", bookRouter);
 
 const PORT = 4000;
 app.listen(PORT, () => {

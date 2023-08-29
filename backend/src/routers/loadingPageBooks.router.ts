@@ -411,6 +411,7 @@ router.get(
             isbn: string;
             number_of_pages_median: number;
             cover_i: number;
+            ratings_average: number;
           }) => {
             const book: Book = {
               name: bookData.title,
@@ -419,7 +420,7 @@ router.get(
               pages: bookData.number_of_pages_median,
               slugName: slugName,
               slugAuthor: slugAuthor,
-              rating: 0,
+              rating: bookData.ratings_average || 0,
               yourRating: 0,
               favorite: false,
 
