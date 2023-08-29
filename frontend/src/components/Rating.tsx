@@ -3,9 +3,10 @@ import { useRateBookMutation } from "../hooks/bookHooks";
 import React from "react";
 import { ApiError } from "../types/ApiError";
 import { getError } from "../utils";
+import { Book } from "../types/Book";
 
-function Rating(props: { rating: number; caption?: string; bookId: string }) {
-  const { rating: initialRating, caption, bookId } = props;
+function Rating(props: { rating: number; caption?: string; book: Book }) {
+  const { rating: initialRating, caption, book } = props;
   const [rating, setRating] = React.useState(initialRating);
   const rateBookMutation = useRateBookMutation();
 
@@ -13,7 +14,7 @@ function Rating(props: { rating: number; caption?: string; bookId: string }) {
     setRating(newRating);
     try {
       rateBookMutation.mutate({
-        bookId,
+        ...book,
         rating: newRating,
       });
     } catch (err) {

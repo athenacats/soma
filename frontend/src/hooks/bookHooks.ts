@@ -3,15 +3,13 @@ import apiClient from "../apiClient";
 import { Book } from "../types/Book";
 
 export const useRateBookMutation = () => {
-  return useMutation(
-    async ({ bookId, rating }: { bookId: string; rating: number }) => {
-      const response = await apiClient.post(`/api/books/${bookId}/rate`, {
-        rating,
-      });
+  return useMutation(async (book: Book & { rating: number }) => {
+    const response = await apiClient.post(`/api/books/rate`, {
+      book,
+    });
 
-      return response.data;
-    }
-  );
+    return response.data;
+  });
 };
 
 export const useGetBooksQuery = () =>
