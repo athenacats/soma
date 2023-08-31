@@ -22,6 +22,7 @@ function Rating(props: { yourRating: number; caption?: string; book: Book }) {
       setRating(newRating);
       try {
         rateBookMutation.mutate({
+          ...userInfo,
           ...book,
           yourRating: newRating,
         });
