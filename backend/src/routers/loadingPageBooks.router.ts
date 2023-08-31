@@ -54,7 +54,7 @@ router.get(
           yourRating: 0,
           favorite: false,
           isbn: "",
-
+          bookId: "",
           pages: 0,
         });
       });
@@ -108,7 +108,7 @@ router.get(
           yourRating: 0,
           favorite: false,
           isbn: "",
-
+          bookId: "",
           pages: 0,
         });
       });
@@ -162,7 +162,7 @@ router.get(
           yourRating: 0,
           favorite: false,
           isbn: "",
-
+          bookId: "",
           pages: 0,
         });
       });
@@ -216,7 +216,7 @@ router.get(
           yourRating: 0,
           favorite: false,
           isbn: "",
-
+          bookId: "",
           pages: 0,
         });
       });
@@ -270,7 +270,7 @@ router.get(
           yourRating: 0,
           favorite: false,
           isbn: "",
-
+          bookId: "",
           pages: 0,
         });
       });
@@ -324,7 +324,7 @@ router.get(
           yourRating: 0,
           favorite: false,
           isbn: "",
-
+          bookId: "",
           pages: 0,
         });
       });
@@ -378,7 +378,7 @@ router.get(
           yourRating: 0,
           favorite: false,
           isbn: "",
-
+          bookId: "",
           pages: 0,
         });
       });
@@ -423,7 +423,7 @@ router.get(
               rating: bookData.ratings_average || 0,
               yourRating: 0,
               favorite: false,
-
+              bookId: "",
               image: undefined,
             };
             try {
@@ -488,7 +488,7 @@ router.get(
               rating: 0,
               yourRating: 0,
               favorite: false,
-
+              bookId: "",
               image: undefined,
             };
             try {

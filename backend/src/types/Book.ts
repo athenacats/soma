@@ -1,4 +1,5 @@
 export type Book = {
+  bookId: string;
   name: string;
   image: string | undefined;
   author: string;

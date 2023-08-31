@@ -20,6 +20,7 @@ router.post(
         slugName,
         slugAuthor,
         yourRating,
+        bookId,
       } = req.body;
       const numericRating = parseFloat(rating);
       const numericPages = parseFloat(pages);
@@ -35,6 +36,7 @@ router.post(
         description,
         slugName,
         slugAuthor,
+        bookId,
       });
 
       res.json(book);

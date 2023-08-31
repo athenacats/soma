@@ -30,6 +30,7 @@ export const sampleBooks: Book[] = [
     description: "",
     slugName: "harry-potter-and-the-philosophers-stone",
     slugAuthor: "j-k-rowling",
+    bookId: "",
   },
   {
     name: "Harry Potter and the Deathly Hallows",
@@ -43,5 +44,6 @@ export const sampleBooks: Book[] = [
     description: "",
     slugName: "harry-potter-and-the-deathly-hallows",
     slugAuthor: "j-k-rowling",
+    bookId: "",
   },
 ];

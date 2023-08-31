@@ -5,6 +5,9 @@ export class Book {
   public _id?: string;
 
   @prop({ required: true })
+  public bookId!: string;
+
+  @prop({ required: true })
   public name!: string;
 
   @prop({ required: true })
