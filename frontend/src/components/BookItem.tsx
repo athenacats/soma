@@ -21,7 +21,7 @@ export default function BookItem({ book }: { book: Book }) {
 
           <Card.Subtitle>by {book.author}</Card.Subtitle>
         </Link>
-        <Rating rating={book.yourRating} />
+        <Rating yourRating={book.yourRating} book={book} />
       </Card.Body>
     </Card>
   );
