@@ -4,6 +4,7 @@ import bcrypt from "bcryptjs";
 import { generateToken } from "../utils";
 import { Router } from "express";
 import { RatedBookModel } from "../models/ratedBook";
+import { v4 as uuid } from "uuid";
 
 const router = Router();
 
@@ -48,9 +49,15 @@ router.post(
 router.post(
   "/books/rate",
   asyncHandler(async (req, res) => {
-    const { bookId, userId, rating } = req.body;
+    const response = req.body;
+    let bookId = response.book.bookId;
+    const userId = response.book._id;
+    const rating = response.book.yourRating;
     console.log(bookId, userId, rating);
     console.log(req.body);
+    if (bookId === "") {
+      bookId = uuid();
+    }
 
     try {
       const ratedBook = new RatedBookModel({
