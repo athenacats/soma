@@ -7,7 +7,7 @@ export const useRateBookMutation = () => {
     const response = await apiClient.post(`/api/books/rate`, {
       book,
     });
-
+    console.log(response.data);
     return response.data;
   });
 };

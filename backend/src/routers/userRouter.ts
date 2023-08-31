@@ -3,6 +3,7 @@ import { User, UserModel } from "../models/userModel";
 import bcrypt from "bcryptjs";
 import { generateToken } from "../utils";
 import { Router } from "express";
+import { RatedBookModel } from "../models/ratedBook";
 
 const router = Router();
 
@@ -41,6 +42,28 @@ router.post(
       isAdmin: user.isAdmin,
       token: generateToken(user),
     });
+  })
+);
+
+router.post(
+  "/books/rate",
+  asyncHandler(async (req, res) => {
+    const { bookId, userId, rating } = req.body;
+    console.log(bookId, userId, rating);
+    console.log(req.body);
+
+    try {
+      const ratedBook = new RatedBookModel({
+        user: userId,
+        book: bookId,
+        rating: rating,
+      });
+
+      await ratedBook.save();
+      res.status(201).json({ message: "Book rated successfully" });
+    } catch (error) {
+      res.status(500).json({ error: "An error occurred" });
+    }
   })
 );
 
