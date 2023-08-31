@@ -1,24 +1,34 @@
 import { toast } from "react-toastify";
 import { useRateBookMutation } from "../hooks/bookHooks";
-import React from "react";
+import React, { useContext } from "react";
 import { ApiError } from "../types/ApiError";
 import { getError } from "../utils";
 import { Book } from "../types/Book";
+import { Store } from "../Store";
 
 function Rating(props: { yourRating: number; caption?: string; book: Book }) {
   const { yourRating: initialRating, caption, book } = props;
   const [rating, setRating] = React.useState(initialRating);
   const rateBookMutation = useRateBookMutation();
 
+  const {
+    state: { userInfo },
+  } = useContext(Store);
+
   const handleStarClick = async (newRating: number) => {
-    setRating(newRating);
-    try {
-      rateBookMutation.mutate({
-        ...book,
-        yourRating: newRating,
-      });
-    } catch (err) {
-      toast.error(getError(err as ApiError));
+    if (userInfo) {
+      setRating(newRating);
+      try {
+        rateBookMutation.mutate({
+          ...book,
+          yourRating: newRating,
+        });
+      } catch (err) {
+        toast.error(getError(err as ApiError));
+      }
+    } else {
+      alert("You have to be logged in to rate a book");
+      console.log("error");
     }
   };
   return (
