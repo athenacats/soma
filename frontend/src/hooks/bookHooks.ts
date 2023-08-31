@@ -76,3 +76,13 @@ export const useGetTeensYABooksQuery = () =>
     queryKey: ["books"],
     queryFn: async () => (await apiClient.get<Book[]>(`api/teens&ya`)).data,
   });
+
+export const useGetDefaultBooks = () =>
+  useQuery({
+    queryKey: ["books"],
+    queryFn: async () => {
+      const response = await apiClient.get<Book[]>(`api/seedbooks`);
+      console.log(response.data);
+      return response.data || [];
+    },
+  });

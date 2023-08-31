@@ -20,7 +20,7 @@ router.get(
   asyncHandler(async (req, res) => {
     await BookModel.deleteMany({});
     const createdBooks = await BookModel.insertMany(sampleBooks);
-    res.json({ createdBooks });
+    res.json(createdBooks);
   })
 );
 
