@@ -55,19 +55,27 @@ router.post(
     const rating = response.book.yourRating;
     console.log(bookId, userId, rating);
     console.log(req.body);
-    if (bookId === "") {
-      bookId = uuid();
-    }
 
     try {
-      const ratedBook = new RatedBookModel({
+      const existingRating = await RatedBookModel.findOne({
         user: userId,
         book: bookId,
-        rating: rating,
       });
 
-      await ratedBook.save();
-      res.status(201).json({ message: "Book rated successfully" });
+      if (existingRating) {
+        existingRating.rating = rating;
+        await existingRating.save();
+      } else {
+        bookId = uuid();
+        const ratedBook = new RatedBookModel({
+          user: userId,
+          book: bookId,
+          rating: rating,
+        });
+
+        await ratedBook.save();
+        res.status(201).json({ message: "Book rated successfully" });
+      }
     } catch (error) {
       res.status(500).json({ error: "An error occurred" });
     }

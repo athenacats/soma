@@ -4,9 +4,9 @@ import { Book } from "./bookModel";
 
 @modelOptions({ schemaOptions: { timestamps: true } })
 export class RatedBook {
-  @prop({ required: true })
+  @prop({ ref: () => User, required: true })
   public user!: User;
-  @prop({ required: true })
+  @prop({ ref: () => Book, required: true })
   public book!: Book;
   @prop({ required: true })
   public rating!: number;
