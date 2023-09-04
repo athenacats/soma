@@ -86,16 +86,11 @@ router.post(
 );
 
 router.post(
-  "#signout",
+  "/signout",
   asyncHandler(async (req, res) => {
-    const userId = req.body.user._id;
-
     try {
       console.log("working");
-      await BookModel.updateMany(
-        { yourRating: userId },
-        { yourRating: 0, bookId: "" }
-      );
+      await BookModel.updateMany({ yourRating: 0, bookId: "" });
       res.status(200).json({ message: "User signed out successfully" });
     } catch (error) {
       res.status(500).json({ error: "An error occurred during sign-out" });

@@ -43,6 +43,7 @@ const router = createBrowserRouter(
       <Route path="scifi&fantasy" element={<ScifiFantasyPage />}></Route>
       <Route path="teens&ya" element={<TeensYAPage />}></Route>
       <Route path="signin" element={<SignInPage />}></Route>
+      <Route path="signout" element={<SignInPage />}></Route>
       <Route path="signup" element={<SignUpPage />} />
       <Route path="profile" element={<ProfilePage />}></Route>
     </Route>

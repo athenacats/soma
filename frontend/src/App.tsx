@@ -11,7 +11,7 @@ import { Store } from "./Store";
 import { LinkContainer } from "react-router-bootstrap";
 import Search from "./components/Search";
 import { GreetingMessage } from "./components/GreetingMessage";
-import axios from "axios";
+import apiClient from "./apiClient";
 
 function App() {
   const {
@@ -38,7 +38,7 @@ function App() {
   }
 
   const signoutHandler = async () => {
-    await axios.post("#signout");
+    await apiClient.post(`api/signout`);
     dispatch({ type: "USER_SIGNOUT" });
     localStorage.removeItem("userInfo");
     window.location.href = "/signin";
@@ -83,7 +83,7 @@ function App() {
                     </LinkContainer>
                     <LinkContainer
                       className="dropdown-item"
-                      to={{ hash: "#signout" }}
+                      to="/signout"
                       onClick={signoutHandler}
                     >
                       <NavDropdown.Item>Sign Out</NavDropdown.Item>
