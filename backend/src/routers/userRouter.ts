@@ -5,6 +5,7 @@ import { generateToken } from "../utils";
 import { Router } from "express";
 import { RatedBookModel } from "../models/ratedBook";
 import { v4 as uuid } from "uuid";
+import { BookModel } from "../models/bookModel";
 
 const router = Router();
 
@@ -51,7 +52,7 @@ router.post(
   asyncHandler(async (req, res) => {
     const response = req.body;
     let bookId = response.book.bookId;
-    const userId = response.book._id;
+    const userId = response.user._id;
     const rating = response.book.yourRating;
     console.log(bookId, userId, rating);
     console.log(req.body);
@@ -76,8 +77,28 @@ router.post(
         await ratedBook.save();
         res.status(201).json({ message: "Book rated successfully" });
       }
+      response.book.yourRating = 0;
+      response.book.bookId = "";
     } catch (error) {
       res.status(500).json({ error: "An error occurred" });
+    }
+  })
+);
+
+router.post(
+  "#signout",
+  asyncHandler(async (req, res) => {
+    const userId = req.body.user._id;
+
+    try {
+      console.log("working");
+      await BookModel.updateMany(
+        { yourRating: userId },
+        { yourRating: 0, bookId: "" }
+      );
+      res.status(200).json({ message: "User signed out successfully" });
+    } catch (error) {
+      res.status(500).json({ error: "An error occurred during sign-out" });
     }
   })
 );
