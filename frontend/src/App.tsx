@@ -11,6 +11,7 @@ import { Store } from "./Store";
 import { LinkContainer } from "react-router-bootstrap";
 import Search from "./components/Search";
 import { GreetingMessage } from "./components/GreetingMessage";
+import axios from "axios";
 
 function App() {
   const {
@@ -36,7 +37,8 @@ function App() {
     console.log(isSignIn);
   }
 
-  const signoutHandler = () => {
+  const signoutHandler = async () => {
+    await axios.post("#signout");
     dispatch({ type: "USER_SIGNOUT" });
     localStorage.removeItem("userInfo");
     window.location.href = "/signin";
