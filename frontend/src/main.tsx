@@ -45,7 +45,7 @@ const router = createBrowserRouter(
       <Route path="signin" element={<SignInPage />}></Route>
       <Route path="signout" element={<SignInPage />}></Route>
       <Route path="signup" element={<SignUpPage />} />
-      <Route path="profile" element={<ProfilePage />}></Route>
+      <Route path="profile/:userId" element={<ProfilePage />}></Route>
     </Route>
   )
 );

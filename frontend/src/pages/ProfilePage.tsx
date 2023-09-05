@@ -3,15 +3,16 @@ import { Store } from "../Store";
 import { Helmet } from "react-helmet-async";
 import { Col, Row, Table } from "react-bootstrap";
 import BookItem from "../components/BookItem";
-import { useGetDefaultBooks } from "../hooks/bookHooks";
+import { useGetUserRatedBooks } from "../hooks/bookHooks";
 import LoadingMessage from "../components/LoadingMessage";
+import { Book } from "../types/Book";
 
 export const ProfilePage = () => {
   const {
     state: { mode, userInfo },
   } = useContext(Store);
 
-  const { isLoading, data: books } = useGetDefaultBooks();
+  const { isLoading, data: books } = useGetUserRatedBooks(userInfo!._id);
 
   return isLoading ? (
     <LoadingMessage />
@@ -43,7 +44,7 @@ export const ProfilePage = () => {
       </Table>
       <h2 className="text-center my-4">Your Books</h2>
       <Row>
-        {books!.map((book, index) => (
+        {books!.map((book: Book, index: number) => (
           <Col key={index} sm={6} md={4} lg={3}>
             <BookItem book={book} />
           </Col>

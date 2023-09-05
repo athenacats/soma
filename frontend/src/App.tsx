@@ -78,7 +78,10 @@ function App() {
                     title={<i className="fas fa-user"></i>}
                     id="basic-nav-dropdown"
                   >
-                    <LinkContainer className="dropdown-item" to="/profile">
+                    <LinkContainer
+                      className="dropdown-item"
+                      to={`/profile/${userInfo._id}`}
+                    >
                       <NavDropdown.Item>Profile</NavDropdown.Item>
                     </LinkContainer>
                     <LinkContainer

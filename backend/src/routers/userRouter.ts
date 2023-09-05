@@ -98,14 +98,14 @@ router.post(
 );
 
 router.get(
-  "/profile",
+  "/profile/:userId",
   asyncHandler(async (req, res) => {
-    const userId = req.body.user.userId;
+    const userId = req.params.userId;
+    console.log(userId);
     const userRatings = await RatedBookModel.find({ userId: userId });
 
     try {
       res.send(userRatings);
-      console.log(res);
     } catch (error) {
       console.log(error);
     }

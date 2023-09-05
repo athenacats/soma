@@ -90,6 +90,15 @@ export const useGetTeensYABooksQuery = () =>
     queryFn: async () => (await apiClient.get<Book[]>(`api/teens&ya`)).data,
   });
 
+export const useGetUserRatedBooks = (userId: string) =>
+  useQuery({
+    queryKey: ["userRatedBooks", userId],
+    queryFn: async () => {
+      const response = await apiClient.get(`/api/profile/${userId}`);
+      return response.data || [];
+    },
+  });
+
 export const useGetDefaultBooks = () =>
   useQuery({
     queryKey: ["books"],
