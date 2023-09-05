@@ -51,6 +51,7 @@ router.post(
   "/books/rate",
   asyncHandler(async (req, res) => {
     const response = req.body;
+    const book = response.book;
     let bookId = response.book.bookId;
     const userId = response.user._id;
     const rating = response.book.yourRating;
@@ -70,15 +71,14 @@ router.post(
         bookId = uuid();
         const ratedBook = new RatedBookModel({
           user: userId,
-          book: bookId,
+          bookid: bookId,
           rating: rating,
+          newBook: book,
         });
 
         await ratedBook.save();
         res.status(201).json({ message: "Book rated successfully" });
       }
-      response.book.yourRating = 0;
-      response.book.bookId = "";
     } catch (error) {
       res.status(500).json({ error: "An error occurred" });
     }
@@ -89,11 +89,25 @@ router.post(
   "/signout",
   asyncHandler(async (req, res) => {
     try {
-      console.log("working");
       await BookModel.updateMany({ yourRating: 0, bookId: "" });
       res.status(200).json({ message: "User signed out successfully" });
     } catch (error) {
       res.status(500).json({ error: "An error occurred during sign-out" });
+    }
+  })
+);
+
+router.get(
+  "/profile",
+  asyncHandler(async (req, res) => {
+    const userId = req.body.user.userId;
+    const userRatings = await RatedBookModel.find({ userId: userId });
+
+    try {
+      res.send(userRatings);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
     }
   })
 );

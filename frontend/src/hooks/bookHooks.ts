@@ -1,15 +1,28 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import apiClient from "../apiClient";
 import { Book } from "../types/Book";
+import { UserInfo } from "../types/userInfo";
 
 export const useRateBookMutation = () => {
-  return useMutation(async (book: Book & { yourRating: number }) => {
-    const response = await apiClient.post(`/api/books/rate`, {
+  return useMutation(
+    async ({
       book,
-    });
-    console.log(response.data);
-    return response.data;
-  });
+      user,
+      yourRating,
+    }: {
+      book: Book;
+      user: UserInfo;
+      yourRating: number;
+    }) => {
+      const response = await apiClient.post(`/api/books/rate`, {
+        book,
+        user,
+        yourRating,
+      });
+      console.log(response.data);
+      return response.data;
+    }
+  );
 };
 
 export const useGetBooksQuery = () =>
