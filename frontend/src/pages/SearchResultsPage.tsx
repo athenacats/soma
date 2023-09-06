@@ -58,7 +58,7 @@ export default function SeachResultsPage() {
     <MessageBox variant="danger">Book Not Found</MessageBox>
   ) : (
     <div>
-      <h4 className="text-center mb-4">Search Results</h4>
+      <h3 className="text-center mb-4">Search Results</h3>
       <Row>
         <Helmet>
           <title>
@@ -67,11 +67,11 @@ export default function SeachResultsPage() {
               : "Book Not Yet On Database"}
           </title>
         </Helmet>
-        <h4 className="text-center">
+        <h5 className="text-center mb-3">
           {uniqueBooks.length > 0
             ? "For a smooth experience, please ensure that you have signed in to Mobilism before downloading from the site"
             : ""}
-        </h4>
+        </h5>
         {uniqueBooks.length > 0 ? (
           uniqueBooks.slice(0, 8).map((book, index) => (
             <Col key={index} sm={6} md={4} lg={3}>
