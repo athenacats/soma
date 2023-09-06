@@ -44,33 +44,39 @@ export const ProfilePage = () => {
         </tbody>
       </Table>
       <h2 className="text-center my-4">Your Books</h2>
-      <Row>
-        {books!.map((dataItem: any, index: number) => {
-          const book = dataItem.book;
+      {!books || !books[0] ? (
+        <p style={{ textAlign: "center" }}>
+          <i>You haven't rated any book yet </i>
+        </p>
+      ) : (
+        <Row>
+          {books!.map((dataItem: any, index: number) => {
+            const book = dataItem.book;
 
-          return (
-            <Col key={index} sm={6} md={4} lg={3}>
-              <Card className="mb-3" style={{ cursor: "pointer" }}>
-                <Link to={`/book/${book.slugName}/${book.slugAuthor}`}>
-                  <img
-                    src={book.image}
-                    className="card-img-top"
-                    alt={book.name}
-                  />
-                </Link>
-                <Card.Body>
+            return (
+              <Col key={index} sm={6} md={4} lg={3}>
+                <Card className="mb-3" style={{ cursor: "pointer" }}>
                   <Link to={`/book/${book.slugName}/${book.slugAuthor}`}>
-                    <Card.Title>{book.name}</Card.Title>
-
-                    <Card.Subtitle>by {book.author}</Card.Subtitle>
+                    <img
+                      src={book.image}
+                      className="card-img-top"
+                      alt={book.name}
+                    />
                   </Link>
-                  <Rating yourRating={dataItem.rating} book={book} />
-                </Card.Body>
-              </Card>
-            </Col>
-          );
-        })}
-      </Row>
+                  <Card.Body>
+                    <Link to={`/book/${book.slugName}/${book.slugAuthor}`}>
+                      <Card.Title>{book.name}</Card.Title>
+
+                      <Card.Subtitle>by {book.author}</Card.Subtitle>
+                    </Link>
+                    <Rating yourRating={dataItem.rating} book={book} />
+                  </Card.Body>
+                </Card>
+              </Col>
+            );
+          })}
+        </Row>
+      )}
     </div>
   ) : (
     <div>
