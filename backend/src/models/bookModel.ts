@@ -4,8 +4,8 @@ import { prop, getModelForClass, modelOptions } from "@typegoose/typegoose";
 export class Book {
   public _id?: string;
 
-  @prop({ required: true })
-  public bookId!: string;
+  @prop({ required: false })
+  public bookId?: string;
 
   @prop({ required: true })
   public name!: string;
@@ -22,8 +22,8 @@ export class Book {
   @prop({ required: true, default: false })
   public favorite!: boolean;
 
-  @prop({ required: true })
-  public isbn!: string;
+  @prop({ required: false })
+  public isbn?: string;
 
   @prop({ required: true })
   public yourRating!: number;

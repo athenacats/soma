@@ -6,11 +6,8 @@ export class RatedBook {
   @prop({ required: true })
   public userId!: string;
 
-  @prop({ ref: () => Book, required: true })
-  public book!: Book;
-
   @prop({ required: true })
-  public bookId!: string;
+  public book!: Book;
 
   @prop({ required: true })
   public rating!: number;

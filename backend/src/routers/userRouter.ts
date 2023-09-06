@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 import { generateToken } from "../utils";
 import { Router } from "express";
 import { RatedBookModel } from "../models/ratedBook";
-import { v4 as uuid } from "uuid";
+
 import { BookModel } from "../models/bookModel";
 
 const router = Router();
@@ -52,35 +52,34 @@ router.post(
   asyncHandler(async (req, res) => {
     const response = req.body;
     const book = response.book;
-    let bookId = response.book.bookId;
+    const name = book.name;
     const userId = response.user._id;
-    const rating = response.book.yourRating;
-    console.log(bookId, userId, rating);
-    console.log(req.body);
-
+    const rating = response.yourRating;
+    console.log(response);
     try {
       const existingRating = await RatedBookModel.findOne({
-        user: userId,
-        book: bookId,
+        userId: userId,
+        "book.name": name,
       });
 
       if (existingRating) {
         existingRating.rating = rating;
         await existingRating.save();
+        res.send(existingRating);
       } else {
-        bookId = uuid();
         const ratedBook = new RatedBookModel({
-          user: userId,
-          bookid: bookId,
+          userId: userId,
           rating: rating,
-          newBook: book,
+          book: book,
         });
-
         await ratedBook.save();
-        res.status(201).json({ message: "Book rated successfully" });
+        console.log(ratedBook);
+        res.send(ratedBook);
+
+        // res.status(201).json({ message: "Book rated successfully" });
       }
     } catch (error) {
-      res.status(500).json({ error: "An error occurred" });
+      console.log(error);
     }
   })
 );
@@ -103,7 +102,7 @@ router.get(
     const userId = req.params.userId;
     console.log(userId);
     const userRatings = await RatedBookModel.find({ userId: userId });
-
+    console.log(userRatings);
     try {
       res.send(userRatings);
     } catch (error) {
