@@ -383,3 +383,19 @@ body {
 .small-container {
   max-width: 600px;
 }
+
+::-webkit-scrollbar {
+  width: 0.4rem;
+  height: 0.4rem;
+  border: 1px solid var(--bs-heading-color);
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 0;
+  background: var(--bs-body-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4rem;
+  background: var(--bs-heading-color);
+}
