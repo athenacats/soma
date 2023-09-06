@@ -14,9 +14,9 @@ const initialState: AppState = {
   mode: localStorage.getItem("mode")
     ? localStorage.getItem("mode")!
     : window.matchMedia &&
-      window.matchMedia("prefers-color-scheme: dark").matches
-    ? "dark"
-    : "light",
+      window.matchMedia("prefers-color-scheme: light").matches
+    ? "light"
+    : "dark",
 };
 
 type Action =
