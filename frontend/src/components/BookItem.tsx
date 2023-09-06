@@ -4,12 +4,6 @@ import { Book } from "../types/Book";
 import Rating from "./Rating";
 
 export default function BookItem({ book }: { book: Book }) {
-  {
-    console.log(`${encodeURIComponent(book.author!)}`);
-  }
-  const url = `/book/${book.slugName}/${book.slugAuthor}`;
-
-  console.log("Request URL:", url);
   return (
     <Card className="mb-3" style={{ cursor: "pointer" }}>
       <Link to={`/book/${book.slugName}/${book.slugAuthor}`}>

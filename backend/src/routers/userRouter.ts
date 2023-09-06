@@ -59,7 +59,7 @@ router.post(
     try {
       const existingRating = await RatedBookModel.findOne({
         userId: userId,
-        "book.name": name,
+        "book.name": name, //since i'm scraping books, makes it difficult touse bookId.
       });
 
       if (existingRating) {

@@ -1,11 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useContext } from "react";
 import { Store } from "../Store";
 import { Helmet } from "react-helmet-async";
-import { Col, Row, Table } from "react-bootstrap";
-import BookItem from "../components/BookItem";
+import { Card, Col, Row, Table } from "react-bootstrap";
 import { useGetUserRatedBooks } from "../hooks/bookHooks";
 import LoadingMessage from "../components/LoadingMessage";
-import { Book } from "../types/Book";
+import { Link } from "react-router-dom";
+import Rating from "../components/Rating";
 
 export const ProfilePage = () => {
   const {
@@ -44,11 +45,31 @@ export const ProfilePage = () => {
       </Table>
       <h2 className="text-center my-4">Your Books</h2>
       <Row>
-        {books!.map((book: Book, index: number) => (
-          <Col key={index} sm={6} md={4} lg={3}>
-            <BookItem book={book} />
-          </Col>
-        ))}
+        {books!.map((dataItem: any, index: number) => {
+          const book = dataItem.book;
+
+          return (
+            <Col key={index} sm={6} md={4} lg={3}>
+              <Card className="mb-3" style={{ cursor: "pointer" }}>
+                <Link to={`/book/${book.slugName}/${book.slugAuthor}`}>
+                  <img
+                    src={book.image}
+                    className="card-img-top"
+                    alt={book.name}
+                  />
+                </Link>
+                <Card.Body>
+                  <Link to={`/book/${book.slugName}/${book.slugAuthor}`}>
+                    <Card.Title>{book.name}</Card.Title>
+
+                    <Card.Subtitle>by {book.author}</Card.Subtitle>
+                  </Link>
+                  <Rating yourRating={dataItem.rating} book={book} />
+                </Card.Body>
+              </Card>
+            </Col>
+          );
+        })}
       </Row>
     </div>
   ) : (
