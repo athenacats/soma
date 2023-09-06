@@ -73,6 +73,13 @@ export default function BookPage() {
               : "Book Not Yet On Database"}
           </title>
         </Helmet>
+
+        <h4 className="text-center">
+          {uniqueBooks.length > 0
+            ? "For a smooth experience, please ensure that you have signed in to Mobilism before downloading from the site"
+            : ""}
+        </h4>
+
         {uniqueBooks.length > 0 ? (
           uniqueBooks.slice(0, 8).map((book, index) => (
             <Col key={index} sm={6} md={4} lg={3}>
