@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "cd backend && npm run build && cd ../frontend && npm install && npm run build",
-    "start": "node backend/build/server.js"
+    "start": "cd backend/build && node server.js" 
   },
   "author": "",
   "license": "ISC"
