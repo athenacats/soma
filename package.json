@@ -1,0 +1,12 @@
+{
+  "name": "soma",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd backend && npm run build && cd ../frontend && npm install && npm run build",
+    "start": "TG_ALLOW_MIXED=ALLOW node backend/build/server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
