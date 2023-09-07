@@ -33,10 +33,6 @@ function App() {
   const isSignUp = location.pathname === "/signup";
   const isProfile = location.pathname === "/profile";
 
-  {
-    console.log(isSignIn);
-  }
-
   const signoutHandler = async () => {
     await apiClient.post(`api/signout`);
     dispatch({ type: "USER_SIGNOUT" });
@@ -78,19 +74,21 @@ function App() {
                     title={<i className="fas fa-user"></i>}
                     id="basic-nav-dropdown"
                   >
-                    <LinkContainer
-                      className="dropdown-item"
-                      to={`/profile/${userInfo._id}`}
-                    >
-                      <NavDropdown.Item>Profile</NavDropdown.Item>
-                    </LinkContainer>
-                    <LinkContainer
-                      className="dropdown-item"
-                      to="/signout"
-                      onClick={signoutHandler}
-                    >
-                      <NavDropdown.Item>Sign Out</NavDropdown.Item>
-                    </LinkContainer>
+                    <div className="header-arrangement">
+                      <LinkContainer
+                        className="dropdown-item"
+                        to={`/profile/${userInfo._id}`}
+                      >
+                        <NavDropdown.Item>Profile</NavDropdown.Item>
+                      </LinkContainer>
+                      <LinkContainer
+                        className="dropdown-item"
+                        to="/signout"
+                        onClick={signoutHandler}
+                      >
+                        <NavDropdown.Item>Sign Out</NavDropdown.Item>
+                      </LinkContainer>
+                    </div>
                   </NavDropdown>
                 ) : (
                   <a href="/signin" className="nav-link">

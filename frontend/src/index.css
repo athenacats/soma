@@ -270,26 +270,11 @@
   color: var(--rating-hover);
 }
 
-.navbar-expand-lg .navbar-nav .dropdown-menu {
-  position: relative;
-}
-
 div .dropdown-menu {
-  position: relative;
-  z-index: 4;
-
   --bs-dropdown-link-hover-color: var(--bs-body-bg);
   --bs-dropdown-link-hover-bg: var(--bs-heading-color);
-
   --bs-dropdown-link-active-bg: var(--bs-heading-color);
-
   --bs-dropdown-header-color: var(--bs-heading-color);
-}
-
-.dropdown-menu.show {
-  position: absolute;
-  top: 100%;
-  left: 0;
 }
 
 .landingPage.dark {
@@ -398,4 +383,16 @@ body {
 ::-webkit-scrollbar-thumb {
   border-radius: 4rem;
   background: var(--bs-heading-color);
+}
+
+div.dropdown-menu.show {
+  position: absolute;
+  top: 100%;
+  left: -125%;
+}
+
+header {
+  position: relative;
+  height: 5rem;
+  z-index: 6;
 }
