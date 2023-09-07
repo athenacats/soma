@@ -15,7 +15,7 @@ export default function BookItemSearchResults({ book }: { book: Book }) {
 
         <Card.Subtitle>by {book.author}</Card.Subtitle>
 
-        <Rating rating={book.yourRating} />
+        <Rating yourRating={book.rating} book={book} />
       </Card.Body>
     </Card>
   );

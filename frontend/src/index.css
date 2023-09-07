@@ -78,10 +78,6 @@
   --bs-navbar-brand-color: #fff;
   --bs-navbar-brand-hover-color: #fff;
   --bs-navbar-toggler-border-color: rgba(255, 255, 255, 0.1);
-  --bs-navbar-toggler-icon-bg: url(
-    data:image/svg + xml,
-    %3csvgxmlns="http://www.w3.org/2000/svg"viewBox="0 0 30 30"%3e%3cpathstroke="rgba%28255, 255, 255, 0.55%29"stroke-linecap="round"stroke-miterlimit="10"stroke-width="2"d="M4 7h22M4 15h22M4 23h22"/%3e%3c/svg%3e
-  );
 }
 
 .navbar-light,
@@ -93,10 +89,6 @@
   --bs-navbar-brand-color: rgb(0, 43, 51);
   --bs-navbar-brand-hover-color: rgb(0, 43, 51, 0.75);
   --bs-navbar-toggler-border-color: rgba(0, 43, 51, 0.1);
-  --bs-navbar-toggler-icon-bg: url(
-    data:image/svg + xml,
-    %3csvgxmlns="http://www.w3.org/2000/svg"viewBox="0 0 30 30"%3e%3cpathstroke="rgba%28255, 255, 255, 0.55%29"stroke-linecap="round"stroke-miterlimit="10"stroke-width="2"d="M4 7h22M4 15h22M4 23h22"/%3e%3c/svg%3e
-  );
 }
 
 .btn-outline-primary {
