@@ -1,6 +1,7 @@
 import express from "express";
 import loadPageBooks from "./routers/loadingPageBooks.router";
 import cors from "cors";
+import path from "path";
 import dotenv from "dotenv";
 import seedRouter from "./routers/seedRouter";
 import userRouter from "./routers/userRouter";
@@ -28,7 +29,12 @@ app.use("/api", seedRouter);
 app.use("/api", userRouter);
 app.use("/api", bookRouter);
 
-const PORT = 4000;
+app.use(express.static("public"));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
