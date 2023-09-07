@@ -1,6 +1,4 @@
 import axios from "axios";
-import http from "http";
-import https from "https";
 
 const apiClient = axios.create({
   baseURL:
@@ -9,8 +7,6 @@ const apiClient = axios.create({
     "Content-type": "application/json",
   },
   timeout: 30000,
-  httpAgent: new http.Agent({ keepAlive: true }),
-  httpsAgent: new https.Agent({ keepAlive: true }),
 });
 
 export default apiClient;
