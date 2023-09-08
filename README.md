@@ -1,4 +1,4 @@
-# Soma- An OPen-Source Project That Allows Users To Easily Discover and Download New Books
+# Soma: An Open-Source Project That Allows Users To Easily Discover and Download New Books
 
 [![Most Used Language](https://img.shields.io/github/languages/top/athenacats/soma?style=for-the-badge)](https://github.com/athenacats/soma)
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)]
