@@ -490,7 +490,6 @@ router.get(
               book.image = coverUrl;
             } catch (error) {
               console.log("No image found");
-              book.image = undefined;
             }
             return book;
           }

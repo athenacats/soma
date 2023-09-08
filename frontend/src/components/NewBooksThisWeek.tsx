@@ -16,12 +16,14 @@ export default function NewBooksThisWeek() {
   ) : (
     <div className="body-container">
       <div>
-        <h1 className="text-center mb-4">
+        <h1 className="text-center mb-2">
           <span className="first-letter">N</span>ew{" "}
           <span className="first-letter">B</span>ooks{" "}
           <span className="first-letter">T</span>his{" "}
           <span className="first-letter">W</span>eek
         </h1>
+
+        <h5 className="mb-3 text-center">Click on a book to download!</h5>
 
         <Row>
           {books!.slice(0, 8).map((book, index) => (
