@@ -1,4 +1,5 @@
 import axios from "axios";
+import Bottleneck from "bottleneck";
 import { load } from "cheerio";
 import { Router } from "express";
 import asyncHandler from "express-async-handler";
@@ -6,13 +7,18 @@ import { Book } from "../types/Book";
 
 const router = Router();
 
+const limiter = new Bottleneck({
+  maxConcurrent: 1,
+  minTime: 3000,
+});
+
 router.get(
   "/",
   asyncHandler(async (req, res) => {
     const url = "https://www.barnesandnoble.com/b/books/_/N-1pZ29Z8q8";
     const book: Book[] = [];
     try {
-      const response = await axios.get(url);
+      const response = await limiter.schedule(() => axios.get(url));
       const html = response.data;
       const $ = load(html);
 
@@ -67,7 +73,7 @@ router.get(
       "https://www.barnesandnoble.com/b/books/fiction/_/N-1sZ29Z8q8Z10h8";
     const book: Book[] = [];
     try {
-      const response = await axios.get(url);
+      const response = await limiter.schedule(() => axios.get(url));
       const html = response.data;
       const $ = load(html);
 
@@ -121,7 +127,7 @@ router.get(
       "https://www.barnesandnoble.com/b/books/science-technology/_/N-1sZ29Z8q8Z184l";
     const book: Book[] = [];
     try {
-      const response = await axios.get(url);
+      const response = await limiter.schedule(() => axios.get(url));
       const html = response.data;
       const $ = load(html);
 
@@ -175,7 +181,7 @@ router.get(
       "https://www.barnesandnoble.com/b/books/teens-ya/_/N-1sZ29Z8q8Z19r4;jsessionid=292468F6CC2FF416D62A8D085E73F0B2.prodny_store01-va02";
     const book: Book[] = [];
     try {
-      const response = await axios.get(url);
+      const response = await limiter.schedule(() => axios.get(url));
       const html = response.data;
       const $ = load(html);
 
@@ -229,7 +235,7 @@ router.get(
       "https://www.barnesandnoble.com/b/books/science-fiction-fantasy/_/N-1sZ29Z8q8Z180l";
     const book: Book[] = [];
     try {
-      const response = await axios.get(url);
+      const response = await limiter.schedule(() => axios.get(url));
       const html = response.data;
       const $ = load(html);
 
@@ -283,7 +289,7 @@ router.get(
       "https://www.barnesandnoble.com/b/books/mystery-crime/_/N-1sZ29Z8q8Z16g4";
     const book: Book[] = [];
     try {
-      const response = await axios.get(url);
+      const response = await limiter.schedule(() => axios.get(url));
       const html = response.data;
       const $ = load(html);
 
@@ -337,7 +343,7 @@ router.get(
       "https://www.barnesandnoble.com/b/books/romance/_/N-1sZ29Z8q8Z17y3";
     const book: Book[] = [];
     try {
-      const response = await axios.get(url);
+      const response = await limiter.schedule(() => axios.get(url));
       const html = response.data;
       const $ = load(html);
 
