@@ -69,7 +69,8 @@ Accessing, collecting, and transmitting the data required for the various API ca
 
 - Include sign-in/up via Google and perhaps Goodreads
 - Link a user's lists and books from Goodreads, which could prove problematic as Goodreads' API is not public
-- Save all loaded books in MongoDB. Currently only saved data is a user's info and their saved books. Cannot aggregate ratings on the website itself.
+- Save all loaded books in MongoDB. Currently only saved data is a user's info and their saved books. Cannot aggregate ratings on the website itself
+- Add about page 
 
 
 ## Licence
