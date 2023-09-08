@@ -95,7 +95,6 @@ export const useGetUserRatedBooks = (userId: string) =>
     queryKey: ["books", userId],
     queryFn: async () => {
       const response = await apiClient.get(`/api/profile/${userId}`);
-      console.log(response.data);
       return response.data || [];
     },
   });
