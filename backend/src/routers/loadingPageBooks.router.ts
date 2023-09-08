@@ -394,10 +394,7 @@ router.get(
   "/book/:slugName/:slugAuthor",
   asyncHandler(async (req, res) => {
     const { slugName, slugAuthor } = req.params;
-    console.log(req);
 
-    console.log("Name:", slugName);
-    console.log("Author:", slugAuthor);
     const url = `https://openlibrary.org/search.json?title=${slugName}&author=${slugAuthor}`;
     try {
       const response = await axios.get(url);
@@ -440,7 +437,6 @@ router.get(
       );
 
       res.json(books);
-      console.log(url);
     } catch (error) {
       console.log("Error:", error);
       res.status(500).json({ error: "Internal Server Error" });
@@ -452,10 +448,7 @@ router.get(
   "/search/:slugName/:slugAuthor",
   asyncHandler(async (req, res) => {
     const { slugName, slugAuthor } = req.params;
-    console.log(req);
 
-    console.log("Name:", slugName);
-    console.log("Author:", slugAuthor);
     const url = `https://openlibrary.org/search.json?title=${slugName}&author=${slugAuthor}`;
     try {
       const response = await axios.get(url);
@@ -505,7 +498,6 @@ router.get(
       );
 
       res.json(books);
-      console.log(url);
     } catch (error) {
       console.log("Error:", error);
       res.status(500).json({ error: "Internal Server Error" });

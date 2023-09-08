@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
+// import cookieParser from "cookie-parser";
 import loadPageBooks from "./routers/loadingPageBooks.router";
 import cors from "cors";
 import path from "path";
@@ -22,6 +23,16 @@ app.use(
     origin: ["http://localhost:5173"],
   })
 );
+//app.use(cookieParser());
+
+/*app.get("/set-cookie", (req, res) => {
+  res.cookie("myCookie", "myValue", {
+    sameSite: "strict",
+    secure: true,
+    maxAge: 3600000,
+  });
+  res.send("Cookie set");
+});*/
 
 app.use("/api", loadPageBooks);
 app.use("/api", seedRouter);
