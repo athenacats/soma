@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
@@ -22,14 +22,12 @@ export default function Search() {
         .replace(/[^\w\s-]/g, "")
         .replace(/\s+/g, "+");
       navigate(`/search/${slugName}/${slugAuthor}`);
+      setName("");
+      setAuthor("");
     } else {
       alert("Please fill all fields!");
     }
   };
-
-  useEffect(() => {
-    setIsSubmitDisabled(!(name.trim() !== "" && author.trim() !== ""));
-  }, [name, author]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputName = e.target.name;
@@ -55,6 +53,7 @@ export default function Search() {
           aria-label="Search Book Name"
           aria-describedby="button-search"
           onChange={handleInputChange}
+          value={name}
           required
         ></FormControl>
         <FormControl
@@ -65,6 +64,7 @@ export default function Search() {
           aria-label="Search Book Author"
           aria-describedby="button-search"
           onChange={handleInputChange}
+          value={author}
           required
         ></FormControl>
         <Button
