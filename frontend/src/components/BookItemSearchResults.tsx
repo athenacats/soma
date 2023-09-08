@@ -3,9 +3,6 @@ import { Book } from "../types/Book";
 import Rating from "./Rating";
 
 export default function BookItemSearchResults({ book }: { book: Book }) {
-  const url = `/book/${book.slugName}/${book.slugAuthor}`;
-
-  console.log("Request URL:", url);
   return (
     <Card className="mb-3" style={{ cursor: "pointer" }}>
       <img src={book.image} className="card-img-top" alt={book.name} />

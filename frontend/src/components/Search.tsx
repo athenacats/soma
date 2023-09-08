@@ -24,6 +24,7 @@ export default function Search() {
       navigate(`/search/${slugName}/${slugAuthor}`);
       setName("");
       setAuthor("");
+      setIsSubmitDisabled(true);
     } else {
       alert("Please fill all fields!");
     }
