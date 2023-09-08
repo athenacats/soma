@@ -76,7 +76,7 @@ export default function BookPage() {
 
         <h5 className="text-center mb-3">
           {uniqueBooks.length > 0
-            ? "For a smooth experience, please ensure that you have signed in to Mobilism before downloading from the site"
+            ? "For a smooth experience, please use a VPN and ensure that you have signed in to Mobilism before downloading from the site"
             : ""}
         </h5>
 

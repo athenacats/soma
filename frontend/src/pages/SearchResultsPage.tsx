@@ -69,7 +69,7 @@ export default function SeachResultsPage() {
         </Helmet>
         <h5 className="text-center mb-3">
           {uniqueBooks.length > 0
-            ? "For a smooth experience, please ensure that you have signed in to Mobilism before downloading from the site"
+            ? "For a smooth experience, please use a VPN and ensure that you have signed in to Mobilism before downloading from the site"
             : ""}
         </h5>
         {uniqueBooks.length > 0 ? (
@@ -96,7 +96,7 @@ export default function SeachResultsPage() {
                   <i className="fas fa-book-open"></i> From Mobilism
                 </Button>
                 <Button
-                  className="mt-2 btn btn-primary btn-sm"
+                  className="mt-2 mb-3 btn btn-primary btn-sm"
                   onClick={() => ebookZLibrary(book)}
                 >
                   <i className="fas fa-book-open"></i> From Z-Library

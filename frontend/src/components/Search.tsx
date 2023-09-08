@@ -22,6 +22,9 @@ export default function Search() {
         .replace(/[^\w\s-]/g, "")
         .replace(/\s+/g, "+");
       navigate(`/search/${slugName}/${slugAuthor}`);
+      setName("");
+      setAuthor("");
+      setIsSubmitDisabled(true);
     } else {
       alert("Please fill all fields!");
     }

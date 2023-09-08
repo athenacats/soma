@@ -46,7 +46,7 @@ export const ProfilePage = () => {
       <h2 className="text-center my-4">Your Books</h2>
       {!books || !books[0] ? (
         <p style={{ textAlign: "center" }}>
-          <i>You haven't rated any book yet </i>
+          <i>You haven't rated any books yet </i>
         </p>
       ) : (
         <Row>
