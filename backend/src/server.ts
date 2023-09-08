@@ -19,10 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
     credentials: true,
-    origin: [
-      "http://localhost:5173",
-      "https://cosmic-concha-36052e.netlify.app",
-    ],
+    origin: ["http://localhost:5173"],
   })
 );
 
