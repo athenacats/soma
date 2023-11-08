@@ -17,15 +17,10 @@ router.get(
   asyncHandler(async (req, res) => {
     const url = "https://www.goodreads.com/shelf/show/new-releases";
     const book: Book[] = [];
-    console.log("okay");
     try {
-      console.log("notokay");
       const response = await limiter.schedule(() => axios.get(url));
-      console.log(response);
       const html = response.data;
       const $ = load(html);
-      console.log($);
-
       $("div.elementList").each((index, element) => {
         const titleElement = $(element);
         const name = titleElement
