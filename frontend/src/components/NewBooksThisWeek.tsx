@@ -26,7 +26,7 @@ export default function NewBooksThisWeek() {
         <h5 className="mb-3 text-center">Click on a book to download!</h5>
 
         <Row>
-          {books!.slice(0, 8).map((book, index) => (
+          {books!.slice(0, 48).map((book, index) => (
             <Col key={index} sm={6} md={4} lg={3}>
               <BookItem book={book} />
             </Col>

@@ -9,7 +9,7 @@ const router = Router();
 
 const limiter = new Bottleneck({
   maxConcurrent: 1,
-  minTime: 5000,
+  minTime: 2000,
 });
 
 router.get(

@@ -14,7 +14,7 @@ export default function LoadingMessage() {
         <span className="visually-hidden">Loading...</span>
       </Spinner>
       <h4 className="text-center pt-4">
-        Please wait, fetching books from Barnes & Noble
+        Please wait, fetching books from the database
       </h4>
     </div>
   );
