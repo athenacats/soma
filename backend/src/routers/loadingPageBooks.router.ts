@@ -14,7 +14,7 @@ const limiter = new Bottleneck({
 
 router.get(
   "/",
-  asyncHandler(async (req, res) => {
+  asyncHandler(async (_req, res) => {
     const url = "https://www.goodreads.com/shelf/show/new-releases";
     const book: Book[] = [];
     console.log("okay");
@@ -26,7 +26,7 @@ router.get(
       const $ = load(html);
       console.log($);
 
-      $("div.elementList").each((index, element) => {
+      $("div.elementList").each((_index, element) => {
         const titleElement = $(element);
         const name = titleElement
           .find("div.left a.bookTitle")
@@ -67,51 +67,63 @@ router.get(
 
 router.get(
   "/fiction",
-  asyncHandler(async (req, res) => {
-    const url =
-      "https://www.barnesandnoble.com/b/books/fiction/_/N-1sZ29Z8q8Z10h8";
-    const book: Book[] = [];
+  asyncHandler(async (_req, res) => {
+    const url = "https://www.goodreads.com/genres/new_releases/fiction";
     try {
-      const response = await axios.get(url);
+      const response = await limiter.schedule(() => axios.get(url));
       const html = response.data;
       const $ = load(html);
+      const bookElements = $("div.leftAlignedImage.bookBox");
+      const bookPromises: unknown[] = [];
 
-      $(
-        "div.product-shelf-tile.product-shelf-tile-book.bnBadgeHere.columns-4"
-      ).each((index, element) => {
+      bookElements.each((_index, element) => {
         const titleElement = $(element);
-        const name = titleElement
-          .find("div.product-shelf-title.product-info-title.pt-xs ")
-          .text()
-          .trim();
-        const author = titleElement
-          .find("div.product-shelf-author.pt-0.mt-1 a")
-          .text()
-          .trim();
-        const image = titleElement.find("img.full-shadow").attr("src");
-        const slugName = name
+        const altAttribute = titleElement.find("img.bookImage").attr("alt");
+        const name: string =
+          altAttribute!.split("(")[0].trim() || "Default Value"; //intellisense says value could be undefined
+        const slugName = name!
           .toLowerCase()
           .replace(/[^\w\s-]/g, "")
           .replace(/\s+/g, "+");
-        const slugAuthor = author
-          .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
-          .replace(/\s+/g, "+");
-        book.push({
-          name,
-          author,
-          image,
-          slugName,
-          slugAuthor,
-          rating: 0,
-          yourRating: 0,
-          favorite: false,
-          isbn: "",
-          bookId: "",
-          pages: 0,
-        });
+        const image = titleElement.find("img.bookImage").attr("src");
+
+        const searchUrl = `https://openlibrary.org/search.json?title=${slugName}`;
+        const promise = axios
+          .get(searchUrl)
+          .then((response) => {
+            const bookDetails = response.data.docs;
+            const author = bookDetails[0]?.author_name?.[0] || "Not found";
+            const slugAuthor = author
+              .toLowerCase()
+              .replace(/[^\w\s-]/g, "")
+              .replace(/\s+/g, "+");
+
+            return {
+              name,
+              author,
+              image,
+              slugName,
+              slugAuthor,
+              rating: 0,
+              yourRating: 0,
+              favorite: false,
+              isbn: "",
+              bookId: "",
+              pages: 0,
+            };
+          })
+          .catch((error) => {
+            console.log("Error while fetching author:", error);
+            return null; // or any other suitable handling for failed requests
+          });
+
+        bookPromises.push(promise);
       });
-      res.json(book);
+
+      const bookData = await Promise.all(bookPromises);
+      const books = bookData.filter((book) => book !== null);
+
+      res.json(books);
     } catch (error) {
       console.log("Error:", error);
       res.status(500).json({ error: "Internal Server Error" });
@@ -121,7 +133,7 @@ router.get(
 
 router.get(
   "/science&tech",
-  asyncHandler(async (req, res) => {
+  asyncHandler(async (_req, res) => {
     const url =
       "https://www.barnesandnoble.com/b/books/science-technology/_/N-1sZ29Z8q8Z184l";
     const book: Book[] = [];
@@ -132,7 +144,7 @@ router.get(
 
       $(
         "div.product-shelf-tile.product-shelf-tile-book.bnBadgeHere.columns-4"
-      ).each((index, element) => {
+      ).each((_index, element) => {
         const titleElement = $(element);
         const name = titleElement
           .find("div.product-shelf-title.product-info-title.pt-xs ")
@@ -175,7 +187,7 @@ router.get(
 
 router.get(
   "/teens&ya",
-  asyncHandler(async (req, res) => {
+  asyncHandler(async (_req, res) => {
     const url =
       "https://www.barnesandnoble.com/b/books/teens-ya/_/N-1sZ29Z8q8Z19r4;jsessionid=292468F6CC2FF416D62A8D085E73F0B2.prodny_store01-va02";
     const book: Book[] = [];
@@ -186,7 +198,7 @@ router.get(
 
       $(
         "div.product-shelf-tile.product-shelf-tile-book.bnBadgeHere.columns-4"
-      ).each((index, element) => {
+      ).each((_index, element) => {
         const titleElement = $(element);
         const name = titleElement
           .find("div.product-shelf-title.product-info-title.pt-xs ")
@@ -229,7 +241,7 @@ router.get(
 
 router.get(
   "/scifi&fantasy",
-  asyncHandler(async (req, res) => {
+  asyncHandler(async (_req, res) => {
     const url =
       "https://www.barnesandnoble.com/b/books/science-fiction-fantasy/_/N-1sZ29Z8q8Z180l";
     const book: Book[] = [];
@@ -240,7 +252,7 @@ router.get(
 
       $(
         "div.product-shelf-tile.product-shelf-tile-book.bnBadgeHere.columns-4"
-      ).each((index, element) => {
+      ).each((_index, element) => {
         const titleElement = $(element);
         const name = titleElement
           .find("div.product-shelf-title.product-info-title.pt-xs ")
@@ -283,7 +295,7 @@ router.get(
 
 router.get(
   "/mystery&crime",
-  asyncHandler(async (req, res) => {
+  asyncHandler(async (_req, res) => {
     const url =
       "https://www.barnesandnoble.com/b/books/mystery-crime/_/N-1sZ29Z8q8Z16g4";
     const book: Book[] = [];
@@ -294,7 +306,7 @@ router.get(
 
       $(
         "div.product-shelf-tile.product-shelf-tile-book.bnBadgeHere.columns-4"
-      ).each((index, element) => {
+      ).each((_index, element) => {
         const titleElement = $(element);
         const name = titleElement
           .find("div.product-shelf-title.product-info-title.pt-xs ")
@@ -337,7 +349,7 @@ router.get(
 
 router.get(
   "/romance",
-  asyncHandler(async (req, res) => {
+  asyncHandler(async (_req, res) => {
     const url =
       "https://www.barnesandnoble.com/b/books/romance/_/N-1sZ29Z8q8Z17y3";
     const book: Book[] = [];
@@ -348,7 +360,7 @@ router.get(
 
       $(
         "div.product-shelf-tile.product-shelf-tile-book.bnBadgeHere.columns-4"
-      ).each((index, element) => {
+      ).each((_index, element) => {
         const titleElement = $(element);
         const name = titleElement
           .find("div.product-shelf-title.product-info-title.pt-xs ")
