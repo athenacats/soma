@@ -1,4 +1,4 @@
-# Soma- An OPen-Source Project That Allows Users To Easily Discover and Download New Books
+# Soma: An Open-Source Project That Allows Users To Easily Discover and Download New Books
 
 [![Most Used Language](https://img.shields.io/github/languages/top/athenacats/soma?style=for-the-badge)](https://github.com/athenacats/soma)
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)]
@@ -69,7 +69,8 @@ Accessing, collecting, and transmitting the data required for the various API ca
 
 - Include sign-in/up via Google and perhaps Goodreads
 - Link a user's lists and books from Goodreads, which could prove problematic as Goodreads' API is not public
-- Save all loaded books in MongoDB. Currently only saved data is a user's info and their saved books. Cannot aggregate ratings on the website itself.
+- Save all loaded books in MongoDB. Currently only saved data is a user's info and their saved books. Cannot aggregate ratings on the website itself
+- Add about page 
 
 
 ## Licence
