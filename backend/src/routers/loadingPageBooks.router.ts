@@ -9,7 +9,7 @@ const router = Router();
 router.get(
   "/",
   asyncHandler(async (req, res) => {
-    const url = "https://www.barnesandnoble.com/b/books/_/N-1pZ29Z8q8";
+    const url = "https://www.goodreads.com/shelf/show/new-releases";
     const book: Book[] = [];
     console.log("okay");
     try {
