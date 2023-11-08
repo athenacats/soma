@@ -3,7 +3,7 @@ import { Spinner } from "react-bootstrap";
 export default function LoadingMessage() {
   return (
     <div
-      className="d-flex justify-content-center align-items-center"
+      className="d-flex flex-column justify-content-center align-items-center"
       style={{ minHeight: "100vh" }}
     >
       <Spinner
@@ -13,6 +13,9 @@ export default function LoadingMessage() {
       >
         <span className="visually-hidden">Loading...</span>
       </Spinner>
+      <h4 className="text-center pt-4">
+        Please wait, fetching books from Barnes & Noble
+      </h4>
     </div>
   );
 }
