@@ -5,26 +5,19 @@ import { useNavigate } from "react-router-dom";
 export default function Search() {
   const navigate = useNavigate();
   const [name, setName] = useState("");
-  const [author, setAuthor] = useState("");
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
   const [showAlert, setShowAlert] = useState(false);
 
   const submitHandler = async (e: React.SyntheticEvent) => {
     e.preventDefault();
-    if (name.trim() !== "" && author.trim() !== "") {
+    if (name.trim() !== "") {
       const slugName = name
         .trim()
         .toLowerCase()
         .replace(/[^\w\s-]/g, "")
         .replace(/\s+/g, "+");
-      const slugAuthor = author
-        .trim()
-        .toLowerCase()
-        .replace(/[^\w\s-]/g, "")
-        .replace(/\s+/g, "+");
-      navigate(`/search/${slugName}/${slugAuthor}`);
+      navigate(`/search/${slugName}`);
       setName("");
-      setAuthor("");
       setIsSubmitDisabled(true);
       setShowAlert(false);
     } else {
@@ -38,11 +31,9 @@ export default function Search() {
 
     if (inputName === "qn") {
       setName(inputValue);
-    } else if (inputName === "qa") {
-      setAuthor(inputValue);
     }
 
-    setIsSubmitDisabled(!(name.trim() !== "" && author.trim() !== ""));
+    setIsSubmitDisabled(!(name.trim() !== ""));
   };
 
   return (
@@ -58,22 +49,11 @@ export default function Search() {
             type="text"
             name="qn"
             id="qn"
-            placeholder="Search Book Name"
-            aria-label="Search Book Name"
+            placeholder="Search Book"
+            aria-label="Search Book"
             aria-describedby="button-search"
             onChange={handleInputChange}
             value={name}
-            required
-          ></FormControl>
-          <FormControl
-            type="text"
-            name="qa"
-            id="qa"
-            placeholder="Search Book Author"
-            aria-label="Search Book Author"
-            aria-describedby="button-search"
-            onChange={handleInputChange}
-            value={author}
             required
           ></FormControl>
           <Button

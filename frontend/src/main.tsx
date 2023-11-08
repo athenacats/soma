@@ -32,10 +32,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<App />}>
       <Route index={true} element={<HomePage />}></Route>
       <Route path="book/:slugName/:slugAuthor" element={<BookPage />}></Route>
-      <Route
-        path="search/:slugName/:slugAuthor"
-        element={<SeachResultsPage />}
-      ></Route>
+      <Route path="search/:slugName" element={<SeachResultsPage />}></Route>
       <Route path="fiction" element={<FictionPage />}></Route>
       <Route path="mystery&crime" element={<MysteryCrimePage />}></Route>
       <Route path="romance" element={<RomancePage />}></Route>

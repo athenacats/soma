@@ -432,11 +432,11 @@ router.get(
 );
 
 router.get(
-  "/search/:slugName/:slugAuthor",
+  "/search/:slugName",
   asyncHandler(async (req, res) => {
-    const { slugName, slugAuthor } = req.params;
-
-    const url = `https://openlibrary.org/search.json?title=${slugName}&author=${slugAuthor}`;
+    const { slugName } = req.params;
+    console.log(slugName);
+    const url = `https://openlibrary.org/search.json?q=${slugName}`;
     try {
       const response = await axios.get(url);
       const bookDetails = response.data.docs;
@@ -445,32 +445,46 @@ router.get(
         bookDetails.map(
           (bookData: {
             title: string;
-            author_name: string;
+            author_name: Array<string>;
             isbn: string;
             number_of_pages_median: number;
             cover_i: number;
           }) => {
             const book: Book = {
               name: bookData.title,
-              author: bookData.author_name[0],
+              author:
+                bookData.author_name && bookData.author_name.length > 0
+                  ? bookData.author_name[0]
+                  : "Unknown Author",
               isbn: bookData.isbn,
               pages: bookData.number_of_pages_median,
               slugName: bookData.title
+                .replace(/[^\w\s-]/g, "")
+                .replace(/\s+/g, "+") /*bookData.title
                 .trim()
                 .toLowerCase()
                 .replace(/[^\w\s-]/g, "")
-                .replace(/\s+/g, "+"),
-              slugAuthor: bookData.author_name[0]
+                .replace(/\s+/g, "+"),*/,
+              slugAuthor:
+                bookData.author_name && bookData.author_name.length > 0
+                  ? bookData.author_name[0]
+                      .trim()
+                      .toLowerCase()
+                      .replace(/[^\w\s-]/g, "")
+                      .replace(/\s+/g, "+")
+                  : "" /*bookData.author_name
                 .trim()
                 .toLowerCase()
                 .replace(/[^\w\s-]/g, "")
-                .replace(/\s+/g, "+"),
+                .replace(/\s+/g, "+")*/,
               rating: 0,
               yourRating: 0,
               favorite: false,
               bookId: "",
               image: undefined,
             };
+            console.log(bookData.author_name);
+            console.log(bookData.title);
             try {
               const coverUrl = `https://covers.openlibrary.org/b/id/${bookData.cover_i}-L.jpg`;
 

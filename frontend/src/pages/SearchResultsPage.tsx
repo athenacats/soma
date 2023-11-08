@@ -11,12 +11,12 @@ import BookItemSearchResults from "../components/BookItemSearchResults";
 
 export default function SeachResultsPage() {
   const params = useParams();
-  const { slugName, slugAuthor } = params;
+  const { slugName } = params;
   const {
     data: books,
     isLoading,
     error,
-  } = useGetBookDetailsBySearchQuery(slugName!, slugAuthor!);
+  } = useGetBookDetailsBySearchQuery(slugName!);
 
   let uniqueBooks: Book[] = [];
 
