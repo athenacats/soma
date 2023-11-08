@@ -15,7 +15,7 @@ dbConnect();
 const app = express();
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true })); //needed so that you can parse data from the body
 
 app.use(
   cors({
