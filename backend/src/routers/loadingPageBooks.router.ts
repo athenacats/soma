@@ -1,10 +1,16 @@
 import axios from "axios";
+import Bottleneck from "bottleneck";
 import { load } from "cheerio";
 import { Router } from "express";
 import asyncHandler from "express-async-handler";
 import { Book } from "../types/Book";
 
 const router = Router();
+
+const limiter = new Bottleneck({
+  maxConcurrent: 1,
+  minTime: 5000,
+});
 
 router.get(
   "/",
@@ -14,26 +20,21 @@ router.get(
     console.log("okay");
     try {
       console.log("notokay");
-      const response = await axios.get(url);
+      const response = await limiter.schedule(() => axios.get(url));
       console.log(response);
       const html = response.data;
       const $ = load(html);
       console.log($);
 
-      $(
-        "div.product-shelf-tile.product-shelf-tile-book.bnBadgeHere.columns-4"
-      ).each((index, element) => {
+      $("div.elementList").each((index, element) => {
         const titleElement = $(element);
         const name = titleElement
-          .find("div.product-shelf-title.product-info-title.pt-xs ")
+          .find("div.left a.bookTitle")
           .text()
           .split("(")[0]
           .trim();
-        const author = titleElement
-          .find("div.product-shelf-author.pt-0.mt-1 a")
-          .text()
-          .trim();
-        const image = titleElement.find("img.full-shadow").attr("src");
+        const author = titleElement.find("div.left a.authorName").text().trim();
+        const image = titleElement.find("a.leftAlignedImage img").attr("src");
         const slugName = name
           .toLowerCase()
           .replace(/[^\w\s-]/g, "")
