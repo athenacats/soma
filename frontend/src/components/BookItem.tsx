@@ -9,8 +9,12 @@ export default function BookItem({ book }: { book: Book }) {
     location.pathname === "/mystery&crime" ||
     location.pathname === "/romance" ||
     location.pathname === "/science&tech" ||
-    location.pathname === "/scifi&fantasy" ||
-    location.pathname === "/teens&ya";
+    location.pathname === "/scifi" ||
+    location.pathname === "/teens&ya" ||
+    location.pathname === "/thriller" ||
+    location.pathname === "/horror" ||
+    location.pathname === "/fantasy" ||
+    location.pathname === "/nonfiction";
   return (
     <Card className="mb-3" style={{ cursor: "pointer" }}>
       <Link to={`/book/${book.slugName}/${book.slugAuthor}`}>

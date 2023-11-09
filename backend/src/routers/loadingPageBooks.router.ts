@@ -15,29 +15,25 @@ const limiter = new Bottleneck({
 router.get(
   "/",
   asyncHandler(async (req, res) => {
-    const url = "https://www.goodreads.com/shelf/show/new-releases";
+    const url = "https://www.goodreads.com/genres/new_releases/fiction";
     const book: Book[] = [];
     try {
       const response = await limiter.schedule(() => axios.get(url));
       const html = response.data;
       const $ = load(html);
-      $("div.elementList").each((index, element) => {
+
+      $("div.leftAlignedImage.bookBox").each((index, element) => {
         const titleElement = $(element);
-        const name = titleElement
-          .find("div.left a.bookTitle")
-          .text()
-          .split("(")[0]
-          .trim();
-        const author = titleElement.find("div.left a.authorName").text().trim();
-        const image = titleElement.find("a.leftAlignedImage img").attr("src");
-        const slugName = name
+        const altAttribute = titleElement.find("img.bookImage").attr("alt");
+        const name: string =
+          altAttribute!.split("(")[0].trim() || "Default Value"; //intellisense says value could be undefined
+        const author = "";
+        const image = titleElement.find("img.bookImage").attr("src");
+        const slugName = name!
           .toLowerCase()
           .replace(/[^\w\s-]/g, "")
           .replace(/\s+/g, "+");
-        const slugAuthor = author
-          .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
-          .replace(/\s+/g, "+");
+        const slugAuthor = "na";
         book.push({
           name,
           author,
