@@ -112,6 +112,9 @@ function App() {
                   <LinkContainer to="/mystery&crime">
                     <NavDropdown.Item>Mystery & Crime</NavDropdown.Item>
                   </LinkContainer>
+                  <LinkContainer to="/nonfiction">
+                    <NavDropdown.Item>Nonfiction</NavDropdown.Item>
+                  </LinkContainer>
                   <LinkContainer to="/romance">
                     <NavDropdown.Item>Romance</NavDropdown.Item>
                   </LinkContainer>
