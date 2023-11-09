@@ -18,7 +18,7 @@ export default function FictionBooks() {
       <div>
         <h1 className="text-center mb-4">Best Selling Fiction Books</h1>
         <Row>
-          {books!.slice(0, 48).map((book, index) => (
+          {books!.slice(0, 90).map((book, index) => (
             <Col key={index} sm={6} md={4} lg={3}>
               <BookItem book={book} />
             </Col>
