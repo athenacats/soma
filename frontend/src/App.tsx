@@ -100,6 +100,9 @@ function App() {
                   className="header-link dropdown"
                   title="Categories"
                 >
+                  <LinkContainer to="/fantasy">
+                    <NavDropdown.Item>Fantasy</NavDropdown.Item>
+                  </LinkContainer>
                   <LinkContainer to="/fiction">
                     <NavDropdown.Item>Fiction</NavDropdown.Item>
                   </LinkContainer>
