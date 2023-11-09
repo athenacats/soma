@@ -112,10 +112,8 @@ function App() {
                   <LinkContainer to="/science&tech">
                     <NavDropdown.Item>Science & Technology</NavDropdown.Item>
                   </LinkContainer>
-                  <LinkContainer to="/scifi&fantasy">
-                    <NavDropdown.Item>
-                      Science Fiction & Fantasy
-                    </NavDropdown.Item>
+                  <LinkContainer to="/scifi">
+                    <NavDropdown.Item>Science Fiction</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/teens&ya">
                     <NavDropdown.Item>Teens & YA</NavDropdown.Item>

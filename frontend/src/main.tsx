@@ -37,7 +37,7 @@ const router = createBrowserRouter(
       <Route path="mystery&crime" element={<MysteryCrimePage />}></Route>
       <Route path="romance" element={<RomancePage />}></Route>
       <Route path="science&tech" element={<ScienceTechPage />}></Route>
-      <Route path="scifi&fantasy" element={<ScifiFantasyPage />}></Route>
+      <Route path="scifi" element={<ScifiFantasyPage />}></Route>
       <Route path="teens&ya" element={<TeensYAPage />}></Route>
       <Route path="signin" element={<SignInPage />}></Route>
       <Route path="signout" element={<SignInPage />}></Route>

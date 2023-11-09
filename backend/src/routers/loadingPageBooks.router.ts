@@ -193,7 +193,7 @@ router.get(
 );
 
 router.get(
-  "/scifi&fantasy",
+  "/scifi",
   asyncHandler(async (req, res) => {
     const url = "https://www.goodreads.com/genres/new_releases/science-fiction";
     const book: Book[] = [];
