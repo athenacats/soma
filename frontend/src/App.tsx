@@ -124,6 +124,9 @@ function App() {
                   <LinkContainer to="/teens&ya">
                     <NavDropdown.Item>Teens & YA</NavDropdown.Item>
                   </LinkContainer>
+                  <LinkContainer to="/thriller">
+                    <NavDropdown.Item>Thriller</NavDropdown.Item>
+                  </LinkContainer>
                 </NavDropdown>
               </Nav>
             </Container>

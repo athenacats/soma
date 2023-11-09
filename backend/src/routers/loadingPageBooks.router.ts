@@ -325,6 +325,50 @@ router.get(
 );
 
 router.get(
+  "/thriller",
+  asyncHandler(async (req, res) => {
+    const url = "https://www.goodreads.com/genres/new_releases/thriller";
+    const book: Book[] = [];
+    try {
+      const response = await limiter.schedule(() => axios.get(url));
+      const html = response.data;
+      const $ = load(html);
+
+      $("div.leftAlignedImage.bookBox").each((index, element) => {
+        const titleElement = $(element);
+        const altAttribute = titleElement.find("img.bookImage").attr("alt");
+        const name: string =
+          altAttribute!.split("(")[0].trim() || "Default Value"; //intellisense says value could be undefined
+        const author = "";
+        const image = titleElement.find("img.bookImage").attr("src");
+        const slugName = name!
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, "")
+          .replace(/\s+/g, "+");
+        const slugAuthor = "na";
+        book.push({
+          name,
+          author,
+          image,
+          slugName,
+          slugAuthor,
+          rating: 0,
+          yourRating: 0,
+          favorite: false,
+          isbn: "",
+          bookId: "",
+          pages: 0,
+        });
+      });
+      res.json(book);
+    } catch (error) {
+      console.log("Error:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  })
+);
+
+router.get(
   "/mystery&crime",
   asyncHandler(async (req, res) => {
     const url = "https://www.goodreads.com/genres/new_releases/mystery";

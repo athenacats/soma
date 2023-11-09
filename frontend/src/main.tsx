@@ -28,6 +28,7 @@ import { SignUpPage } from "./pages/SignUpPage.tsx";
 import { ProfilePage } from "./pages/ProfilePage.tsx";
 import { FantasyPage } from "./pages/FantasyPage.tsx";
 import { HorrorPage } from "./pages/HorrorPage.tsx";
+import { ThrillerPage } from "./pages/ThrillerPage.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -37,6 +38,7 @@ const router = createBrowserRouter(
       <Route path="search/:slugName" element={<SeachResultsPage />}></Route>
       <Route path="fiction" element={<FictionPage />}></Route>
       <Route path="horror" element={<HorrorPage />}></Route>
+      <Route path="thriller" element={<ThrillerPage />}></Route>
       <Route path="mystery&crime" element={<MysteryCrimePage />}></Route>
       <Route path="romance" element={<RomancePage />}></Route>
       <Route path="science&tech" element={<ScienceTechPage />}></Route>
