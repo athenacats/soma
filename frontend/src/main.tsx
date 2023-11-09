@@ -30,7 +30,7 @@ import { ProfilePage } from "./pages/ProfilePage.tsx";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      <Route index={true} element={<HomePage />}></Route>
+      <Route path="/" index={true} element={<HomePage />}></Route>
       <Route path="book/:slugName/:slugAuthor" element={<BookPage />}></Route>
       <Route path="search/:slugName" element={<SeachResultsPage />}></Route>
       <Route path="fiction" element={<FictionPage />}></Route>
