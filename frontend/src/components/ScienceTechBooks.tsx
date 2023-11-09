@@ -20,7 +20,7 @@ export default function ScienceTechBooks() {
           Best Selling Science & Technology Books
         </h1>
         <Row>
-          {books!.slice(0, 8).map((book, index) => (
+          {books!.slice(0, 90).map((book, index) => (
             <Col key={index} sm={6} md={4} lg={3}>
               <BookItem book={book} />
             </Col>
