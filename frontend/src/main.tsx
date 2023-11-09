@@ -34,7 +34,7 @@ import { NonfictionPage } from "./pages/NonfictionPage.tsx";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      <Route path="/" index={true} element={<HomePage />}></Route>
+      <Route index={true} element={<HomePage />}></Route>
       <Route path="book/:slugName/:slugAuthor" element={<BookPage />}></Route>
       <Route path="search/:slugName" element={<SeachResultsPage />}></Route>
       <Route path="fiction" element={<FictionPage />}></Route>
