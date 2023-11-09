@@ -269,35 +269,25 @@ router.get(
 router.get(
   "/mystery&crime",
   asyncHandler(async (req, res) => {
-    const url =
-      "https://www.barnesandnoble.com/b/books/mystery-crime/_/N-1sZ29Z8q8Z16g4";
+    const url = "https://www.goodreads.com/genres/new_releases/mystery";
     const book: Book[] = [];
     try {
-      const response = await axios.get(url);
+      const response = await limiter.schedule(() => axios.get(url));
       const html = response.data;
       const $ = load(html);
 
-      $(
-        "div.product-shelf-tile.product-shelf-tile-book.bnBadgeHere.columns-4"
-      ).each((index, element) => {
+      $("div.leftAlignedImage.bookBox").each((index, element) => {
         const titleElement = $(element);
-        const name = titleElement
-          .find("div.product-shelf-title.product-info-title.pt-xs ")
-          .text()
-          .trim();
-        const author = titleElement
-          .find("div.product-shelf-author.pt-0.mt-1 a")
-          .text()
-          .trim();
-        const image = titleElement.find("img.full-shadow").attr("src");
-        const slugName = name
+        const altAttribute = titleElement.find("img.bookImage").attr("alt");
+        const name: string =
+          altAttribute!.split("(")[0].trim() || "Default Value"; //intellisense says value could be undefined
+        const author = "";
+        const image = titleElement.find("img.bookImage").attr("src");
+        const slugName = name!
           .toLowerCase()
           .replace(/[^\w\s-]/g, "")
           .replace(/\s+/g, "+");
-        const slugAuthor = author
-          .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
-          .replace(/\s+/g, "+");
+        const slugAuthor = "na";
         book.push({
           name,
           author,
@@ -435,7 +425,6 @@ router.get(
   "/search/:slugName",
   asyncHandler(async (req, res) => {
     const { slugName } = req.params;
-    console.log(slugName);
     const url = `https://openlibrary.org/search.json?q=${slugName}`;
     try {
       const response = await axios.get(url);
