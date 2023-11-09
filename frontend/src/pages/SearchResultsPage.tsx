@@ -18,19 +18,6 @@ export default function SeachResultsPage() {
     error,
   } = useGetBookDetailsBySearchQuery(slugName!);
 
-  let uniqueBooks: Book[] = [];
-
-  if (books) {
-    const titleSet = new Set();
-    uniqueBooks = books.filter((book) => {
-      if (!titleSet.has(book.name)) {
-        titleSet.add(book.name);
-        return true;
-      }
-      return false;
-    });
-  }
-
   function audioBookMobilism(clickedBook: Book) {
     window.open(
       `https://forum.mobilism.org/search.php?keywords=${clickedBook.slugName}+${clickedBook.slugAuthor}&sr=topics&sf=titleonly`
@@ -62,18 +49,16 @@ export default function SeachResultsPage() {
       <Row>
         <Helmet>
           <title>
-            {uniqueBooks.length > 0
-              ? "Search Results"
-              : "Book Not Yet On Database"}
+            {books.length > 0 ? "Search Results" : "Book Not Yet On Database"}
           </title>
         </Helmet>
         <h5 className="text-center mb-3">
-          {uniqueBooks.length > 0
+          {books.length > 0
             ? "For a smooth experience, please use a VPN and ensure that you have signed in to Mobilism before downloading from the site"
             : ""}
         </h5>
-        {uniqueBooks.length > 0 ? (
-          uniqueBooks.slice(0, 8).map((book, index) => (
+        {books.length > 0 ? (
+          books.slice(0, 8).map((book, index) => (
             <Col key={index} sm={6} md={4} lg={3}>
               <BookItemSearchResults book={book} />
               <Container className="d-flex justify-content-evenly flex-wrap">

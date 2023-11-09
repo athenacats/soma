@@ -483,8 +483,6 @@ router.get(
               bookId: "",
               image: undefined,
             };
-            console.log(bookData.author_name);
-            console.log(bookData.title);
             try {
               const coverUrl = `https://covers.openlibrary.org/b/id/${bookData.cover_i}-L.jpg`;
 
