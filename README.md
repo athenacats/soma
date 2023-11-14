@@ -19,10 +19,11 @@
 - [Introduction](#introduction)
 - [Technologies](#technologies)
 - [Setup](#setup)
+- [How To Contribute](#how-to-contribute)
 - [Project Status](#project-status)
 - [Challenges Faced](#challenges-faced)
 - [Future Implementation](#future-implementation)
-- [Acknowledgements](#acknowledgements)
+- [Licence](#licence)
 - [Contact](#contact)
 
 ## Introduction
@@ -56,6 +57,35 @@ To run this project:
 $ npm run build
 $ npm start
 ```
+
+## How To Contribute
+
+Thank you for your interest in contributing to this open-source project!
+
+### Prerequisites
+
+- A GitHub account
+- Git installed on your local development environment
+- Node Package Manager (npm) installed on your local development environment
+
+### How To:
+
+1. Fork the repository
+
+2. Clone the forked repository
+
+3. Install dependencies: To install the necessary dependencies for the project, navigate to the project directory and run the following command: ```npm install```
+4. Create your changes
+5. Create a new branch for your changes
+6. Add your changed files to the stage by running the following command: ```git add .```
+7. Commit your changes
+8. Push to the branch
+9. Create a pull request: To submit your changes to the main repository, create a pull request by clicking on the "Compare & pull request" button on your forked repository page.
+10. Wait for review and merge: Wait for the project maintainers to review and merge your changes.
+
+Once your changes are merged, your changes will be displayed on the project's website.
+
+
 
 ## Project Status
 
