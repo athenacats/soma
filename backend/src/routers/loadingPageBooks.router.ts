@@ -506,6 +506,7 @@ router.get(
       : `https://openlibrary.org/search.json?title=${slugName}&author=${slugAuthor}`;
 
     try {
+      //console.log(url);
       const response = await axios.get(url);
       const bookDetails = response.data.docs;
 
@@ -519,10 +520,11 @@ router.get(
             cover_i: number;
             ratings_average: number;
           }) => {
+            //console.log("bookdata:", bookData.author_name);
             const book: Book = {
               name: bookData.title,
-              author: bookData.author_name[0],
-              isbn: bookData.isbn[0],
+              author: bookData.author_name,
+              isbn: bookData.isbn,
               pages: bookData.number_of_pages_median,
               slugName: slugName,
               slugAuthor: slugAuthor,
@@ -533,12 +535,17 @@ router.get(
               image: undefined,
             };
             try {
-              const coverUrl = `https://covers.openlibrary.org/b/id/${bookData.cover_i}-L.jpg`;
+              let coverUrl;
+              bookData.cover_i.toString.length === 0
+                ? (coverUrl = `https://authors.bookfunnel.com/wp-content/uploads/2017/02/Soothing_Clouds.jpg`)
+                : (coverUrl = `https://covers.openlibrary.org/b/id/${bookData.cover_i}-L.jpg`);
 
+              console.log(coverUrl);
               book.image = coverUrl;
             } catch (error) {
               console.log("No image found");
-              book.image = undefined;
+              book.image =
+                "https://authors.bookfunnel.com/wp-content/uploads/2017/02/Soothing_Clouds.jpg";
             }
             return book;
           }
