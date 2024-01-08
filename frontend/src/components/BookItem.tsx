@@ -1,9 +1,15 @@
-import { Card } from "react-bootstrap";
+import { Card, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Book } from "../types/Book";
 import Rating from "./Rating";
+import { useState } from "react";
 
 export default function BookItem({ book }: { book: Book }) {
+  const [imageIsLoading, setImageIsLoading] = useState(true);
+
+  const handleImageLoad = () => {
+    setImageIsLoading(false);
+  };
   const isGoodreadsPageActive =
     location.pathname === "/fiction" ||
     location.pathname === "/mystery&crime" ||
@@ -19,7 +25,26 @@ export default function BookItem({ book }: { book: Book }) {
   return (
     <Card className="mb-3" style={{ cursor: "pointer" }}>
       <Link to={`/book/${book.slugName}/${book.slugAuthor}`}>
-        <img src={book.image} className="card-img-top" alt={book.name} />
+        {imageIsLoading && (
+          <Spinner
+            animation="border"
+            role="status"
+            style={{
+              color: "#f5ad43",
+              height: "2rem",
+              width: "2rem",
+              marginTop: "1rem",
+            }}
+          >
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        )}
+        <img
+          src={book.image}
+          className="card-img-top"
+          alt={book.name}
+          onLoad={handleImageLoad}
+        />
       </Link>
       <Card.Body>
         <Link to={`/book/${book.slugName}/${book.slugAuthor}`}>
