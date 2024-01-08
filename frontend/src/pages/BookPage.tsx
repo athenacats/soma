@@ -81,7 +81,7 @@ export default function BookPage() {
         </h5>
 
         {uniqueBooks.length > 0 ? (
-          uniqueBooks.slice(0, 8).map((book, index) => (
+          uniqueBooks.slice(0, 3).map((book, index) => (
             <Col key={index} sm={6} md={4} lg={3}>
               <BookItem book={book} />
               <Container className="d-flex justify-content-evenly flex-wrap">
