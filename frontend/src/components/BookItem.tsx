@@ -50,7 +50,9 @@ export default function BookItem({ book }: { book: Book }) {
         <Link to={`/book/${book.slugName}/${book.slugAuthor}`}>
           <Card.Title>{book.name}</Card.Title>
 
-          <Card.Subtitle>by {book.author}</Card.Subtitle>
+          <Card.Subtitle style={{ textDecorationLine: "none !important" }}>
+            by {book.author}
+          </Card.Subtitle>
         </Link>
         <Rating yourRating={book.yourRating} book={book} />
       </Card.Body>
