@@ -67,7 +67,6 @@ router.get(
 
 function extractAuthorNameFromScript(scriptData: string | null) {
   const authorNameIndex = scriptData!.indexOf('class=\\"authorName\\"');
-  console.log(authorNameIndex);
   if (scriptData !== null && authorNameIndex > 0) {
     const remainingScript = scriptData!.substring(authorNameIndex);
     const match = remainingScript.match(/>(.*?)</);
@@ -521,12 +520,10 @@ router.get(
   "/book/:slugName/:slugAuthor",
   asyncHandler(async (req, res) => {
     const { slugName, slugAuthor } = req.params;
-    console.log(slugAuthor);
     let url = "";
     slugAuthor === "na"
       ? (url = `https://openlibrary.org/search.json?title=${slugName}`)
       : (url = `https://openlibrary.org/search.json?q=${slugName}+${slugAuthor}`);
-    console.log(url);
     try {
       //console.log(url);
       const response = await axios.get(url);
@@ -562,7 +559,6 @@ router.get(
                 ? (coverUrl = `https://authors.bookfunnel.com/wp-content/uploads/2017/02/Soothing_Clouds.jpg`)
                 : (coverUrl = `https://covers.openlibrary.org/b/id/${bookData.cover_i}-L.jpg`);
 
-              console.log(coverUrl);
               book.image = coverUrl;
             } catch (error) {
               console.log("No image found");
