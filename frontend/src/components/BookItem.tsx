@@ -4,7 +4,7 @@ import { Book } from "../types/Book";
 import Rating from "./Rating";
 import { useState } from "react";
 
-export default function BookItem({ book }: { book: Book }) {
+const BookItem: React.FC<{ book: Book }> = ({ book }) => {
   const [imageIsLoading, setImageIsLoading] = useState(true);
 
   const handleImageLoad = () => {
@@ -13,7 +13,7 @@ export default function BookItem({ book }: { book: Book }) {
 
   return (
     <Card className="mb-3" style={{ cursor: "pointer" }}>
-      <Link to={`/book/${book.slugName}/${book.slugAuthor}`}>
+      <Link to={`/book/${book.slugName}/${book.slugAuthor}`} state={book}>
         {imageIsLoading && (
           <Spinner
             animation="border"
@@ -36,9 +36,8 @@ export default function BookItem({ book }: { book: Book }) {
         />
       </Link>
       <Card.Body>
-        <Link to={`/book/${book.slugName}/${book.slugAuthor}`}>
+        <Link to={`/book/${book.slugName}/${book.slugAuthor}`} state={book}>
           <Card.Title>{book.name}</Card.Title>
-
           <Card.Subtitle style={{ textDecorationLine: "none !important" }}>
             by {book.author}
           </Card.Subtitle>
@@ -47,4 +46,6 @@ export default function BookItem({ book }: { book: Book }) {
       </Card.Body>
     </Card>
   );
-}
+};
+
+export default BookItem;

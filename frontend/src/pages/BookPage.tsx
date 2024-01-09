@@ -1,35 +1,20 @@
 import { Helmet } from "react-helmet-async";
-import { useNavigate, useParams } from "react-router-dom";
-import { useGetBookDetailsBySlugQuery } from "../hooks/bookHooks";
-import LoadingMessage from "../components/LoadingMessage";
-import MessageBox from "../components/MessageBox";
-import { getError } from "../utils";
-import { ApiError } from "../types/ApiError";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { Book } from "../types/Book";
-import BookItemSearchResults from "../components/BookItemSearchResults";
+import Rating from "../components/Rating";
 
 export default function BookPage() {
-  const params = useParams();
-  const { slugName, slugAuthor } = params;
-  const {
-    data: books,
-    isLoading,
-    error,
-  } = useGetBookDetailsBySlugQuery(slugName!, slugAuthor!);
+  const location = useLocation();
+  const bookDetails = location.state;
 
-  let uniqueBooks: Book[] = [];
+  console.log(bookDetails);
 
-  if (books) {
-    const titleSet = new Set();
-    uniqueBooks = books.filter((book) => {
-      if (!titleSet.has(book.name)) {
-        titleSet.add(book.name);
-        return true;
-      }
-      return false;
-    });
+  if (!bookDetails) {
+    return <div>Error: Book details not found</div>;
   }
+
+  const { name, author, image, rating } = bookDetails;
 
   function audioBookMobilism(clickedBook: Book) {
     window.open(
@@ -50,79 +35,59 @@ export default function BookPage() {
     );
   }
 
-  const navigate = useNavigate();
-
-  const handleButtonClick = () => {
-    // Navigate to the homepage
-    navigate("/");
-  };
-
-  return isLoading ? (
-    <LoadingMessage />
-  ) : error ? (
-    <MessageBox variant="danger">{getError(error as ApiError)}</MessageBox>
-  ) : !books ? (
-    <MessageBox variant="danger">Book Not Found</MessageBox>
-  ) : (
+  return (
     <div>
       <Row>
         <Helmet>
           <title>
-            {uniqueBooks.length > 0
-              ? `${uniqueBooks[0]?.name} by ${uniqueBooks[0]?.author}`
-              : "Book Not Yet On Database"}
+            {name} by {author}
           </title>
         </Helmet>
 
         <h5 className="text-center mb-3">
-          {uniqueBooks.length > 0
-            ? "For a smooth experience, please use a VPN and ensure that you have signed in to Mobilism before downloading from the site"
-            : ""}
+          For a smooth experience, please use a VPN and ensure that you have
+          signed in to Mobilism before downloading from the site
         </h5>
 
-        {uniqueBooks.length > 0 ? (
-          uniqueBooks.slice(0, 3).map((book, index) => (
-            <Col key={index} sm={6} md={4} lg={3}>
-              <BookItemSearchResults book={book} />
-              <Container className="d-flex justify-content-evenly flex-wrap">
-                <Button
-                  className="mt-2 btn btn-primary btn-sm"
-                  onClick={() => audioBookMobilism(book)}
-                >
-                  <i className="fas fa-headphones"></i> From Mobilism
-                </Button>
-                <Button
-                  className="mt-2 btn btn-primary btn-sm"
-                  onClick={() => audioBookAudioBookBay(book)}
-                >
-                  <i className="fas fa-headphones"></i> From AudioBookBay
-                </Button>
-                <Button
-                  className="mt-2 btn btn-primary btn-sm"
-                  onClick={() => audioBookMobilism(book)}
-                >
-                  <i className="fas fa-book-open"></i> From Mobilism
-                </Button>
-                <Button
-                  className="mt-2 btn btn-primary btn-sm"
-                  onClick={() => ebookZLibrary(book)}
-                >
-                  <i className="fas fa-book-open"></i> From Z-Library
-                </Button>
-              </Container>
-            </Col>
-          ))
-        ) : (
-          <>
-            <h4 className="text-center">Book Not Yet On Our Database</h4>
+        <Col sm={6} md={4} lg={3}>
+          <Card className="mb-3" style={{ cursor: "pointer" }}>
+            <img src={image} className="card-img-top" alt={name} />
+
+            <Card.Body>
+              <Card.Title>{name}</Card.Title>
+
+              <Card.Subtitle>by {author}</Card.Subtitle>
+
+              <Rating yourRating={rating} book={bookDetails} />
+            </Card.Body>
+          </Card>
+          <Container className="d-flex justify-content-evenly flex-wrap">
             <Button
-              className=" mt-5 btn btn-primary btn-sm w-50 m-auto "
-              onClick={handleButtonClick}
+              className="mt-2 btn btn-primary btn-sm"
+              onClick={() => audioBookMobilism(bookDetails)}
             >
-              <i className="fas fa-home"></i> Discover Your Next Five Star Read!
+              <i className="fas fa-headphones"></i> From Mobilism
             </Button>
-          </>
-        )}
+            <Button
+              className="mt-2 btn btn-primary btn-sm"
+              onClick={() => audioBookAudioBookBay(bookDetails)}
+            >
+              <i className="fas fa-headphones"></i> From AudioBookBay
+            </Button>
+            <Button
+              className="mt-2 btn btn-primary btn-sm"
+              onClick={() => audioBookMobilism(bookDetails)}
+            >
+              <i className="fas fa-book-open"></i> From Mobilism
+            </Button>
+            <Button
+              className="mt-2 btn btn-primary btn-sm"
+              onClick={() => ebookZLibrary(bookDetails)}
+            >
+              <i className="fas fa-book-open"></i> From Z-Library
+            </Button>
+          </Container>
+        </Col>
       </Row>
     </div>
   );

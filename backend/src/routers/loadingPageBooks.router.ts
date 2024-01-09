@@ -575,68 +575,6 @@ router.get(
 );
 
 router.get(
-  "/book/:slugName/:slugAuthor",
-  asyncHandler(async (req, res) => {
-    const { slugName, slugAuthor } = req.params;
-    let url = "";
-    slugAuthor === "na"
-      ? (url = `https://openlibrary.org/search.json?title=${slugName}`)
-      : (url = `https://openlibrary.org/search.json?q=${slugName}+${slugAuthor}`);
-    try {
-      //console.log(url);
-      const response = await axios.get(url);
-      const bookDetails = response.data.docs;
-
-      const books: Book[] = await Promise.all(
-        bookDetails.map(
-          (bookData: {
-            title: string;
-            author_name: string;
-            isbn: string;
-            number_of_pages_median: number;
-            cover_i: number;
-            ratings_average: number;
-          }) => {
-            //console.log("bookdata:", bookData.author_name);
-            const book: Book = {
-              name: bookData.title,
-              author: bookData.author_name,
-              isbn: bookData.isbn,
-              pages: bookData.number_of_pages_median,
-              slugName: slugName,
-              slugAuthor: slugAuthor,
-              rating: bookData.ratings_average || 0,
-              yourRating: 0,
-              favorite: false,
-              bookId: "",
-              image: undefined,
-            };
-            try {
-              let coverUrl;
-              bookData.cover_i.toString.length === 0
-                ? (coverUrl = `https://authors.bookfunnel.com/wp-content/uploads/2017/02/Soothing_Clouds.jpg`)
-                : (coverUrl = `https://covers.openlibrary.org/b/id/${bookData.cover_i}-L.jpg`);
-
-              book.image = coverUrl;
-            } catch (error) {
-              console.log("No image found");
-              book.image =
-                "https://authors.bookfunnel.com/wp-content/uploads/2017/02/Soothing_Clouds.jpg";
-            }
-            return book;
-          }
-        )
-      );
-
-      res.json(books);
-    } catch (error) {
-      console.log("Error:", error);
-      res.status(500).json({ error: "Internal Server Error" });
-    }
-  })
-);
-
-router.get(
   "/search/:slugName",
   asyncHandler(async (req, res) => {
     const { slugName } = req.params;
