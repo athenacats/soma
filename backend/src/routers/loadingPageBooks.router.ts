@@ -32,8 +32,6 @@ router.get(
           .html();
         const authorName = extractAuthorNameFromScript(scriptData);
         //console.log("authorname:", authorName);
-
-        //const author = "";
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
@@ -141,16 +139,22 @@ router.get(
         const altAttribute = titleElement.find("img.bookImage").attr("alt");
         const name: string =
           altAttribute!.split("(")[0].trim() || "Default Value"; //intellisense says value could be undefined
-        const author = "";
+        const scriptData = titleElement
+          .find("script:not([type='text/javascript'])")
+          .html();
+        const authorName = extractAuthorNameFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
           .replace(/[^\w\s-]/g, "")
           .replace(/\s+/g, "+");
-        const slugAuthor = "na";
+        const slugAuthor = authorName!
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, "")
+          .replace(/\s+/g, "+");
         book.push({
           name,
-          author,
+          author: authorName || "",
           image,
           slugName,
           slugAuthor,
@@ -185,16 +189,22 @@ router.get(
         const altAttribute = titleElement.find("img.bookImage").attr("alt");
         const name: string =
           altAttribute!.split("(")[0].trim() || "Default Value"; //intellisense says value could be undefined
-        const author = "";
+        const scriptData = titleElement
+          .find("script:not([type='text/javascript'])")
+          .html();
+        const authorName = extractAuthorNameFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
           .replace(/[^\w\s-]/g, "")
           .replace(/\s+/g, "+");
-        const slugAuthor = "na";
+        const slugAuthor = authorName!
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, "")
+          .replace(/\s+/g, "+");
         book.push({
           name,
-          author,
+          author: authorName || "",
           image,
           slugName,
           slugAuthor,
@@ -229,16 +239,22 @@ router.get(
         const altAttribute = titleElement.find("img.bookImage").attr("alt");
         const name: string =
           altAttribute!.split("(")[0].trim() || "Default Value"; //intellisense says value could be undefined
-        const author = "";
+        const scriptData = titleElement
+          .find("script:not([type='text/javascript'])")
+          .html();
+        const authorName = extractAuthorNameFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
           .replace(/[^\w\s-]/g, "")
           .replace(/\s+/g, "+");
-        const slugAuthor = "na";
+        const slugAuthor = authorName!
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, "")
+          .replace(/\s+/g, "+");
         book.push({
           name,
-          author,
+          author: authorName || "",
           image,
           slugName,
           slugAuthor,
@@ -273,16 +289,22 @@ router.get(
         const altAttribute = titleElement.find("img.bookImage").attr("alt");
         const name: string =
           altAttribute!.split("(")[0].trim() || "Default Value"; //intellisense says value could be undefined
-        const author = "";
+        const scriptData = titleElement
+          .find("script:not([type='text/javascript'])")
+          .html();
+        const authorName = extractAuthorNameFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
           .replace(/[^\w\s-]/g, "")
           .replace(/\s+/g, "+");
-        const slugAuthor = "na";
+        const slugAuthor = authorName!
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, "")
+          .replace(/\s+/g, "+");
         book.push({
           name,
-          author,
+          author: authorName || "",
           image,
           slugName,
           slugAuthor,
@@ -317,16 +339,22 @@ router.get(
         const altAttribute = titleElement.find("img.bookImage").attr("alt");
         const name: string =
           altAttribute!.split("(")[0].trim() || "Default Value"; //intellisense says value could be undefined
-        const author = "";
+        const scriptData = titleElement
+          .find("script:not([type='text/javascript'])")
+          .html();
+        const authorName = extractAuthorNameFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
           .replace(/[^\w\s-]/g, "")
           .replace(/\s+/g, "+");
-        const slugAuthor = "na";
+        const slugAuthor = authorName!
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, "")
+          .replace(/\s+/g, "+");
         book.push({
           name,
-          author,
+          author: authorName || "",
           image,
           slugName,
           slugAuthor,
@@ -361,16 +389,22 @@ router.get(
         const altAttribute = titleElement.find("img.bookImage").attr("alt");
         const name: string =
           altAttribute!.split("(")[0].trim() || "Default Value"; //intellisense says value could be undefined
-        const author = "";
+        const scriptData = titleElement
+          .find("script:not([type='text/javascript'])")
+          .html();
+        const authorName = extractAuthorNameFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
           .replace(/[^\w\s-]/g, "")
           .replace(/\s+/g, "+");
-        const slugAuthor = "na";
+        const slugAuthor = authorName!
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, "")
+          .replace(/\s+/g, "+");
         book.push({
           name,
-          author,
+          author: authorName || "",
           image,
           slugName,
           slugAuthor,
@@ -405,16 +439,22 @@ router.get(
         const altAttribute = titleElement.find("img.bookImage").attr("alt");
         const name: string =
           altAttribute!.split("(")[0].trim() || "Default Value"; //intellisense says value could be undefined
-        const author = "";
+        const scriptData = titleElement
+          .find("script:not([type='text/javascript'])")
+          .html();
+        const authorName = extractAuthorNameFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
           .replace(/[^\w\s-]/g, "")
           .replace(/\s+/g, "+");
-        const slugAuthor = "na";
+        const slugAuthor = authorName!
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, "")
+          .replace(/\s+/g, "+");
         book.push({
           name,
-          author,
+          author: authorName || "",
           image,
           slugName,
           slugAuthor,
@@ -449,16 +489,22 @@ router.get(
         const altAttribute = titleElement.find("img.bookImage").attr("alt");
         const name: string =
           altAttribute!.split("(")[0].trim() || "Default Value"; //intellisense says value could be undefined
-        const author = "";
+        const scriptData = titleElement
+          .find("script:not([type='text/javascript'])")
+          .html();
+        const authorName = extractAuthorNameFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
           .replace(/[^\w\s-]/g, "")
           .replace(/\s+/g, "+");
-        const slugAuthor = "na";
+        const slugAuthor = authorName!
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, "")
+          .replace(/\s+/g, "+");
         book.push({
           name,
-          author,
+          author: authorName || "",
           image,
           slugName,
           slugAuthor,
@@ -493,16 +539,22 @@ router.get(
         const altAttribute = titleElement.find("img.bookImage").attr("alt");
         const name: string =
           altAttribute!.split("(")[0].trim() || "Default Value"; //intellisense says value could be undefined
-        const author = "";
+        const scriptData = titleElement
+          .find("script:not([type='text/javascript'])")
+          .html();
+        const authorName = extractAuthorNameFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
           .replace(/[^\w\s-]/g, "")
           .replace(/\s+/g, "+");
-        const slugAuthor = "na";
+        const slugAuthor = authorName!
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, "")
+          .replace(/\s+/g, "+");
         book.push({
           name,
-          author,
+          author: authorName || "",
           image,
           slugName,
           slugAuthor,
