@@ -31,7 +31,7 @@ router.get(
           .find("script:not([type='text/javascript'])")
           .html();
         const authorName = extractAuthorNameFromScript(scriptData);
-        console.log("authorname:", authorName);
+        //console.log("authorname:", authorName);
 
         //const author = "";
         const image = titleElement.find("img.bookImage").attr("src");
@@ -39,7 +39,10 @@ router.get(
           .toLowerCase()
           .replace(/[^\w\s-]/g, "")
           .replace(/\s+/g, "+");
-        const slugAuthor = "na";
+        const slugAuthor = authorName!
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, "")
+          .replace(/\s+/g, "+");
         book.push({
           name,
           author: authorName || "",
@@ -68,7 +71,6 @@ function extractAuthorNameFromScript(scriptData: string | null) {
   if (scriptData !== null && authorNameIndex > 0) {
     const remainingScript = scriptData!.substring(authorNameIndex);
     const match = remainingScript.match(/>(.*?)</);
-    console.log("match:", match![1]);
     return match![1];
   } else {
     return null;
@@ -519,11 +521,12 @@ router.get(
   "/book/:slugName/:slugAuthor",
   asyncHandler(async (req, res) => {
     const { slugName, slugAuthor } = req.params;
+    console.log(slugAuthor);
     let url = "";
     slugAuthor === "na"
       ? (url = `https://openlibrary.org/search.json?title=${slugName}`)
-      : `https://openlibrary.org/search.json?title=${slugName}&author=${slugAuthor}`;
-
+      : (url = `https://openlibrary.org/search.json?q=${slugName}+${slugAuthor}`);
+    console.log(url);
     try {
       //console.log(url);
       const response = await axios.get(url);
