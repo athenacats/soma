@@ -27,7 +27,13 @@ router.get(
         const altAttribute = titleElement.find("img.bookImage").attr("alt");
         const name: string =
           altAttribute!.split("(")[0].trim() || "Default Value"; //intellisense says value could be undefined
-        const author = "";
+        const scriptData = titleElement
+          .find("script:not([type='text/javascript'])")
+          .html();
+        const authorName = extractAuthorNameFromScript(scriptData);
+        console.log("authorname:", authorName);
+
+        //const author = "";
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
@@ -36,7 +42,7 @@ router.get(
         const slugAuthor = "na";
         book.push({
           name,
-          author,
+          author: authorName || "",
           image,
           slugName,
           slugAuthor,
@@ -55,6 +61,19 @@ router.get(
     }
   })
 );
+
+function extractAuthorNameFromScript(scriptData: string | null) {
+  const authorNameIndex = scriptData!.indexOf('class=\\"authorName\\"');
+  console.log(authorNameIndex);
+  if (scriptData !== null && authorNameIndex > 0) {
+    const remainingScript = scriptData!.substring(authorNameIndex);
+    const match = remainingScript.match(/>(.*?)</);
+    console.log("match:", match![1]);
+    return match![1];
+  } else {
+    return null;
+  }
+}
 
 router.get(
   "/fiction",

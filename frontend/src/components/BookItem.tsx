@@ -10,7 +10,7 @@ export default function BookItem({ book }: { book: Book }) {
   const handleImageLoad = () => {
     setImageIsLoading(false);
   };
-  const isGoodreadsPageActive =
+  /* const isGoodreadsPageActive =
     location.pathname === "/fiction" ||
     location.pathname === "/mystery&crime" ||
     location.pathname === "/romance" ||
@@ -21,7 +21,7 @@ export default function BookItem({ book }: { book: Book }) {
     location.pathname === "/horror" ||
     location.pathname === "/fantasy" ||
     location.pathname === "/nonfiction" ||
-    location.pathname === "/";
+    location.pathname === "/";*/
   return (
     <Card className="mb-3" style={{ cursor: "pointer" }}>
       <Link to={`/book/${book.slugName}/${book.slugAuthor}`}>
@@ -50,11 +50,7 @@ export default function BookItem({ book }: { book: Book }) {
         <Link to={`/book/${book.slugName}/${book.slugAuthor}`}>
           <Card.Title>{book.name}</Card.Title>
 
-          {isGoodreadsPageActive ? (
-            ""
-          ) : (
-            <Card.Subtitle>by {book.author}</Card.Subtitle>
-          )}
+          <Card.Subtitle>by {book.author}</Card.Subtitle>
         </Link>
         <Rating yourRating={book.yourRating} book={book} />
       </Card.Body>
