@@ -32,7 +32,7 @@ router.get(
           .html();
         const authorName = extractAuthorNameFromScript(scriptData);
         const bookDescription = extractDescriptionFromScript(scriptData);
-        //console.log("authorname:", authorName);
+
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
@@ -110,6 +110,7 @@ router.get(
           .find("script:not([type='text/javascript'])")
           .html();
         const authorName = extractAuthorNameFromScript(scriptData);
+        const bookDescription = extractDescriptionFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
@@ -122,6 +123,7 @@ router.get(
         book.push({
           name,
           author: authorName || "",
+          description: bookDescription || "",
           image,
           slugName,
           slugAuthor,
@@ -160,6 +162,7 @@ router.get(
           .find("script:not([type='text/javascript'])")
           .html();
         const authorName = extractAuthorNameFromScript(scriptData);
+        const bookDescription = extractDescriptionFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
@@ -172,6 +175,7 @@ router.get(
         book.push({
           name,
           author: authorName || "",
+          description: bookDescription || "",
           image,
           slugName,
           slugAuthor,
@@ -210,6 +214,7 @@ router.get(
           .find("script:not([type='text/javascript'])")
           .html();
         const authorName = extractAuthorNameFromScript(scriptData);
+        const bookDescription = extractDescriptionFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
@@ -222,6 +227,7 @@ router.get(
         book.push({
           name,
           author: authorName || "",
+          description: bookDescription || "",
           image,
           slugName,
           slugAuthor,
@@ -260,6 +266,7 @@ router.get(
           .find("script:not([type='text/javascript'])")
           .html();
         const authorName = extractAuthorNameFromScript(scriptData);
+        const bookDescription = extractDescriptionFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
@@ -272,6 +279,7 @@ router.get(
         book.push({
           name,
           author: authorName || "",
+          description: bookDescription || "",
           image,
           slugName,
           slugAuthor,
@@ -310,6 +318,7 @@ router.get(
           .find("script:not([type='text/javascript'])")
           .html();
         const authorName = extractAuthorNameFromScript(scriptData);
+        const bookDescription = extractDescriptionFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
@@ -322,6 +331,7 @@ router.get(
         book.push({
           name,
           author: authorName || "",
+          description: bookDescription || "",
           image,
           slugName,
           slugAuthor,
@@ -360,6 +370,7 @@ router.get(
           .find("script:not([type='text/javascript'])")
           .html();
         const authorName = extractAuthorNameFromScript(scriptData);
+        const bookDescription = extractDescriptionFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
@@ -372,6 +383,7 @@ router.get(
         book.push({
           name,
           author: authorName || "",
+          description: bookDescription || "",
           image,
           slugName,
           slugAuthor,
@@ -410,6 +422,7 @@ router.get(
           .find("script:not([type='text/javascript'])")
           .html();
         const authorName = extractAuthorNameFromScript(scriptData);
+        const bookDescription = extractDescriptionFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
@@ -422,6 +435,7 @@ router.get(
         book.push({
           name,
           author: authorName || "",
+          description: bookDescription || "",
           image,
           slugName,
           slugAuthor,
@@ -460,6 +474,7 @@ router.get(
           .find("script:not([type='text/javascript'])")
           .html();
         const authorName = extractAuthorNameFromScript(scriptData);
+        const bookDescription = extractDescriptionFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
@@ -472,6 +487,7 @@ router.get(
         book.push({
           name,
           author: authorName || "",
+          description: bookDescription || "",
           image,
           slugName,
           slugAuthor,
@@ -510,6 +526,7 @@ router.get(
           .find("script:not([type='text/javascript'])")
           .html();
         const authorName = extractAuthorNameFromScript(scriptData);
+        const bookDescription = extractDescriptionFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
@@ -522,6 +539,7 @@ router.get(
         book.push({
           name,
           author: authorName || "",
+          description: bookDescription || "",
           image,
           slugName,
           slugAuthor,
@@ -560,6 +578,7 @@ router.get(
           .find("script:not([type='text/javascript'])")
           .html();
         const authorName = extractAuthorNameFromScript(scriptData);
+        const bookDescription = extractDescriptionFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
@@ -572,6 +591,7 @@ router.get(
         book.push({
           name,
           author: authorName || "",
+          description: bookDescription || "",
           image,
           slugName,
           slugAuthor,
