@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Button, Card, Container, Row } from "react-bootstrap";
 import { Book } from "../types/Book";
 import Rating from "../components/Rating";
 
@@ -14,7 +14,7 @@ export default function BookPage() {
     return <div>Error: Book details not found</div>;
   }
 
-  const { name, author, image, rating } = bookDetails;
+  const { name, author, image, rating, description } = bookDetails;
 
   function audioBookMobilism(clickedBook: Book) {
     window.open(
@@ -49,9 +49,14 @@ export default function BookPage() {
           signed in to Mobilism before downloading from the site
         </h5>
 
-        <Col sm={6} md={4} lg={3}>
-          <Card className="mb-3" style={{ cursor: "pointer" }}>
-            <img src={image} className="card-img-top" alt={name} />
+        <div style={{ width: "80%", margin: "auto" }}>
+          <Card className="mb-3 " style={{ cursor: "pointer" }}>
+            <img
+              src={image}
+              className="card-img-top"
+              style={{ width: "50%" }}
+              alt={name}
+            />
 
             <Card.Body>
               <Card.Title>{name}</Card.Title>
@@ -59,6 +64,10 @@ export default function BookPage() {
               <Card.Subtitle>by {author}</Card.Subtitle>
 
               <Rating yourRating={rating} book={bookDetails} />
+              <Card.Text
+                dangerouslySetInnerHTML={{ __html: description }}
+                style={{ fontFamily: "fantasy", cursor: "default" }}
+              ></Card.Text>
             </Card.Body>
           </Card>
           <Container className="d-flex justify-content-evenly flex-wrap">
@@ -87,7 +96,7 @@ export default function BookPage() {
               <i className="fas fa-book-open"></i> From Z-Library
             </Button>
           </Container>
-        </Col>
+        </div>
       </Row>
     </div>
   );
