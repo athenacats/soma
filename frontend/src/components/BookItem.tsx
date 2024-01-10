@@ -12,7 +12,10 @@ const BookItem: React.FC<{ book: Book }> = ({ book }) => {
   };
 
   return (
-    <Card className="mb-3" style={{ cursor: "pointer" }}>
+    <Card
+      className="mb-3"
+      style={{ cursor: "pointer", border: "1px solid #f5ad43" }}
+    >
       <Link to={`/book/${book.slugName}/${book.slugAuthor}`} state={book}>
         {imageIsLoading && (
           <Spinner
@@ -35,9 +38,14 @@ const BookItem: React.FC<{ book: Book }> = ({ book }) => {
           onLoad={handleImageLoad}
         />
       </Link>
-      <Card.Body>
-        <Link to={`/book/${book.slugName}/${book.slugAuthor}`} state={book}>
-          <Card.Title>{book.name}</Card.Title>
+      <Card.Body className="d-flex flex-column " style={{ gap: "0.5rem" }}>
+        <Link
+          to={`/book/${book.slugName}/${book.slugAuthor}`}
+          state={book}
+          className="d-flex flex-column "
+          style={{ gap: "0.1rem" }}
+        >
+          <Card.Title style={{ fontSize: "1.5rem" }}>{book.name}</Card.Title>
           <Card.Subtitle style={{ textDecorationLine: "none !important" }}>
             by {book.author}
           </Card.Subtitle>
@@ -45,6 +53,7 @@ const BookItem: React.FC<{ book: Book }> = ({ book }) => {
         <Rating yourRating={book.yourRating} book={book} />
         <Card.Text
           dangerouslySetInnerHTML={{ __html: book.description }}
+          style={{ fontFamily: "fantasy", cursor: "default" }}
         ></Card.Text>
       </Card.Body>
     </Card>
