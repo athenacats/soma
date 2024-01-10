@@ -388,3 +388,8 @@ header {
   height: 5rem;
   z-index: 6;
 }
+
+div.bookName:hover,
+div.bookAuthor:hover {
+  color: var(--rating-hover) !important;
+}

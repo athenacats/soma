@@ -32,7 +32,7 @@ router.get(
           .html();
         const authorName = extractAuthorNameFromScript(scriptData);
         const bookDescription = extractDescriptionFromScript(scriptData);
-
+        const bookRating = extractRatingFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
@@ -49,7 +49,7 @@ router.get(
           image,
           slugName,
           slugAuthor,
-          rating: 0,
+          rating: bookRating || 0,
           yourRating: 0,
           favorite: false,
           isbn: "",
@@ -88,6 +88,20 @@ function extractDescriptionFromScript(scriptData: string | null) {
 
     // console.log("clean", cleanedText);
     return cleanedText;
+  }
+}
+
+function extractRatingFromScript(scriptData: string | null) {
+  const descriptionIndex = scriptData!.match(/span> ([\s\S]*?) avg rating/);
+  if (descriptionIndex) {
+    const match = descriptionIndex![1];
+    console.log(match);
+    //const text = match.match(/>([^<]*)</)![1].trim();
+
+    //const cleanedRating = text.replace(/\\n+/g, "<br />").replace(/\\/, "");
+
+    // console.log("clean", cleanedText);
+    return Number(match!);
   }
 }
 

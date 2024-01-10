@@ -46,11 +46,30 @@ const BookItem: React.FC<{ book: Book }> = ({ book }) => {
           className="d-flex flex-column "
           style={{ gap: "0.1rem" }}
         >
-          <Card.Title style={{ fontSize: "1.5rem" }}>{book.name}</Card.Title>
-          <Card.Subtitle style={{ textDecorationLine: "none !important" }}>
+          <Card.Title
+            className="bookName"
+            style={{
+              fontSize: "1.5rem",
+              color: "#f5ad43",
+              textDecoration: "underline",
+            }}
+          >
+            {book.name}
+          </Card.Title>
+          <Card.Subtitle
+            className="bookAuthor"
+            style={{ textDecoration: "underline", color: "#f5ad43" }}
+          >
             by {book.author}
           </Card.Subtitle>
         </Link>
+        <Card.Subtitle>
+          Goodreads Rating{"   "}
+          <span style={{ color: "#f5ad43", fontSize: "1.3rem" }}>
+            {" "}
+            {book.rating}
+          </span>
+        </Card.Subtitle>
         <Rating yourRating={book.yourRating} book={book} />
         <Card.Text
           dangerouslySetInnerHTML={{ __html: book.description }}
