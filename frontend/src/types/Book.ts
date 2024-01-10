@@ -8,7 +8,7 @@ export type Book = {
   yourRating: number;
   price: number;
   pages: number;
-  description?: string;
+  description: string;
   slugName: string;
   slugAuthor: string;
 };

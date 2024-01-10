@@ -31,6 +31,7 @@ router.get(
           .find("script:not([type='text/javascript'])")
           .html();
         const authorName = extractAuthorNameFromScript(scriptData);
+        const bookDescription = extractDescriptionFromScript(scriptData);
         //console.log("authorname:", authorName);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
@@ -44,6 +45,7 @@ router.get(
         book.push({
           name,
           author: authorName || "",
+          description: bookDescription || "",
           image,
           slugName,
           slugAuthor,
@@ -72,6 +74,22 @@ function extractAuthorNameFromScript(scriptData: string | null) {
   } else {
     return null;
   }
+}
+
+function extractDescriptionFromScript(scriptData: string | null) {
+  const descriptionIndex = scriptData!.match(
+    /<span id=\\"freeText\d+\\"([\s\S]*?)span>/
+  );
+  if (descriptionIndex) {
+    const match = descriptionIndex![1];
+    const text = match.match(/>([^<]*)</)![1].trim();
+
+    const cleanedText = text.replace(/\\n+/g, " ");
+
+    console.log("clean", cleanedText);
+  }
+
+  return "test";
 }
 
 router.get(
