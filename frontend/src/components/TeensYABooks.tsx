@@ -19,7 +19,7 @@ export default function TeensYABooks() {
         <h1 className="text-center mb-4">Best Selling Teens & YA Books</h1>
         <Row>
           {books!.slice(0, 90).map((book, index) => (
-            <Col key={index} sm={6} md={4} lg={3}>
+            <Col key={index} sm={12} md={6} lg={6}>
               <BookItem book={book} />
             </Col>
           ))}
