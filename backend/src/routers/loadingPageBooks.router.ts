@@ -84,12 +84,11 @@ function extractDescriptionFromScript(scriptData: string | null) {
     const match = descriptionIndex![1];
     const text = match.match(/>([^<]*)</)![1].trim();
 
-    const cleanedText = text.replace(/\\n+/g, " ");
+    const cleanedText = text.replace(/\\n+/g, "<br />").replace(/\\/, "");
 
-    console.log("clean", cleanedText);
+    // console.log("clean", cleanedText);
+    return cleanedText;
   }
-
-  return "test";
 }
 
 router.get(

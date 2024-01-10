@@ -43,6 +43,9 @@ const BookItem: React.FC<{ book: Book }> = ({ book }) => {
           </Card.Subtitle>
         </Link>
         <Rating yourRating={book.yourRating} book={book} />
+        <Card.Text
+          dangerouslySetInnerHTML={{ __html: book.description }}
+        ></Card.Text>
       </Card.Body>
     </Card>
   );
