@@ -27,7 +27,7 @@ export default function NewBooksThisWeek() {
 
         <Row>
           {books!.slice(0, 48).map((book, index) => (
-            <Col key={index} sm={6} md={4} lg={3}>
+            <Col key={index} sm={12} md={6} lg={6}>
               <BookItem book={book} />
             </Col>
           ))}
