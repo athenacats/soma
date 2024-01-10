@@ -8,8 +8,6 @@ export default function BookPage() {
   const location = useLocation();
   const bookDetails = location.state;
 
-  console.log(bookDetails);
-
   if (!bookDetails) {
     return <div>Error: Book details not found</div>;
   }
@@ -59,9 +57,21 @@ export default function BookPage() {
             />
 
             <Card.Body>
-              <Card.Title>{name}</Card.Title>
+              <Card.Title
+                style={{
+                  fontSize: "1.5rem",
+                  color: "#f5ad43",
+                  textDecoration: "underline",
+                }}
+              >
+                {name}
+              </Card.Title>
 
-              <Card.Subtitle>by {author}</Card.Subtitle>
+              <Card.Subtitle
+                style={{ textDecoration: "underline", color: "#f5ad43" }}
+              >
+                by {author}
+              </Card.Subtitle>
 
               <Card.Subtitle>
                 Goodreads Rating{"   "}
