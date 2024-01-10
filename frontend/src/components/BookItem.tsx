@@ -34,6 +34,7 @@ const BookItem: React.FC<{ book: Book }> = ({ book }) => {
         <img
           src={book.image}
           className="card-img-top"
+          style={{ width: "250px" }}
           alt={book.name}
           onLoad={handleImageLoad}
         />
