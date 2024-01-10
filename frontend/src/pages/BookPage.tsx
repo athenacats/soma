@@ -14,7 +14,7 @@ export default function BookPage() {
     return <div>Error: Book details not found</div>;
   }
 
-  const { name, author, image, rating, description } = bookDetails;
+  const { name, author, image, rating, yourRating, description } = bookDetails;
 
   function audioBookMobilism(clickedBook: Book) {
     window.open(
@@ -63,7 +63,15 @@ export default function BookPage() {
 
               <Card.Subtitle>by {author}</Card.Subtitle>
 
-              <Rating yourRating={rating} book={bookDetails} />
+              <Card.Subtitle>
+                Goodreads Rating{"   "}
+                <span style={{ color: "#f5ad43", fontSize: "1.3rem" }}>
+                  {" "}
+                  {rating}
+                </span>
+              </Card.Subtitle>
+
+              <Rating yourRating={yourRating} book={bookDetails} />
               <Card.Text
                 dangerouslySetInnerHTML={{ __html: description }}
                 style={{ fontFamily: "fantasy", cursor: "default" }}
