@@ -11,7 +11,10 @@ export default function BookItemSearchResults({ book }: { book: Book }) {
   };
 
   return (
-    <Card className="mb-3" style={{ cursor: "pointer" }}>
+    <Card
+      className="mb-3"
+      style={{ cursor: "pointer", border: "1px solid #f5ad43" }}
+    >
       {imageIsLoading && (
         <Spinner
           animation="border"
@@ -33,8 +36,8 @@ export default function BookItemSearchResults({ book }: { book: Book }) {
         onLoad={handleImageLoad}
       />
 
-      <Card.Body>
-        <Card.Title>{book.name}</Card.Title>
+      <Card.Body className="d-flex flex-column " style={{ gap: "0.5rem" }}>
+        <Card.Title style={{ fontSize: "1.5rem" }}>{book.name}</Card.Title>
 
         <Card.Subtitle>by {book.author}</Card.Subtitle>
 
