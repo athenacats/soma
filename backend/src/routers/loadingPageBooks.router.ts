@@ -95,12 +95,6 @@ function extractRatingFromScript(scriptData: string | null) {
   const descriptionIndex = scriptData!.match(/span> ([\s\S]*?) avg rating/);
   if (descriptionIndex) {
     const match = descriptionIndex![1];
-    console.log(match);
-    //const text = match.match(/>([^<]*)</)![1].trim();
-
-    //const cleanedRating = text.replace(/\\n+/g, "<br />").replace(/\\/, "");
-
-    // console.log("clean", cleanedText);
     return Number(match!);
   }
 }
