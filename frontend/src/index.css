@@ -393,3 +393,7 @@ div.bookName:hover,
 div.bookAuthor:hover {
   color: var(--rating-hover) !important;
 }
+
+#goodreadsRating:hover span {
+  color: #f5ad43;
+}

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Book } from "../types/Book";
 import Rating from "./Rating";
 import { useState } from "react";
+import GoodreadsRating from "./GoodreadsRating";
 
 const BookItem: React.FC<{ book: Book }> = ({ book }) => {
   const [imageIsLoading, setImageIsLoading] = useState(true);
@@ -70,6 +71,7 @@ const BookItem: React.FC<{ book: Book }> = ({ book }) => {
             {book.rating}
           </span>
         </Card.Subtitle>
+        <GoodreadsRating rating={book.rating}></GoodreadsRating>
         <Rating yourRating={book.yourRating} book={book} />
         <Card.Text
           dangerouslySetInnerHTML={{ __html: book.description }}
