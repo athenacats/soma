@@ -40,7 +40,7 @@ const BookItem: React.FC<{ book: Book }> = ({ book }) => {
           onLoad={handleImageLoad}
         />
       </Link>
-      <Card.Body className="d-flex flex-column " style={{ gap: "0.5rem" }}>
+      <Card.Body className="d-flex flex-column " style={{ gap: "1rem" }}>
         <Link
           to={`/book/${book.slugName}/${book.slugAuthor}`}
           state={book}
@@ -64,15 +64,39 @@ const BookItem: React.FC<{ book: Book }> = ({ book }) => {
             by {book.author}
           </Card.Subtitle>
         </Link>
-        <Card.Subtitle>
-          Goodreads Rating{"   "}
+        <Card.Subtitle
+          style={{
+            cursor: "default",
+            display: "flex",
+            gap: "0.5rem",
+            alignItems: "center",
+            fontSize: "1.1rem",
+          }}
+        >
+          Goodreads Rating:{"   "}
           <span style={{ color: "#f5ad43", fontSize: "1.3rem" }}>
             {" "}
             {book.rating}
+          </span>{" "}
+          <span>
+            <GoodreadsRating rating={book.rating}></GoodreadsRating>
           </span>
         </Card.Subtitle>
-        <GoodreadsRating rating={book.rating}></GoodreadsRating>
-        <Rating yourRating={book.yourRating} book={book} />
+        <Card.Subtitle
+          style={{
+            cursor: "default",
+            display: "flex",
+            gap: "0.5rem",
+            alignItems: "center",
+            fontSize: "1.1rem",
+          }}
+        >
+          My Rating:{"   "}
+          <span>
+            <Rating yourRating={book.yourRating} book={book} />
+          </span>
+        </Card.Subtitle>
+
         <Card.Text
           dangerouslySetInnerHTML={{ __html: book.description }}
           style={{ fontFamily: "fantasy", cursor: "default" }}
