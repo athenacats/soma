@@ -63,13 +63,29 @@ export const ProfilePage = () => {
                       alt={book.name}
                     />
                   </Link>
-                  <Card.Body>
+                  <Card.Body
+                    className="d-flex flex-column "
+                    style={{ gap: "1rem" }}
+                  >
                     <Link to={`/book/${book.slugName}/${book.slugAuthor}`}>
                       <Card.Title>{book.name}</Card.Title>
 
                       <Card.Subtitle>by {book.author}</Card.Subtitle>
                     </Link>
-                    <Rating yourRating={dataItem.rating} book={book} />
+                    <Card.Subtitle
+                      style={{
+                        cursor: "default !important",
+                        display: "flex",
+                        gap: "0.5rem",
+                        alignItems: "center",
+                        fontSize: "1.1rem",
+                      }}
+                    >
+                      My Rating:{" "}
+                      <span>
+                        <Rating yourRating={dataItem.rating} book={book} />
+                      </span>
+                    </Card.Subtitle>
                   </Card.Body>
                 </Card>
               </Col>
