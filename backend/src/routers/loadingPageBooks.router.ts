@@ -83,10 +83,7 @@ function extractDescriptionFromScript(scriptData: string | null) {
   if (descriptionIndex) {
     const match = descriptionIndex![1];
     const text = match.match(/>([^<]*)</)![1].trim();
-
     const cleanedText = text.replace(/\\n+/g, "<br />").replace(/\\/, "");
-
-    // console.log("clean", cleanedText);
     return cleanedText;
   }
 }
@@ -119,6 +116,7 @@ router.get(
           .html();
         const authorName = extractAuthorNameFromScript(scriptData);
         const bookDescription = extractDescriptionFromScript(scriptData);
+        const bookRating = extractRatingFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
@@ -135,7 +133,7 @@ router.get(
           image,
           slugName,
           slugAuthor,
-          rating: 0,
+          rating: bookRating || 0,
           yourRating: 0,
           favorite: false,
           isbn: "",
@@ -171,6 +169,7 @@ router.get(
           .html();
         const authorName = extractAuthorNameFromScript(scriptData);
         const bookDescription = extractDescriptionFromScript(scriptData);
+        const bookRating = extractRatingFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
@@ -187,7 +186,7 @@ router.get(
           image,
           slugName,
           slugAuthor,
-          rating: 0,
+          rating: bookRating || 0,
           yourRating: 0,
           favorite: false,
           isbn: "",
@@ -223,6 +222,7 @@ router.get(
           .html();
         const authorName = extractAuthorNameFromScript(scriptData);
         const bookDescription = extractDescriptionFromScript(scriptData);
+        const bookRating = extractRatingFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
@@ -239,7 +239,7 @@ router.get(
           image,
           slugName,
           slugAuthor,
-          rating: 0,
+          rating: bookRating || 0,
           yourRating: 0,
           favorite: false,
           isbn: "",
@@ -275,6 +275,7 @@ router.get(
           .html();
         const authorName = extractAuthorNameFromScript(scriptData);
         const bookDescription = extractDescriptionFromScript(scriptData);
+        const bookRating = extractRatingFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
@@ -291,7 +292,7 @@ router.get(
           image,
           slugName,
           slugAuthor,
-          rating: 0,
+          rating: bookRating || 0,
           yourRating: 0,
           favorite: false,
           isbn: "",
@@ -327,6 +328,7 @@ router.get(
           .html();
         const authorName = extractAuthorNameFromScript(scriptData);
         const bookDescription = extractDescriptionFromScript(scriptData);
+        const bookRating = extractRatingFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
@@ -343,7 +345,7 @@ router.get(
           image,
           slugName,
           slugAuthor,
-          rating: 0,
+          rating: bookRating || 0,
           yourRating: 0,
           favorite: false,
           isbn: "",
@@ -379,6 +381,7 @@ router.get(
           .html();
         const authorName = extractAuthorNameFromScript(scriptData);
         const bookDescription = extractDescriptionFromScript(scriptData);
+        const bookRating = extractRatingFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
@@ -395,7 +398,7 @@ router.get(
           image,
           slugName,
           slugAuthor,
-          rating: 0,
+          rating: bookRating || 0,
           yourRating: 0,
           favorite: false,
           isbn: "",
@@ -431,6 +434,7 @@ router.get(
           .html();
         const authorName = extractAuthorNameFromScript(scriptData);
         const bookDescription = extractDescriptionFromScript(scriptData);
+        const bookRating = extractRatingFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
@@ -447,7 +451,7 @@ router.get(
           image,
           slugName,
           slugAuthor,
-          rating: 0,
+          rating: bookRating || 0,
           yourRating: 0,
           favorite: false,
           isbn: "",
@@ -483,6 +487,7 @@ router.get(
           .html();
         const authorName = extractAuthorNameFromScript(scriptData);
         const bookDescription = extractDescriptionFromScript(scriptData);
+        const bookRating = extractRatingFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
@@ -499,7 +504,7 @@ router.get(
           image,
           slugName,
           slugAuthor,
-          rating: 0,
+          rating: bookRating || 0,
           yourRating: 0,
           favorite: false,
           isbn: "",
@@ -535,6 +540,7 @@ router.get(
           .html();
         const authorName = extractAuthorNameFromScript(scriptData);
         const bookDescription = extractDescriptionFromScript(scriptData);
+        const bookRating = extractRatingFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
@@ -551,7 +557,7 @@ router.get(
           image,
           slugName,
           slugAuthor,
-          rating: 0,
+          rating: bookRating || 0,
           yourRating: 0,
           favorite: false,
           isbn: "",
@@ -587,6 +593,7 @@ router.get(
           .html();
         const authorName = extractAuthorNameFromScript(scriptData);
         const bookDescription = extractDescriptionFromScript(scriptData);
+        const bookRating = extractRatingFromScript(scriptData);
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
@@ -603,7 +610,7 @@ router.get(
           image,
           slugName,
           slugAuthor,
-          rating: 0,
+          rating: bookRating || 0,
           yourRating: 0,
           favorite: false,
           isbn: "",
