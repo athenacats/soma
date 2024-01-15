@@ -36,12 +36,24 @@ export default function BookItemSearchResults({ book }: { book: Book }) {
         onLoad={handleImageLoad}
       />
 
-      <Card.Body className="d-flex flex-column " style={{ gap: "0.5rem" }}>
+      <Card.Body className="d-flex flex-column " style={{ gap: "1rem" }}>
         <Card.Title style={{ fontSize: "1.5rem" }}>{book.name}</Card.Title>
 
         <Card.Subtitle>by {book.author}</Card.Subtitle>
-
-        <Rating yourRating={book.rating} book={book} />
+        <Card.Subtitle
+          style={{
+            cursor: "default !important",
+            display: "flex",
+            gap: "0.5rem",
+            alignItems: "center",
+            fontSize: "1.1rem",
+          }}
+        >
+          My Rating:{" "}
+          <span>
+            <Rating yourRating={book.rating} book={book} />
+          </span>
+        </Card.Subtitle>
       </Card.Body>
     </Card>
   );

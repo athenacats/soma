@@ -61,7 +61,10 @@ export default function SeachResultsPage() {
           books.slice(0, 8).map((book, index) => (
             <Col key={index} sm={6} md={4} lg={3}>
               <BookItemSearchResults book={book} />
-              <Container className="d-flex justify-content-evenly flex-wrap">
+              <Container
+                className="d-flex justify-content-evenly flex-wrap"
+                style={{ paddingBottom: "0.5rem" }}
+              >
                 <Button
                   className="mt-2 btn btn-primary btn-sm"
                   onClick={() => audioBookMobilism(book)}
