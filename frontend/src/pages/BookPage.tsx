@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { Button, Card, Container, Row } from "react-bootstrap";
 import { Book } from "../types/Book";
 import Rating from "../components/Rating";
+import GoodreadsRating from "../components/GoodreadsRating";
 
 export default function BookPage() {
   const location = useLocation();
@@ -56,7 +57,7 @@ export default function BookPage() {
               alt={name}
             />
 
-            <Card.Body>
+            <Card.Body className="d-flex flex-column " style={{ gap: "1rem" }}>
               <Card.Title
                 style={{
                   fontSize: "1.5rem",
@@ -73,15 +74,39 @@ export default function BookPage() {
                 by {author}
               </Card.Subtitle>
 
-              <Card.Subtitle>
-                Goodreads Rating{"   "}
+              <Card.Subtitle
+                style={{
+                  cursor: "default",
+                  display: "flex",
+                  gap: "0.5rem",
+                  alignItems: "center",
+                  justifyContent: "space-around",
+                  fontSize: "1.1rem",
+                }}
+              >
+                Goodreads Rating: {"   "}
                 <span style={{ color: "#f5ad43", fontSize: "1.3rem" }}>
                   {" "}
                   {rating}
                 </span>
+                <span style={{ minWidth: "100px" }}>
+                  <GoodreadsRating rating={rating}></GoodreadsRating>
+                </span>
               </Card.Subtitle>
-
-              <Rating yourRating={yourRating} book={bookDetails} />
+              <Card.Subtitle
+                style={{
+                  cursor: "default !important",
+                  display: "flex",
+                  gap: "0.5rem",
+                  alignItems: "center",
+                  fontSize: "1.1rem",
+                }}
+              >
+                My Rating:{" "}
+                <span>
+                  <Rating yourRating={yourRating} book={bookDetails} />
+                </span>
+              </Card.Subtitle>
               <Card.Text
                 dangerouslySetInnerHTML={{ __html: description }}
                 style={{ fontFamily: "fantasy", cursor: "default" }}
