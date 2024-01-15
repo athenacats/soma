@@ -55,7 +55,7 @@ router.post(
     const name = book.name;
     const userId = response.user._id;
     const rating = response.yourRating;
-    console.log(response);
+
     try {
       const existingRating = await RatedBookModel.findOne({
         userId: userId,
@@ -73,7 +73,7 @@ router.post(
           book: book,
         });
         await ratedBook.save();
-        console.log(ratedBook);
+
         res.send(ratedBook);
 
         // res.status(201).json({ message: "Book rated successfully" });
@@ -100,9 +100,7 @@ router.get(
   "/profile/:userId",
   asyncHandler(async (req, res) => {
     const userId = req.params.userId;
-    console.log(userId);
     const userRatings = await RatedBookModel.find({ userId: userId });
-    console.log(userRatings);
     try {
       res.send(userRatings);
     } catch (error) {
