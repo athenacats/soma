@@ -37,12 +37,29 @@ export default function BookItemSearchResults({ book }: { book: Book }) {
       />
 
       <Card.Body className="d-flex flex-column " style={{ gap: "1rem" }}>
-        <Card.Title style={{ fontSize: "1.5rem" }}>{book.name}</Card.Title>
+        <Card.Title
+          style={{
+            fontSize: "1.5rem",
+            cursor: "default",
+            color: "#f5ad43",
+            textDecoration: "underline",
+          }}
+        >
+          {book.name}
+        </Card.Title>
 
-        <Card.Subtitle>by {book.author}</Card.Subtitle>
         <Card.Subtitle
           style={{
-            cursor: "default !important",
+            textDecoration: "underline",
+            color: "#f5ad43",
+            cursor: "default",
+          }}
+        >
+          by {book.author}
+        </Card.Subtitle>
+        <Card.Subtitle
+          style={{
+            cursor: "default",
             display: "flex",
             gap: "0.5rem",
             alignItems: "center",
@@ -50,7 +67,7 @@ export default function BookItemSearchResults({ book }: { book: Book }) {
           }}
         >
           My Rating:{" "}
-          <span>
+          <span style={{ cursor: "pointer" }}>
             <Rating yourRating={book.rating} book={book} />
           </span>
         </Card.Subtitle>

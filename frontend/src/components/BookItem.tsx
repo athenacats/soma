@@ -92,7 +92,7 @@ const BookItem: React.FC<{ book: Book }> = ({ book }) => {
           }}
         >
           My Rating:{"   "}
-          <span>
+          <span style={{ cursor: "pointer" }}>
             <Rating yourRating={book.yourRating} book={book} />
           </span>
         </Card.Subtitle>
