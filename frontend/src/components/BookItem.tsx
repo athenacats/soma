@@ -99,7 +99,7 @@ const BookItem: React.FC<{ book: Book }> = ({ book }) => {
 
         <Card.Text
           dangerouslySetInnerHTML={{ __html: book.description }}
-          style={{ fontFamily: "fantasy", cursor: "default" }}
+          style={{ fontFamily: "sans-serif", cursor: "default" }}
         ></Card.Text>
       </Card.Body>
     </Card>
