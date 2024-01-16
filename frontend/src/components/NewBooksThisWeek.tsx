@@ -1,6 +1,6 @@
 import { getError } from "../utils";
 import { ApiError } from "../types/ApiError";
-import { Col, Row } from "react-bootstrap";
+import { Button, Col, Row } from "react-bootstrap";
 import LoadingMessage from "../components/LoadingMessage";
 import MessageBox from "../components/MessageBox";
 import BookItem from "../components/BookItem";
@@ -39,21 +39,43 @@ export default function NewBooksThisWeek() {
 
     return (
       <div className="text-center mt-3">
-        <button onClick={handlePrevPage} disabled={currentPage === 1}>
+        <Button
+          style={{
+            border: "1px solid #fff",
+            marginBottom: "0.5rem",
+            textShadow: "  1px 1px 2px rgb(92, 62, 17)",
+          }}
+          onClick={handlePrevPage}
+          disabled={currentPage === 1}
+        >
           Prev
-        </button>
+        </Button>
         {pageNumbers.map((page) => (
-          <button
+          <Button
             key={page}
             onClick={() => handlePageChange(page)}
             className={page === currentPage ? "active" : ""}
+            style={{
+              marginLeft: "0.5rem",
+              border: "1px solid #fff",
+              marginBottom: "0.5rem",
+              textShadow: "  1px 1px 2px rgb(92, 62, 17)",
+            }}
           >
             {page}
-          </button>
+          </Button>
         ))}
-        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+        <Button
+          style={{
+            border: "1px solid #fff",
+            marginBottom: "0.5rem",
+            textShadow: "  1px 1px 2px rgb(92, 62, 17)",
+          }}
+          onClick={handleNextPage}
+          disabled={currentPage === totalPages}
+        >
           Next
-        </button>
+        </Button>
       </div>
     );
   };
