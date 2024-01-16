@@ -43,6 +43,7 @@ export default function FictionBooks() {
           style={{
             border: "1px solid #fff",
             marginBottom: "0.5rem",
+            marginRight: "0.5rem",
             textShadow: "  1px 1px 2px rgb(92, 62, 17)",
           }}
           onClick={handlePrevPage}
@@ -56,7 +57,7 @@ export default function FictionBooks() {
             onClick={() => handlePageChange(page)}
             className={page === currentPage ? "active" : ""}
             style={{
-              marginLeft: "0.5rem",
+              marginRight: "0.5rem",
               border: "1px solid #fff",
               marginBottom: "0.5rem",
               textShadow: "  1px 1px 2px rgb(92, 62, 17)",
