@@ -1,10 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Charm:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
   --bs-body-font-family: "Berkshire Swash", cursive, Inter, system-ui, Avenir,
     Helvetica, Arial, sans-serif;
   --title-font: "Charm", cursive, Inter, system-ui, Avenir, Helvetica, Arial,
     sans-serif;
+  --bs-description-font: "Raleway", sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -396,4 +398,8 @@ div.bookAuthor:hover {
 
 #goodreadsRating:hover span {
   color: #f5ad43;
+}
+
+#bookDescription {
+  font-family: var(--bs-description-font);
 }

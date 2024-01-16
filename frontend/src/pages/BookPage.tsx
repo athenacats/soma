@@ -109,7 +109,8 @@ export default function BookPage() {
               </Card.Subtitle>
               <Card.Text
                 dangerouslySetInnerHTML={{ __html: description }}
-                style={{ fontFamily: "sans-serif", cursor: "default" }}
+                id="bookDescription"
+                style={{ cursor: "default" }}
               ></Card.Text>
             </Card.Body>
           </Card>
