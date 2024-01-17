@@ -36,11 +36,11 @@ router.get(
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
+          .replace(/[^\w\s-'’]/g, "")
           .replace(/\s+/g, "+");
         const slugAuthor = authorName!
           .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
+          .replace(/[^\w\s-'’.]/g, "")
           .replace(/\s+/g, "+");
         book.push({
           name,
@@ -83,7 +83,8 @@ function extractDescriptionFromScript(scriptData: string | null) {
   if (descriptionIndex) {
     const match = descriptionIndex![1];
     const text = match.match(/>([^<]*)</)![1].trim();
-    const cleanedText = text.replace(/\\n+/g, "<br />").replace(/\\/, "");
+    const cleanedText = text.replace(/\\n+/g, "<br />").replace(/\\/g, "");
+
     return cleanedText;
   }
 }
@@ -120,11 +121,11 @@ router.get(
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
+          .replace(/[^\w\s-'’]/g, "")
           .replace(/\s+/g, "+");
         const slugAuthor = authorName!
           .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
+          .replace(/[^\w\s-'’.]/g, "")
           .replace(/\s+/g, "+");
         book.push({
           name,
@@ -173,11 +174,11 @@ router.get(
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
+          .replace(/[^\w\s-'’]/g, "")
           .replace(/\s+/g, "+");
         const slugAuthor = authorName!
           .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
+          .replace(/[^\w\s-'’.]/g, "")
           .replace(/\s+/g, "+");
         book.push({
           name,
@@ -226,11 +227,11 @@ router.get(
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
+          .replace(/[^\w\s-'’]/g, "")
           .replace(/\s+/g, "+");
         const slugAuthor = authorName!
           .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
+          .replace(/[^\w\s-'’.]/g, "")
           .replace(/\s+/g, "+");
         book.push({
           name,
@@ -279,11 +280,11 @@ router.get(
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
+          .replace(/[^\w\s-'’]/g, "")
           .replace(/\s+/g, "+");
         const slugAuthor = authorName!
           .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
+          .replace(/[^\w\s-'’.]/g, "")
           .replace(/\s+/g, "+");
         book.push({
           name,
@@ -332,11 +333,11 @@ router.get(
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
+          .replace(/[^\w\s-'’]/g, "")
           .replace(/\s+/g, "+");
         const slugAuthor = authorName!
           .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
+          .replace(/[^\w\s-'’.]/g, "")
           .replace(/\s+/g, "+");
         book.push({
           name,
@@ -385,11 +386,11 @@ router.get(
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
+          .replace(/[^\w\s-'’]/g, "")
           .replace(/\s+/g, "+");
         const slugAuthor = authorName!
           .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
+          .replace(/[^\w\s-'’.]/g, "")
           .replace(/\s+/g, "+");
         book.push({
           name,
@@ -438,11 +439,11 @@ router.get(
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
+          .replace(/[^\w\s-'’]/g, "")
           .replace(/\s+/g, "+");
         const slugAuthor = authorName!
           .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
+          .replace(/[^\w\s-'’.]/g, "")
           .replace(/\s+/g, "+");
         book.push({
           name,
@@ -491,11 +492,11 @@ router.get(
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
+          .replace(/[^\w\s-'’]/g, "")
           .replace(/\s+/g, "+");
         const slugAuthor = authorName!
           .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
+          .replace(/[^\w\s-'’.]/g, "")
           .replace(/\s+/g, "+");
         book.push({
           name,
@@ -544,11 +545,11 @@ router.get(
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
+          .replace(/[^\w\s-'’]/g, "")
           .replace(/\s+/g, "+");
         const slugAuthor = authorName!
           .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
+          .replace(/[^\w\s-'’.]/g, "")
           .replace(/\s+/g, "+");
         book.push({
           name,
@@ -597,11 +598,11 @@ router.get(
         const image = titleElement.find("img.bookImage").attr("src");
         const slugName = name!
           .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
+          .replace(/[^\w\s-'’]/g, "")
           .replace(/\s+/g, "+");
         const slugAuthor = authorName!
           .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
+          .replace(/[^\w\s-'’.]/g, "")
           .replace(/\s+/g, "+");
         book.push({
           name,
