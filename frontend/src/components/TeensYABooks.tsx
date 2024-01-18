@@ -6,31 +6,42 @@ import MessageBox from "../components/MessageBox";
 import BookItem from "../components/BookItem";
 import { useGetTeensYABooksQuery } from "../hooks/bookHooks";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ITEMS_PER_PAGE = 10;
 
 export default function TeensYABooks() {
-  const { isLoading, error, data: books } = useGetTeensYABooksQuery();
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const currentPage =
+    Number(new URLSearchParams(window.location.search).get("page")) || 1;
+  const {
+    isLoading,
+    error,
+    data: books,
+  } = useGetTeensYABooksQuery(currentPage);
+  const [currentPageState, setCurrentPageState] = useState<number>(currentPage);
+  const navigate = useNavigate();
 
   const totalPages = Math.ceil(books?.length || 0) / ITEMS_PER_PAGE;
 
   const handlePageChange = (newPage: number) => {
-    setCurrentPage(newPage);
+    setCurrentPageState(newPage);
     window.scrollTo({ top: 0, behavior: "smooth" });
+    navigate(`?page=${newPage}`);
   };
 
   const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
+    if (currentPageState < totalPages) {
+      setCurrentPageState(currentPageState + 1);
       window.scrollTo({ top: 0, behavior: "smooth" });
+      navigate(`?page=${currentPageState + 1}`);
     }
   };
 
   const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
+    if (currentPageState > 1) {
+      setCurrentPageState(currentPage - 1);
       window.scrollTo({ top: 0, behavior: "smooth" });
+      navigate(`?page=${currentPageState - 1}`);
     }
   };
 
@@ -50,7 +61,7 @@ export default function TeensYABooks() {
             textShadow: "  1px 1px 2px rgb(92, 62, 17)",
           }}
           onClick={handlePrevPage}
-          disabled={currentPage === 1}
+          disabled={currentPageState === 1}
         >
           Prev
         </Button>
@@ -58,7 +69,7 @@ export default function TeensYABooks() {
           <Button
             key={page}
             onClick={() => handlePageChange(page)}
-            className={page === currentPage ? "active" : ""}
+            className={page === currentPageState ? "active" : ""}
             style={{
               marginRight: "0.5rem",
               border: "1px solid #fff",
@@ -76,7 +87,7 @@ export default function TeensYABooks() {
             textShadow: "  1px 1px 2px rgb(92, 62, 17)",
           }}
           onClick={handleNextPage}
-          disabled={currentPage === totalPages}
+          disabled={currentPageState === totalPages}
         >
           Next
         </Button>
@@ -85,7 +96,7 @@ export default function TeensYABooks() {
   };
 
   const renderBooks = () => {
-    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const startIndex = (currentPageState - 1) * ITEMS_PER_PAGE;
     const endIndex = startIndex + ITEMS_PER_PAGE;
 
     return (
