@@ -80,7 +80,7 @@ export default function BookPage() {
                   display: "flex",
                   gap: "0.5rem",
                   alignItems: "center",
-                  justifyContent: "space-around",
+                  //justifyContent: "space-around",
                   fontSize: "1.1rem",
                 }}
               >
