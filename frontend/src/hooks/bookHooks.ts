@@ -24,10 +24,11 @@ export const useRateBookMutation = () => {
   );
 };
 
-export const useGetBooksQuery = () =>
+export const useGetBooksQuery = (page: number) =>
   useQuery({
-    queryKey: ["books"],
-    queryFn: async () => (await apiClient.get<Book[]>(`api/`)).data,
+    queryKey: ["books", page],
+    queryFn: async () =>
+      (await apiClient.get<Book[]>(`api/`, { params: { page } })).data,
   });
 
 export const useGetBookDetailsBySlugQuery = (
@@ -47,35 +48,41 @@ export const useGetBookDetailsBySearchQuery = (slugName: string) =>
       (await apiClient.get<Book[]>(`api/search/${slugName}`)).data,
   });
 
-export const useGetFictionBooksQuery = () =>
+export const useGetFictionBooksQuery = (page: number) =>
   useQuery({
-    queryKey: ["books"],
-    queryFn: async () => (await apiClient.get<Book[]>(`api/fiction`)).data,
-  });
-
-export const useGetMysteryCrimeBooksQuery = () =>
-  useQuery({
-    queryKey: ["books"],
+    queryKey: ["books", page],
     queryFn: async () =>
-      (await apiClient.get<Book[]>(`api/mystery&crime`)).data,
+      (await apiClient.get<Book[]>(`api/fiction`, { params: { page } })).data,
   });
 
-export const useGetRomanceBooksQuery = () =>
+export const useGetMysteryCrimeBooksQuery = (page: number) =>
   useQuery({
-    queryKey: ["books"],
-    queryFn: async () => (await apiClient.get<Book[]>(`api/romance`)).data,
+    queryKey: ["books", page],
+    queryFn: async () =>
+      (await apiClient.get<Book[]>(`api/mystery&crime`, { params: { page } }))
+        .data,
   });
 
-export const useGetScienceTechBooksQuery = () =>
+export const useGetRomanceBooksQuery = (page: number) =>
   useQuery({
-    queryKey: ["books"],
-    queryFn: async () => (await apiClient.get<Book[]>(`api/science&tech`)).data,
+    queryKey: ["books", page],
+    queryFn: async () =>
+      (await apiClient.get<Book[]>(`api/romance`, { params: { page } })).data,
   });
 
-export const useGetScifiBooksQuery = () =>
+export const useGetScienceTechBooksQuery = (page: number) =>
   useQuery({
-    queryKey: ["books"],
-    queryFn: async () => (await apiClient.get<Book[]>(`api/scifi`)).data,
+    queryKey: ["books", page],
+    queryFn: async () =>
+      (await apiClient.get<Book[]>(`api/science&tech`, { params: { page } }))
+        .data,
+  });
+
+export const useGetScifiBooksQuery = (page: number) =>
+  useQuery({
+    queryKey: ["books", page],
+    queryFn: async () =>
+      (await apiClient.get<Book[]>(`api/scifi`, { params: { page } })).data,
   });
 
 export const useGetFantasyBooksQuery = (page: number) =>
@@ -85,28 +92,33 @@ export const useGetFantasyBooksQuery = (page: number) =>
       (await apiClient.get<Book[]>(`api/fantasy`, { params: { page } })).data,
   });
 
-export const useGetHorrorBooksQuery = () =>
+export const useGetHorrorBooksQuery = (page: number) =>
   useQuery({
-    queryKey: ["books"],
-    queryFn: async () => (await apiClient.get<Book[]>(`api/horror`)).data,
+    queryKey: ["books", page],
+    queryFn: async () =>
+      (await apiClient.get<Book[]>(`api/horror`, { params: { page } })).data,
   });
 
-export const useGetNonfictionBooksQuery = () =>
+export const useGetNonfictionBooksQuery = (page: number) =>
   useQuery({
-    queryKey: ["books"],
-    queryFn: async () => (await apiClient.get<Book[]>(`api/nonfiction`)).data,
+    queryKey: ["books", page],
+    queryFn: async () =>
+      (await apiClient.get<Book[]>(`api/nonfiction`, { params: { page } }))
+        .data,
   });
 
-export const useGetThrillerBooksQuery = () =>
+export const useGetThrillerBooksQuery = (page: number) =>
   useQuery({
-    queryKey: ["books"],
-    queryFn: async () => (await apiClient.get<Book[]>(`api/thriller`)).data,
+    queryKey: ["books", page],
+    queryFn: async () =>
+      (await apiClient.get<Book[]>(`api/thriller`, { params: { page } })).data,
   });
 
-export const useGetTeensYABooksQuery = () =>
+export const useGetTeensYABooksQuery = (page: number) =>
   useQuery({
-    queryKey: ["books"],
-    queryFn: async () => (await apiClient.get<Book[]>(`api/teens&ya`)).data,
+    queryKey: ["books", page],
+    queryFn: async () =>
+      (await apiClient.get<Book[]>(`api/teens&ya`, { params: { page } })).data,
   });
 
 export const useGetUserRatedBooks = (userId: string) =>
