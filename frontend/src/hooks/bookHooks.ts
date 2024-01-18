@@ -19,7 +19,6 @@ export const useRateBookMutation = () => {
         user,
         yourRating,
       });
-      console.log(response.data);
       return response.data;
     }
   );
@@ -79,10 +78,11 @@ export const useGetScifiBooksQuery = () =>
     queryFn: async () => (await apiClient.get<Book[]>(`api/scifi`)).data,
   });
 
-export const useGetFantasyBooksQuery = () =>
+export const useGetFantasyBooksQuery = (page: number) =>
   useQuery({
-    queryKey: ["books"],
-    queryFn: async () => (await apiClient.get<Book[]>(`api/fantasy`)).data,
+    queryKey: ["books", page],
+    queryFn: async () =>
+      (await apiClient.get<Book[]>(`api/fantasy`, { params: { page } })).data,
   });
 
 export const useGetHorrorBooksQuery = () =>
@@ -123,7 +123,6 @@ export const useGetDefaultBooks = () =>
     queryKey: ["books"],
     queryFn: async () => {
       const response = await apiClient.get<Book[]>(`api/seedbooks`);
-      console.log(response.data);
       return response.data || [];
     },
   });
